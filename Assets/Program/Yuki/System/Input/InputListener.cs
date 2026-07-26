@@ -23,6 +23,7 @@ public class InputListener : MonoBehaviour
     [Serializable]
     private struct ObservableInput
     {
+        public string name;
         public InputType input;
         public InputState state;
         public List<InputFilter> inputFilters;
