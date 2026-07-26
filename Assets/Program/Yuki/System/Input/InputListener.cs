@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.InputSystem;
-using MackySoft.SerializeReferenceExtensions;
 
 public class InputListener : MonoBehaviour
 {
+    [SerializeField]
+    private KeyConfigData _keyConfigData;
     [SerializeField]
     private List<ObservableInput> _observableInputs;
 
@@ -23,7 +23,7 @@ public class InputListener : MonoBehaviour
     [Serializable]
     private struct ObservableInput
     {
-        public InputAction key;
+        public InputType input;
         public InputState state;
         public List<InputFilter> inputFilters;
         public UnityEvent action;

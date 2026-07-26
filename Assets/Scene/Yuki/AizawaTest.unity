@@ -440,16 +440,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13fc5d097641b44719ad5c00bc5522f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _keyConfigData: {fileID: 11400000, guid: 3c3b97a99b6614d6f9276d91474542ca, type: 2}
   _observableInputs:
-  - key:
-      m_Name: Key
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: f771282b-6615-42f6-b0e7-e69993b103f7
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
+  - input: 0
     state: 0
     inputFilters:
     - inputFilter:
