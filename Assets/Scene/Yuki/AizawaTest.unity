@@ -442,7 +442,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _keyConfigData: {fileID: 11400000, guid: 3c3b97a99b6614d6f9276d91474542ca, type: 2}
   _observableInputs:
-  - input: 0
+  - name: "\u6B69\u884C"
+    input: 0
     state: 0
     inputFilters:
     - inputFilter:

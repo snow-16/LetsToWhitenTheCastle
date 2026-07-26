@@ -7,7 +7,8 @@ using UnityEngine.InputSystem;
 public class KeyConfigData : ScriptableObject
 {
     [SerializeField]
-    private List<KeyConfig> KeyConfigs;
+    private List<KeyConfig> _keyConfigs = new();
+    public List<KeyConfig> KeyConfigs { get => _keyConfigs; set => _keyConfigs = value; }
 
     [Serializable]
     public struct KeyConfig
