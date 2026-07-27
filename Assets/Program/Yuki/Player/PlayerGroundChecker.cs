@@ -1,4 +1,5 @@
 using System.Linq;
+using UniRx;
 using UnityEngine;
 
 /// <summary>
@@ -15,13 +16,16 @@ public class PlayerGroundChecker : MonoBehaviour
     /// <summary> 抜けられる床のレイヤー </summary>
     [SerializeField]
     private LayerMask _platformLayer;
+    /// <summary> コヨーテタイムの長さ </summary>
+    [SerializeField]
+    private int _coyoteTime;
 
     /// <summary> PlayerStateHolderのインスタンス </summary>
     private PlayerStateHolder _playerStateHolder;
 
     void Start()
     {
-        _playerStateHolder = GetComponent<PlayerStateHolder>();
+        _playerStateHolder = transform.parent.GetComponent<PlayerStateHolder>();
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -39,7 +43,7 @@ public class PlayerGroundChecker : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        var existGroundsCount = Physics2D.OverlapCircleAll((Vector2)transform.position + _groundHitCircle.offset, ((CircleCollider2D)_groundHitCircle).radius)
+        var existGroundsCount = Physics2D.OverlapCircleAll(transform.position, ((CircleCollider2D)_groundHitCircle).radius)
         .Where(col =>
             {
                 var layer = 1 << col.gameObject.layer;
@@ -49,7 +53,11 @@ public class PlayerGroundChecker : MonoBehaviour
 
         if(existGroundsCount == 0 && _playerStateHolder.PlayerJumpState == PlayerJumpState.OnGround)
         {
-            _playerStateHolder.PlayerJumpState = PlayerJumpState.Fall;
+            Observable.Timer(new System.TimeSpan(0, 0, 0, 0, _coyoteTime)).TakeUntil(Observable.EveryUpdate().Where(_ => _playerStateHolder.PlayerJumpState != PlayerJumpState.OnGround)).Subscribe(_ =>
+                {
+                    _playerStateHolder.PlayerJumpState = PlayerJumpState.Fall;
+                }
+            ).AddTo(this);
         }
     }
 }
