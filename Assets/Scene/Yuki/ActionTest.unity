@@ -1104,7 +1104,8 @@ MonoBehaviour:
   - {fileID: 1379024708}
   - {fileID: 1742350473}
   _throwPoint: {fileID: 1642255920}
-  _throwSpeed: 2
+  _throwHeight: 4
+  _throwSpeed: 0.5
 --- !u!1 &1379024707
 GameObject:
   m_ObjectHideFlags: 0
