@@ -20,7 +20,7 @@ public class BombMover : MonoBehaviour
     void FixedUpdate()
     {
         var pos = Vector2.Lerp(_basePoint, _targetPoint, _progress);
-        pos.y += Mathf.Sin(_progress * Mathf.PI) * _throwHeight;
+        pos.y += Mathf.Sin(_progress * Mathf.PI) * (_targetPoint - _basePoint).magnitude * _throwHeight;
         transform.position = pos;
         _progress = Mathf.Min(_progress + _moveSpeed / (_targetPoint - _basePoint).magnitude, 1);
     }

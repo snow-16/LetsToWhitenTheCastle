@@ -13,6 +13,8 @@ public class SyurikenMover : MonoBehaviour
     /// <summary> 手裏剣が存在できる範囲 </summary>
     private Collider2D _surviveArea;
 
+    public bool HitEnemy { get; set; }
+
     void FixedUpdate()
     {
         transform.Translate(_forword * _moveSpeed, Space.World);
@@ -33,5 +35,14 @@ public class SyurikenMover : MonoBehaviour
         _moveSpeed = speed;
         _forword = forword;
         _surviveArea = surviveArea;
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag != "Player" && collision.TryGetComponent<LifeSystem>(out var target))
+        {
+            GetComponent<AttackDamager>().Attack(target);
+            HitEnemy = true;
+        }
     }
 }
