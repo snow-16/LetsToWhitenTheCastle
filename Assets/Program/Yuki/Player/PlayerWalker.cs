@@ -29,18 +29,15 @@ public class PlayerWalker : MonoBehaviour
     /// <summary> 現在の速度 </summary>
     private float _nowSpeed = 0;
     /// <summary> 現在の移動方向 </summary>
-    private float _nowDirection = 0;
+    private PlayerMoveDirection _nowDirection;
     /// <summary> ダッシュしているか </summary>
     private bool _isSprint = false;
 
-    /// <summary> SpriteRendererのインスタンス </summary>
-    private SpriteRenderer _spriteRenderer;
     /// <summary> PlayerStateHolderのインスタンス </summary>
     private PlayerStateHolder _playerStateHolder;
 
     void Start()
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
         _playerStateHolder = GetComponent<PlayerStateHolder>();
     }
 
@@ -52,16 +49,16 @@ public class PlayerWalker : MonoBehaviour
             var maxSpeed = _maxSpeed.walk * (_isSprint ? _maxSpeed.sprintMultipiler : 1) / _movingScale;
             var initialSpeed = _initialSpeed.walk * (_isSprint ? _initialSpeed.sprintMultipiler : 1) / _movingScale;
 
-            _nowSpeed += defaultSpeed * _nowDirection;
-            var moveForword = _nowSpeed == 0 || Mathf.Sign(_nowSpeed) == _nowDirection;
+            _nowSpeed += defaultSpeed * GetDirection();
+            var moveForword = _nowSpeed == 0 || Mathf.Sign(_nowSpeed) == GetDirection();
 
             if(moveForword && Mathf.Abs(_nowSpeed) < initialSpeed)
             {
-                _nowSpeed = initialSpeed * _nowDirection;
+                _nowSpeed = initialSpeed * GetDirection();
             }
             else if(moveForword && Mathf.Abs(_nowSpeed) > maxSpeed)
             {
-                _nowSpeed = maxSpeed * _nowDirection;
+                _nowSpeed = maxSpeed * GetDirection();
             }
 
             if(_playerStateHolder.PlayerJumpState != PlayerJumpState.OnGround)
@@ -93,13 +90,29 @@ public class PlayerWalker : MonoBehaviour
         }
     }
 
+    private int GetDirection()
+    {
+        int direction = 0;
+        
+        if((_nowDirection & PlayerMoveDirection.Right) != 0)
+        {
+            direction += 1;
+        }
+        if((_nowDirection & PlayerMoveDirection.Left) != 0)
+        {
+            direction -= 1;
+        }
+
+        return direction;
+    }
+
     /// <summary>
     /// 移動開始
     /// </summary>
     /// <param name="direction">移動方向</param>
     public void Walk(float direction)
     {
-        _nowDirection += direction;
+        _nowDirection |= direction > 0 ? PlayerMoveDirection.Right : PlayerMoveDirection.Left;
         FlipPlayer();
     }
 
@@ -109,7 +122,7 @@ public class PlayerWalker : MonoBehaviour
     /// <param name="direction">移動方向</param>
     public void StopDirection(float direction)
     {
-        _nowDirection -= direction;
+        _nowDirection &= direction > 0 ? ~PlayerMoveDirection.Right : ~PlayerMoveDirection.Left;
         FlipPlayer();
     }
 
