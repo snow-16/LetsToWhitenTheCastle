@@ -440,29 +440,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13fc5d097641b44719ad5c00bc5522f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keyConfigData: {fileID: 11400000, guid: 3c3b97a99b6614d6f9276d91474542ca, type: 2}
+  _keyBindData: {fileID: 11400000, guid: c17d0de8514e0475385c7d602e8ca6a7, type: 2}
   _listeningType: 1
   _observableInputs:
   - inputSettings:
-    - name: 
-      state: 0
-      inputFilters: []
-      action:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1010773749}
-            m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-            m_MethodName: SetActive
-            m_Mode: 6
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-    - name: 
+    - name: "\u30C6\u30B9\u30C81"
       state: 0
       inputFilters: []
       action:
@@ -475,6 +457,24 @@ MonoBehaviour:
             m_Arguments:
               m_ObjectArgument: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
               m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+    - name: "\u30C6\u30B9\u30C82"
+      state: 2
+      inputFilters: []
+      action:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1010773749}
+            m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_MethodName: SetActive
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
               m_IntArgument: 0
               m_FloatArgument: 0
               m_StringArgument: 

@@ -2,33 +2,36 @@ using System;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(KeyConfigData))]
-public class KeyConfigDataEditor : Editor
+/// <summary>
+/// キーバインドのインスペクター拡張
+/// </summary>
+[CustomEditor(typeof(KeyBindData))]
+public class KeyBindDataEditor : Editor
 {
-    private KeyConfigData _keyConfigData;
+    private KeyBindData _keyBindData;
 
     void OnEnable()
     {
-        _keyConfigData = target as KeyConfigData;
+        _keyBindData = target as KeyBindData;
         int inputKinds = Enum.GetValues(typeof(InputType)).Length;
-        int listCountDifference = _keyConfigData.KeyConfigs.Count - inputKinds;
+        int listCountDifference = _keyBindData.KeyBinds.Count - inputKinds;
 
         if(listCountDifference < 0)
         {
-            _keyConfigData.KeyConfigs.AddRange(new KeyConfigData.KeyConfig[Mathf.Abs(inputKinds)]);
+            _keyBindData.KeyBinds.AddRange(new KeyBindData.KeyBind[Mathf.Abs(inputKinds)]);
         }
         else if(listCountDifference > 0)
         {
-            _keyConfigData.KeyConfigs.RemoveRange(inputKinds - 1, listCountDifference);
+            _keyBindData.KeyBinds.RemoveRange(inputKinds - 1, listCountDifference);
         }
     }
 
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
-        var keyConfigs = serializedObject.FindProperty("_keyConfigs");
+        var keyConfigs = serializedObject.FindProperty("_keyBinds");
         
-        for(int i = 0; i < _keyConfigData.KeyConfigs.Count; i++)
+        for(int i = 0; i < _keyBindData.KeyBinds.Count; i++)
         {
             var keyConfig = keyConfigs.GetArrayElementAtIndex(i);
             EditorGUILayout.LabelField(((InputType)(1 << i)).ToString());
