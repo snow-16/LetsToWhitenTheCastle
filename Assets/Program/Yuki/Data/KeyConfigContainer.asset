@@ -16,30 +16,78 @@ MonoBehaviour:
   - type: 0
     input:
       m_Name: Input
-      m_Type: 0
-      m_ExpectedControlType: 
+      m_Type: 1
+      m_ExpectedControlType: Button
       m_Id: 44dba8ab-9487-449f-9713-0f1936f5de9a
       m_Processors: 
       m_Interactions: 
-      m_SingletonActionBindings: []
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 0b884d69-69b1-4850-9048-0a6335f7ecc2
+        m_Path: <Keyboard>/a
+        m_Interactions: 
+        m_Processors: Invert
+        m_Groups: 
+        m_Action: Input
+        m_Flags: 0
+      - m_Name: 
+        m_Id: e929df5d-42ca-4304-b243-36531079bdb0
+        m_Path: <Keyboard>/leftArrow
+        m_Interactions: 
+        m_Processors: Invert
+        m_Groups: 
+        m_Action: Input
+        m_Flags: 0
+      - m_Name: 
+        m_Id: b59cd786-bdda-4e89-8c9d-8f0ff332b3ba
+        m_Path: <Keyboard>/d
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Input
+        m_Flags: 0
+      - m_Name: 
+        m_Id: 95074b31-5a58-4c39-874c-491e68b872e5
+        m_Path: <Keyboard>/rightArrow
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Input
+        m_Flags: 0
       m_Flags: 0
   - type: 0
     input:
       m_Name: Input
-      m_Type: 0
-      m_ExpectedControlType: 
+      m_Type: 1
+      m_ExpectedControlType: Button
       m_Id: e462a66f-41ff-494a-8197-d20986eb71c7
       m_Processors: 
       m_Interactions: 
-      m_SingletonActionBindings: []
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 18ebd146-7b7d-434a-83e3-bbfbfbfa9a80
+        m_Path: <Keyboard>/b
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Input
+        m_Flags: 0
       m_Flags: 0
   - type: 0
     input:
       m_Name: Input
-      m_Type: 0
-      m_ExpectedControlType: 
+      m_Type: 1
+      m_ExpectedControlType: Button
       m_Id: 51a578f7-e7d9-46cd-928e-0d0a98879f5b
       m_Processors: 
       m_Interactions: 
-      m_SingletonActionBindings: []
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 6abcc7ee-8eb6-4d3f-8768-b3db6a804a3e
+        m_Path: <Keyboard>/c
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Input
+        m_Flags: 0
       m_Flags: 0
