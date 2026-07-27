@@ -57,7 +57,7 @@ public class BossAI : MonoBehaviour
     IEnumerator StartAttack()
     {
         float animTime;
-        if (_nowAttackCount2To3 == _attackCount2To3)
+        if (_nowAttackCount2To3 == _attackCount2To3)//中攻撃を一定回数行うと大攻撃を行う
         {
             _isCoolDown = true;
             _nowAttackCount2To3 = 0;
@@ -70,7 +70,7 @@ public class BossAI : MonoBehaviour
             yield return new WaitForSeconds(_attackCoolDownTime);
             _isCoolDown = false;
         }
-        else if (_nowAttackCount1To2 == _attackCount1To2)
+        else if (_nowAttackCount1To2 == _attackCount1To2) //一定回数小攻撃を行うと中攻撃を行う
         {
             _isCoolDown = true;
             _nowAttackCount1To2 = 0;
@@ -84,7 +84,7 @@ public class BossAI : MonoBehaviour
             _isCoolDown = false;
             _nowAttackCount2To3++;
         }
-        else if (_nowAttackCount1To2 != _attackCount1To2)
+        else if (_nowAttackCount1To2 != _attackCount1To2) //小攻撃を行うのと小攻撃の回数を記録する
         {
             _isCoolDown = true;
             _attackEvent1.Invoke();

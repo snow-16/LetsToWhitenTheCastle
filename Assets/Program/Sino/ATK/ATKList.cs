@@ -1,12 +1,15 @@
 using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class LittleATKList : MonoBehaviour
+public class ATKList : MonoBehaviour
 {
     [SerializeField] GameObject _arrowPrefab;
     [SerializeField] GameObject _gunPrefab;
     [SerializeField] GameObject _firePrefab;
+    [SerializeField] GameObject _canonBalletPrefab;
     [SerializeField] float _moveSpeed;
+    [SerializeField] float _hitPredictionTime;
     int _movementAttackDamge;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -71,5 +74,28 @@ public class LittleATKList : MonoBehaviour
         {
             StartCoroutine("FireDast");
         }
+    }
+
+    private Vector2 CalcuateArcVelocity2D(Rigidbody2D rb, Vector2 distance, float time)
+    {
+        float velosityX = distance.x / time;
+        float gravity = Mathf.Abs(Physics2D.gravity.y) * rb.gravityScale;
+        float velosityY = (distance.y / time) + (0.5f * gravity * time);
+        return new Vector2(velosityX, velosityY);
+    }
+
+    public IEnumerator Cannon()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        Vector2 distans = player.transform.position - transform.position;
+        GameObject canonBullet = Instantiate(_canonBalletPrefab, transform.position, Quaternion.identity);
+        Rigidbody2D rb = canonBullet.GetComponent<Rigidbody2D>();
+        rb.linearVelocity = CalcuateArcVelocity2D(rb, distans, _hitPredictionTime);
+        yield return null;
+    }
+
+    public void MDLATK()
+    {
+        StartCoroutine(Cannon());
     }
 }
