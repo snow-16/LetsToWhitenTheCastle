@@ -1,5 +1,4 @@
 using System;
-using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -16,7 +15,7 @@ public class KeyConfigDataEditor : Editor
 
         if(listCountDifference < 0)
         {
-            _keyConfigData.KeyConfigs.AddRange(new KeyConfigData.KeyConfig[inputKinds]);
+            _keyConfigData.KeyConfigs.AddRange(new KeyConfigData.KeyConfig[Mathf.Abs(inputKinds)]);
         }
         else if(listCountDifference > 0)
         {
@@ -27,11 +26,12 @@ public class KeyConfigDataEditor : Editor
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
-
+        var keyConfigs = serializedObject.FindProperty("_keyConfigs");
+        
         for(int i = 0; i < _keyConfigData.KeyConfigs.Count; i++)
         {
-            var keyConfig = serializedObject.FindProperty("_keyConfigs").GetArrayElementAtIndex(i);
-            EditorGUILayout.LabelField(((InputType)i).ToString());
+            var keyConfig = keyConfigs.GetArrayElementAtIndex(i);
+            EditorGUILayout.LabelField(((InputType)(1 << i)).ToString());
             EditorGUILayout.PropertyField(keyConfig.FindPropertyRelative("input"));
             EditorGUILayout.Space();
         }
