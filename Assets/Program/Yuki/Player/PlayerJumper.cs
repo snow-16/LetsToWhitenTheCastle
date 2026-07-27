@@ -49,10 +49,14 @@ public class PlayerJumper : MonoBehaviour
 
                 if(Mathf.Abs(_rigidbody2D.linearVelocityY) / _rigidbody2D.gravityScale > _nowJumpPower)
                 {
-                    _isStrain = false;
                     _playerStateHolder.PlayerJumpState = PlayerJumpState.Fall;
                     _rigidbody2D.linearVelocityY = 0;
                 }
+            }
+            else if(_isStrain)
+            {
+                _rigidbody2D.linearVelocityY = 0;
+                _isStrain = false;
             }
         }
     }
