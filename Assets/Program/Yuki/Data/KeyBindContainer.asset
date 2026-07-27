@@ -16,28 +16,12 @@ MonoBehaviour:
   - type: 0
     input:
       m_Name: Input
-      m_Type: 1
+      m_Type: 2
       m_ExpectedControlType: Button
       m_Id: 8ea08a2e-5c7e-462c-bf5e-c733a12c2223
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings:
-      - m_Name: 
-        m_Id: d121af2d-1768-458e-91af-248013c1d5ef
-        m_Path: <Keyboard>/a
-        m_Interactions: 
-        m_Processors: Invert
-        m_Groups: 
-        m_Action: Input
-        m_Flags: 0
-      - m_Name: 
-        m_Id: f87d4b24-3dfd-42e1-8507-33c12d6cf012
-        m_Path: <Keyboard>/leftArrow
-        m_Interactions: 
-        m_Processors: Invert
-        m_Groups: 
-        m_Action: Input
-        m_Flags: 0
       - m_Name: 
         m_Id: 4f6e2fc0-c44c-443c-8e15-5306e6c8ddd6
         m_Path: <Keyboard>/d
@@ -58,14 +42,40 @@ MonoBehaviour:
   - type: 0
     input:
       m_Name: Input
-      m_Type: 1
+      m_Type: 2
       m_ExpectedControlType: Button
       m_Id: 5716ea0d-ca73-4c34-8744-066932d17efd
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings:
       - m_Name: 
-        m_Id: e9f654aa-4c6a-4f59-b90d-4a5f6300c95b
+        m_Id: a889ff3f-78ea-4eea-9822-fce6272dee51
+        m_Path: <Keyboard>/a
+        m_Interactions: 
+        m_Processors: Invert
+        m_Groups: 
+        m_Action: Input
+        m_Flags: 0
+      - m_Name: 
+        m_Id: 20e4cc27-58b0-4ac3-aef9-b62bd62b53b8
+        m_Path: <Keyboard>/leftArrow
+        m_Interactions: 
+        m_Processors: Invert
+        m_Groups: 
+        m_Action: Input
+        m_Flags: 0
+      m_Flags: 0
+  - type: 0
+    input:
+      m_Name: Input
+      m_Type: 2
+      m_ExpectedControlType: Button
+      m_Id: 9b66384e-6ffd-42b4-936f-12db4ce44092
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 74749e84-dbd0-4260-8b91-a886487d24b9
         m_Path: <Keyboard>/shift
         m_Interactions: 
         m_Processors: 
@@ -76,14 +86,14 @@ MonoBehaviour:
   - type: 0
     input:
       m_Name: Input
-      m_Type: 1
-      m_ExpectedControlType: Button
-      m_Id: 9b66384e-6ffd-42b4-936f-12db4ce44092
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 44ffd880-e872-4998-938b-c5ccaea758c7
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings:
       - m_Name: 
-        m_Id: 74749e84-dbd0-4260-8b91-a886487d24b9
+        m_Id: 85b0f020-6209-4b08-9b27-daff5d002d05
         m_Path: <Keyboard>/space
         m_Interactions: 
         m_Processors: 

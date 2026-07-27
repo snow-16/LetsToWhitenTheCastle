@@ -22,7 +22,7 @@ public class InputListenerEditor : Editor
 
         if(listCountDifference < 0)
         {
-            _inputListener.ObservableInputs.AddRange(new InputListener.ObservableInput[Mathf.Abs(inputKinds)]);
+            _inputListener.ObservableInputs.AddRange(new InputListener.ObservableInput[Mathf.Abs(listCountDifference)]);
         }
         else if(listCountDifference > 0)
         {
