@@ -1,9 +1,9 @@
 using UnityEngine;
 
 /// <summary>
-/// プレイヤーの攻撃用コンポーネント
+/// プレイヤーの手裏剣攻撃用コンポーネント
 /// </summary>
-public class PlayerAttacker : MonoBehaviour
+public class PlayerSyurikenThrower : MonoBehaviour
 {
     /// <summary> 実行間隔のデータ </summary>
     [SerializeField]
@@ -29,6 +29,9 @@ public class PlayerAttacker : MonoBehaviour
         _intervalData.Interval = _throwInterval;
     }
 
+    /// <summary>
+    /// 手裏剣を投擲する
+    /// </summary>
     public void ThrowSyuriken()
     {
         var syuriken = Instantiate(_syurikenPrefab, _throwPoint.position, _syurikenPrefab.transform.rotation).GetComponent<SyurikenMover>();
