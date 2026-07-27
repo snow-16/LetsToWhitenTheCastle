@@ -6,10 +6,12 @@ using System;
 [Flags]
 public enum InputType
 {
-    /// <summary> 横移動キー </summary>
-    Go = 1 << 0,
+    /// <summary> 右移動キー </summary>
+    Right = 1 << 0,
+    /// <summary> 左移動キー </summary>
+    Left = 1 << 1,
     /// <summary> ダッシュキー </summary>
-    Sprint = 1 << 1,
+    Sprint = 1 << 2,
     /// <summary> ジャンプキー </summary>
-    Jump = 1 << 2,
+    Jump = 1 << 3,
 }
