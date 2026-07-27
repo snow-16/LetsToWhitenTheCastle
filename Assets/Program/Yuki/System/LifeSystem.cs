@@ -28,6 +28,10 @@ public class LifeSystem : MonoBehaviour
     public void FluctuationHP(int value)
     {
         _hp = Mathf.Max(_hp - value, 0);
-        _whenDead?.Invoke();
+
+        if(_hp <= 0)
+        {
+            _whenDead?.Invoke();
+        }
     }
 }
