@@ -46,7 +46,7 @@ public class BossAI : MonoBehaviour
 
     void Update()
     {
-        StartCoroutine(StartAttack());
+        if(!_isCoolDown)StartCoroutine(StartAttack());
     }
 
     IEnumerator StartHpAttack()
@@ -59,6 +59,7 @@ public class BossAI : MonoBehaviour
         float animTime;
         if (_nowAttackCount2To3 == _attackCount2To3)
         {
+            _isCoolDown = true;
             _nowAttackCount2To3 = 0;
             _anim.Play(_attackEvent1AnimState3);
             yield return null;
@@ -66,12 +67,12 @@ public class BossAI : MonoBehaviour
             yield return new WaitForSeconds(animTime);
             _attackEvent3.Invoke();
             Debug.Log("3攻撃");
-            _isCoolDown = true;
             yield return new WaitForSeconds(_attackCoolDownTime);
             _isCoolDown = false;
         }
         else if (_nowAttackCount1To2 == _attackCount1To2)
         {
+            _isCoolDown = true;
             _nowAttackCount1To2 = 0;
             _anim.Play(_attackEvent1AnimState2);
             yield return null;
@@ -79,20 +80,19 @@ public class BossAI : MonoBehaviour
             yield return new WaitForSeconds(animTime);
             _attackEvent2.Invoke();
             Debug.Log("2攻撃");
-            _isCoolDown = true;
             yield return new WaitForSeconds(_attackCoolDownTime);
             _isCoolDown = false;
             _nowAttackCount2To3++;
         }
         else if (_nowAttackCount1To2 != _attackCount1To2)
         {
+            _isCoolDown = true;
             _attackEvent1.Invoke();
             _anim.Play(_attackEvent1AnimState1);
             yield return null;
             animTime = _anim.GetCurrentAnimatorStateInfo(0).length;
             yield return new WaitForSeconds(animTime);
             Debug.Log("1攻撃");
-            _isCoolDown = true;
             yield return new WaitForSeconds(_attackCoolDownTime);
             _isCoolDown = false;
             _nowAttackCount1To2++;
