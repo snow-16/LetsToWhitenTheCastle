@@ -7,4 +7,5 @@ public enum InputState
     Pressing,
     Released,
     PressOrReleased,
+    NotPressing,
 }

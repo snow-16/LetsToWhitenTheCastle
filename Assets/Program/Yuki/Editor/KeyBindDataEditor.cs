@@ -18,7 +18,7 @@ public class KeyBindDataEditor : Editor
 
         if(listCountDifference < 0)
         {
-            _keyBindData.KeyBinds.AddRange(new KeyBindData.KeyBind[Mathf.Abs(inputKinds)]);
+            _keyBindData.KeyBinds.AddRange(new KeyBindData.KeyBind[Mathf.Abs(listCountDifference)]);
         }
         else if(listCountDifference > 0)
         {
