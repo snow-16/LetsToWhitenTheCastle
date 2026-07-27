@@ -306,7 +306,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -647,8 +647,8 @@ MonoBehaviour:
   _gunPrefab: {fileID: 290385556}
   _fireDastPrefab: {fileID: 290385556}
   _canonBalletPrefab: {fileID: 892638149}
-  _moveSpeed: 3
-  _hitPredictionTime: 2
+  _moveSpeed: 7
+  _hitPredictionTime: 3
 --- !u!114 &524247439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -661,7 +661,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 568a37b9e59843a4ebb038e63fb0b5cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackCoolDownTime: 2
+  _attackCoolDownTime: 1
   _isActing: 0
   _attackChangeLange: 1
   _attackChangeHP: 0
@@ -845,7 +845,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
