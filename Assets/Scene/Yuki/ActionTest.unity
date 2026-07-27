@@ -581,8 +581,8 @@ MonoBehaviour:
   _listeningType: 7
   _observableInputs:
   - inputSettings:
-    - name: "\u53F3\u6B69\u884C"
-      state: 1
+    - name: "\u53F3\u6B69\u884C\u958B\u59CB"
+      state: 0
       inputFilters: []
       action:
         m_PersistentCalls:
@@ -599,9 +599,27 @@ MonoBehaviour:
               m_StringArgument: 
               m_BoolArgument: 0
             m_CallState: 2
+    - name: "\u53F3\u6B69\u884C\u505C\u6B62"
+      state: 2
+      inputFilters: []
+      action:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1010773755}
+            m_TargetAssemblyTypeName: PlayerWalker, Assembly-CSharp
+            m_MethodName: StopDirection
+            m_Mode: 4
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 1
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
   - inputSettings:
-    - name: "\u5DE6\u6B69\u884C"
-      state: 1
+    - name: "\u5DE6\u6B69\u884C\u958B\u59CB"
+      state: 0
       inputFilters: []
       action:
         m_PersistentCalls:
@@ -615,6 +633,24 @@ MonoBehaviour:
               m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
               m_IntArgument: 0
               m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+    - name: "\u5DE6\u6B69\u884C\u505C\u6B62"
+      state: 2
+      inputFilters: []
+      action:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1010773755}
+            m_TargetAssemblyTypeName: PlayerWalker, Assembly-CSharp
+            m_MethodName: StopDirection
+            m_Mode: 4
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: -1
               m_StringArgument: 
               m_BoolArgument: 0
             m_CallState: 2
@@ -717,16 +753,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b5fff14427364e3787be43b8c5e7580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _movingScale: 100
   _speed:
-    walk: 0.1
+    walk: 3
     sprintMultipiler: 2
   _maxSpeed:
-    walk: 2
+    walk: 4.12
     sprintMultipiler: 2
   _initialSpeed:
-    walk: 0.2
+    walk: 2
     sprintMultipiler: 2
-  _damping: 0.15
+  _damping: 0.24
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

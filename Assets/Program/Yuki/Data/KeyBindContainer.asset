@@ -16,7 +16,7 @@ MonoBehaviour:
   - type: 0
     input:
       m_Name: Input
-      m_Type: 2
+      m_Type: 1
       m_ExpectedControlType: Button
       m_Id: 8ea08a2e-5c7e-462c-bf5e-c733a12c2223
       m_Processors: 
@@ -42,7 +42,7 @@ MonoBehaviour:
   - type: 0
     input:
       m_Name: Input
-      m_Type: 2
+      m_Type: 1
       m_ExpectedControlType: Button
       m_Id: 5716ea0d-ca73-4c34-8744-066932d17efd
       m_Processors: 
@@ -68,7 +68,7 @@ MonoBehaviour:
   - type: 0
     input:
       m_Name: Input
-      m_Type: 2
+      m_Type: 1
       m_ExpectedControlType: Button
       m_Id: 9b66384e-6ffd-42b4-936f-12db4ce44092
       m_Processors: 
@@ -86,8 +86,8 @@ MonoBehaviour:
   - type: 0
     input:
       m_Name: Input
-      m_Type: 0
-      m_ExpectedControlType: 
+      m_Type: 1
+      m_ExpectedControlType: Button
       m_Id: 44ffd880-e872-4998-938b-c5ccaea758c7
       m_Processors: 
       m_Interactions: 

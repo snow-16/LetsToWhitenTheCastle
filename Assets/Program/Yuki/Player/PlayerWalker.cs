@@ -8,6 +8,8 @@ using UnityEngine;
 public class PlayerWalker : MonoBehaviour
 {
     [SerializeField]
+    private float _movingScale;
+    [SerializeField]
     private WalkOrSprintProperty _speed;
     [SerializeField]
     private WalkOrSprintProperty _maxSpeed;
@@ -17,6 +19,7 @@ public class PlayerWalker : MonoBehaviour
     private float _damping;
 
     private float _nowSpeed = 0;
+    private float _nowDirection = 0;
     private bool _isSprint = false;
 
     private Rigidbody2D _rigidbody2D;
@@ -28,23 +31,43 @@ public class PlayerWalker : MonoBehaviour
 
     void FixedUpdate()
     {
-        _nowSpeed = Mathf.Max(_damping * Mathf.Abs(_nowSpeed), 0) * Mathf.Sign(_nowSpeed);
-        transform.Translate(_nowSpeed, 0, 0);
+        if(_nowDirection != 0)
+        {
+            var defaultSpeed = _speed.walk * (_isSprint ? _speed.sprintMultipiler : 1) / _movingScale;
+            var maxSpeed = _maxSpeed.walk * (_isSprint ? _maxSpeed.sprintMultipiler : 1) / _movingScale;
+            var initialSpeed = _initialSpeed.walk * (_isSprint ? _initialSpeed.sprintMultipiler : 1) / _movingScale;
+
+            _nowSpeed += defaultSpeed * _nowDirection;
+            var moveForword = _nowSpeed == 0 || Mathf.Sign(_nowSpeed) == _nowDirection;
+
+            if(moveForword && Mathf.Abs(_nowSpeed) < initialSpeed)
+            {
+                _nowSpeed = initialSpeed * _nowDirection;
+            }
+            else if(moveForword && Mathf.Abs(_rigidbody2D.linearVelocityX) > _maxSpeed.walk * (_isSprint ? _maxSpeed.sprintMultipiler : 1))
+            {
+                _nowSpeed = maxSpeed * _nowDirection;
+            }
+        }
+        else
+        {
+            _nowSpeed = Mathf.Max((1 - _damping) * Mathf.Abs(_nowSpeed), 0) * Mathf.Sign(_nowSpeed);
+        }
+
+        if(_nowSpeed != 0)
+        {
+            transform.Translate(_nowSpeed, 0, 0);
+        }
     }
 
     public void Walk(float direction)
     {
-        _nowSpeed += _speed.walk * (_isSprint ? _speed.sprintMultipiler : 1) * direction;
-        var moveForword = _nowSpeed == 0 || Mathf.Sign(_nowSpeed) == direction;
+        _nowDirection += direction;
+    }
 
-        if(moveForword && Mathf.Abs(_nowSpeed) < _initialSpeed.walk * (_isSprint ? _initialSpeed.sprintMultipiler : 1))
-        {
-            _nowSpeed = _initialSpeed.walk * (_isSprint ? _initialSpeed.sprintMultipiler : 1) * direction;
-        }
-        else if(moveForword && Mathf.Abs(_rigidbody2D.linearVelocityX) > _maxSpeed.walk * (_isSprint ? _maxSpeed.sprintMultipiler : 1))
-        {
-            _nowSpeed = _maxSpeed.walk * (_isSprint ? _maxSpeed.sprintMultipiler : 1) * Mathf.Sign(_rigidbody2D.linearVelocityX);
-        }
+    public void StopDirection(float direction)
+    {
+        _nowDirection -= direction;
     }
 
     public void SwitchSprint()
