@@ -101,3 +101,39 @@ MonoBehaviour:
         m_Action: Input
         m_Flags: 0
       m_Flags: 0
+  - type: 0
+    input:
+      m_Name: Input
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: efe93ea4-9fd7-4969-82cb-2c40339f5761
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 39d9557b-d743-4e0b-82ee-26a49909f143
+        m_Path: <Mouse>/leftButton
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Input
+        m_Flags: 0
+      m_Flags: 0
+  - type: 0
+    input:
+      m_Name: Input
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: 6bb8ad7f-e97c-4e10-b53c-a6d6a4be35cd
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 41107864-9bda-4c05-8ce0-040b1a33e4ce
+        m_Path: <Mouse>/rightButton
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Input
+        m_Flags: 0
+      m_Flags: 0
