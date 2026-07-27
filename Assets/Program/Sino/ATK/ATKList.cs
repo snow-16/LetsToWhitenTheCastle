@@ -6,7 +6,7 @@ public class ATKList : MonoBehaviour
 {
     [SerializeField] GameObject _arrowPrefab;
     [SerializeField] GameObject _gunPrefab;
-    [SerializeField] GameObject _firePrefab;
+    [SerializeField] GameObject _fireDastPrefab;
     [SerializeField] GameObject _canonBalletPrefab;
     [SerializeField] float _moveSpeed;
     [SerializeField] float _hitPredictionTime;
@@ -24,36 +24,39 @@ public class ATKList : MonoBehaviour
 
     }
 
-    public IEnumerator Arrow()//bossの座標に矢を作成しプレイヤーに向かって飛ばす
+    public IEnumerator Arrow(int damage)//bossの座標に矢を作成しプレイヤーに向かって飛ばす
     {
         GameObject arrow = Instantiate(_arrowPrefab, transform.position, Quaternion.identity);
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         Vector2 direction = player.transform.position - arrow.transform.position;
         Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
-        BulletHitAndDestroySys damageSys = arrow.GetComponent<BulletHitAndDestroySys>();
-        rb.linearVelocity = direction * _moveSpeed;
+        BulletHitAndDestroySys Damage = arrow.GetComponent<BulletHitAndDestroySys>();
+        Damage._damage = damage;
+        rb.linearVelocity = direction.normalized * _moveSpeed;
         yield return null;
     }
 
-    public IEnumerator Gun()//bossの座標に弾を作成しプレイヤーに向かって飛ばす
+    public IEnumerator Gun(int damede)//bossの座標に弾を作成しプレイヤーに向かって飛ばす
     {
-        GameObject gun = Instantiate(_arrowPrefab, transform.position, Quaternion.identity);
+        GameObject gun = Instantiate(_gunPrefab, transform.position, Quaternion.identity);
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         Vector2 direction = player.transform.position - gun.transform.position;
         Rigidbody2D rb = gun.GetComponent<Rigidbody2D>();
-        BulletHitAndDestroySys damageSys = gun.GetComponent<BulletHitAndDestroySys>();
-        rb.linearVelocity = direction * _moveSpeed * 1.5f;
+        BulletHitAndDestroySys Damage = gun.GetComponent<BulletHitAndDestroySys>();
+        Damage._damage = damede;
+        rb.linearVelocity = direction.normalized * _moveSpeed * 1.5f;
         yield return null;
     }
 
-    public IEnumerator FireDast()//bossの座標に火の粉を作成しプレイヤーに向かって飛ばす
+    public IEnumerator FireDast(int damege)//bossの座標に火の粉を作成しプレイヤーに向かって飛ばす
     {
-        GameObject fireDast = Instantiate(_arrowPrefab, transform.position, Quaternion.identity);
+        GameObject fireDast = Instantiate(_fireDastPrefab, transform.position, Quaternion.identity);
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         Vector2 direction = player.transform.position - fireDast.transform.position;
         Rigidbody2D rb = fireDast.GetComponent<Rigidbody2D>();
-        BulletHitAndDestroySys damageSys = fireDast.GetComponent<BulletHitAndDestroySys>();
-        rb.linearVelocity = direction * _moveSpeed * 0.8f;
+        BulletHitAndDestroySys Damage = fireDast.GetComponent<BulletHitAndDestroySys>();
+        Damage._damage = damege;
+        rb.linearVelocity = direction.normalized * _moveSpeed * 0.7f;
         fireDast.transform.localScale *= 2;
         yield return null;
     }
@@ -64,15 +67,21 @@ public class ATKList : MonoBehaviour
         int AttackNum = Random.Range(0, 3);
         if (AttackNum == 0)
         {
-            StartCoroutine("Arrow");
+            //BulletHitAndDestroySys arrowDamage = _arrowPrefab.GetComponent<BulletHitAndDestroySys>();
+            //arrowDamage._damage = damage;
+            StartCoroutine(Arrow(damage));
         }
         else if (AttackNum == 1)
         {
-            StartCoroutine("Gun");
+            //BulletHitAndDestroySys GunDamage = _gunPrefab.GetComponent<BulletHitAndDestroySys>();
+            //GunDamage._damage = damage;
+            StartCoroutine(Gun(damage));
         }
         else
         {
-            StartCoroutine("FireDast");
+            //BulletHitAndDestroySys FireDastDamage = _fireDastPrefab.GetComponent<BulletHitAndDestroySys>();
+            //FireDastDamage._damage = damage;
+            StartCoroutine(FireDast(damage));
         }
     }
 
@@ -84,18 +93,20 @@ public class ATKList : MonoBehaviour
         return new Vector2(velosityX, velosityY);
     }
 
-    public IEnumerator Cannon()
+    public IEnumerator Cannon(int damage)
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         Vector2 distans = player.transform.position - transform.position;
         GameObject canonBullet = Instantiate(_canonBalletPrefab, transform.position, Quaternion.identity);
         Rigidbody2D rb = canonBullet.GetComponent<Rigidbody2D>();
+        BulletHitAndDestroySys canonDamage = canonBullet.GetComponent<BulletHitAndDestroySys>();
+        canonDamage._damage = damage;
         rb.linearVelocity = CalcuateArcVelocity2D(rb, distans, _hitPredictionTime);
         yield return null;
     }
 
-    public void MDLATK()
+    public void MDLATK(int damage)
     {
-        StartCoroutine(Cannon());
+        StartCoroutine(Cannon(damage));
     }
 }
