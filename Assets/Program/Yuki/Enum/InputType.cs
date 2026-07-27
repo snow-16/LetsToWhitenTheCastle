@@ -14,4 +14,8 @@ public enum InputType
     Sprint = 1 << 2,
     /// <summary> ジャンプキー </summary>
     Jump = 1 << 3,
+    /// <summary> 手裏剣攻撃キー </summary>
+    Syuriken = 1 << 4,
+    /// <summary> 爆弾攻撃キー </summary>
+    Bomb = 1 << 5,
 }

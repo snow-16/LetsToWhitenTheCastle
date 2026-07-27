@@ -53,7 +53,7 @@ public class InputListener : MonoBehaviour
             {
                 foreach(var inputSetting in _observableInputs[(int)Mathf.Log((int)inputType, 2)].inputSettings)
                 {
-                    if(FireInput(inputSetting, input))
+                    if(MatchInput(inputSetting, input) && IgnoreInput(inputSetting))
                     {
                         inputSetting.action.Invoke(input.ReadValue<float>());
                         break;
@@ -64,39 +64,45 @@ public class InputListener : MonoBehaviour
     }
 
     /// <summary>
-    /// 入力確認後、条件によるふるい分けと処理実行
+    /// 入力形式の確認
     /// </summary>
     /// <param name="inputSetting">実行可能か確認する入力処理</param>
     /// <param name="input">入力対象のInputAction</param>
-    /// <returns>処理を実行したか</returns>
-    private bool FireInput(InputSetting inputSetting, InputAction input)
+    /// <returns>形式が合っているか</returns>
+    private bool MatchInput(InputSetting inputSetting, InputAction input)
     {
-        //入力を通す条件を満たしているか確認
-        if(inputSetting.inputFilters.Count == 0 || inputSetting.inputFilters.All(item => item.inputFilter.IsCanInput()))
+        //指定した入力方法に合った入力形式になっているか確認
+        switch(inputSetting.state)
         {
-            //指定した入力方法に合った入力形式になっているか確認
-            switch(inputSetting.state)
+            case InputState.Pressed :
             {
-                case InputState.Pressed :
-                {
-                    return input.WasPressedThisFrame();
-                }
-                case InputState.Pressing :
-                {
-                    return input.IsPressed();
-                }
-                case InputState.Released :
-                {
-                    return input.WasReleasedThisFrame();
-                }
-                case InputState.PressOrReleased :
-                {
-                    return input.WasPressedThisFrame() || input.WasReleasedThisFrame();
-                }
+                return input.WasPressedThisFrame();
+            }
+            case InputState.Pressing :
+            {
+                return input.IsPressed();
+            }
+            case InputState.Released :
+            {
+                return input.WasReleasedThisFrame();
+            }
+            case InputState.PressOrReleased :
+            {
+                return input.WasPressedThisFrame() || input.WasReleasedThisFrame();
             }
         }
 
         return false;
+    }
+
+    /// <summary>
+    /// 処理の条件を満たしているか判別する
+    /// </summary>
+    /// <param name="inputSetting">実行可能か確認する入力処理</param>
+    /// <returns>実行可能か</returns>
+    private bool IgnoreInput(InputSetting inputSetting)
+    {
+        return inputSetting.inputFilters.Count == 0 || inputSetting.inputFilters.All(item => item.inputFilter.IsCanInput());
     }
 
     /// <summary>
