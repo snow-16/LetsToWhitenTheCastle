@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using UniRx;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,22 +14,33 @@ public class InputListener : MonoBehaviour
 
     void Start()
     {
-        
-    }
+        _observableInputs.ForEach(observer =>
+            {
+                var input = _keyConfigData.KeyConfigs[(int)observer.type].input;
 
-    void Update()
-    {
-        
+                input.Enable();
+                Observable.EveryUpdate()
+                .Where(_ => input.IsPressed())
+                .Where(_ => observer.inputFilters.All(item => item.inputFilter.WhenCanInput()))
+                .Subscribe(_ =>
+                    {
+                        observer.action.Invoke(input.ReadValue<float>());
+                    }
+                ).AddTo(this);
+            }
+        );
     }
 
     [Serializable]
     private struct ObservableInput
     {
         public string name;
-        public InputType input;
+        public InputType type;
         public InputState state;
         public List<InputFilter> inputFilters;
-        public UnityEvent action;
+        public ValueEvent action;
+
+        [Serializable] public class ValueEvent : UnityEvent<float> { }
     }
 
     [Serializable]
