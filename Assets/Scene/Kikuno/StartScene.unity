@@ -152,7 +152,7 @@ RectTransform:
   m_Father: {fileID: 571247940}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -397,7 +397,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 397610452}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1339707886}
+        m_TargetAssemblyTypeName: SettingWindowController, Assembly-CSharp
+        m_MethodName: CloseSettingWindow
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Close
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &397610452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -814,7 +826,7 @@ RectTransform:
   m_Father: {fileID: 562673271}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1026,13 +1038,14 @@ GameObject:
   - component: {fileID: 1339707885}
   - component: {fileID: 1339707884}
   - component: {fileID: 1339707883}
+  - component: {fileID: 1339707886}
   m_Layer: 5
   m_Name: SettingWindow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1339707882
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1051,10 +1064,10 @@ RectTransform:
   - {fileID: 397610450}
   m_Father: {fileID: 737554155}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 450, y: 320}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1339707883
 Animator:
@@ -1066,7 +1079,7 @@ Animator:
   m_GameObject: {fileID: 1339707881}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6906d27ce43a48647bbdbdee25333ea6, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1116,6 +1129,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1339707881}
   m_CullTransparentMesh: 1
+--- !u!114 &1339707886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339707881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e1f7b4547040ec4e96d57936d6fcdab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settingWindow: {fileID: 1339707881}
+  animator: {fileID: 1339707883}
 --- !u!1 &1513475622
 GameObject:
   m_ObjectHideFlags: 0
@@ -1277,7 +1304,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1539849945}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1339707886}
+        m_TargetAssemblyTypeName: SettingWindowController, Assembly-CSharp
+        m_MethodName: OpenSettingWindow
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Open
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1539849945
 MonoBehaviour:
   m_ObjectHideFlags: 0
