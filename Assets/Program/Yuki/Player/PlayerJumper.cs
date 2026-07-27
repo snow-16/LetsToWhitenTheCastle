@@ -51,6 +51,7 @@ public class PlayerJumper : MonoBehaviour
                 {
                     _isStrain = false;
                     _playerStateHolder.PlayerJumpState = PlayerJumpState.Fall;
+                    _rigidbody2D.linearVelocityY = 0;
                 }
             }
         }

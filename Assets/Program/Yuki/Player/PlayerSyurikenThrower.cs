@@ -1,9 +1,10 @@
+using UniRx;
 using UnityEngine;
 
 /// <summary>
-/// プレイヤーの攻撃用コンポーネント
+/// プレイヤーの手裏剣攻撃用コンポーネント
 /// </summary>
-public class PlayerAttacker : MonoBehaviour
+public class PlayerSyurikenThrower : MonoBehaviour
 {
     /// <summary> 実行間隔のデータ </summary>
     [SerializeField]
@@ -24,14 +25,38 @@ public class PlayerAttacker : MonoBehaviour
     [SerializeField]
     private float _throwSpeed;
 
+    /// <summary> PlayerStateHolderのインスタンス </summary>
+    private PlayerStateHolder _playerStateHolder;
+
     void Start()
     {
+        _playerStateHolder = GetComponent<PlayerStateHolder>();
+
         _intervalData.Interval = _throwInterval;
     }
 
+    /// <summary>
+    /// 手裏剣を投擲する
+    /// </summary>
     public void ThrowSyuriken()
     {
         var syuriken = Instantiate(_syurikenPrefab, _throwPoint.position, _syurikenPrefab.transform.rotation).GetComponent<SyurikenMover>();
         syuriken.Throw(_throwSpeed, transform.right, _surviveArea);
+
+        //手裏剣の攻撃判定付与
+        this.ObserveEveryValueChanged(_ => syuriken.HitEnemy).Where(hit => hit).Subscribe(_ =>
+            {
+                _playerStateHolder.HitCount++;
+
+                if(_playerStateHolder.HitCount == _playerStateHolder.BombGetBorder)
+                {
+                    _playerStateHolder.HitCount = 0;
+                    _playerStateHolder.BombCount = Mathf.Min(_playerStateHolder.BombCount + 1, _playerStateHolder.MaxBombs);
+                    Debug.Log("爆弾生成");
+                }
+
+                Destroy(syuriken.gameObject);
+            }
+        ).AddTo(syuriken);
     }
 }

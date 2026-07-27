@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -33,6 +34,22 @@ public class PlayerGroundChecker : MonoBehaviour
                 
                 _playerStateHolder.PlayerJumpState = PlayerJumpState.OnGround;
             }
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        var existGroundsCount = Physics2D.OverlapCircleAll((Vector2)transform.position + _groundHitCircle.offset, ((CircleCollider2D)_groundHitCircle).radius)
+        .Where(col =>
+            {
+                var layer = 1 << col.gameObject.layer;
+                return (layer & _groundLayer) > 0 || (layer & _platformLayer) > 0;
+            }
+        ).ToArray().Length;
+
+        if(existGroundsCount == 0 && _playerStateHolder.PlayerJumpState == PlayerJumpState.OnGround)
+        {
+            _playerStateHolder.PlayerJumpState = PlayerJumpState.Fall;
         }
     }
 }
