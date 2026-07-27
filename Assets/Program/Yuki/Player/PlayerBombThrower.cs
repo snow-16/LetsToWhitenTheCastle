@@ -21,6 +21,38 @@ public class PlayerBombThrower : MonoBehaviour
     [SerializeField]
     private float _throwSpeed;
 
+    /// <summary> LineRendererのインスタンス </summary>
+    private LineRenderer _lineRenderer;
+    /// <summary> PlayerStateHolderのインスタンス </summary>
+    private PlayerStateHolder _playerStateHolder;
+
+    void Start()
+    {
+        _lineRenderer = GetComponent<LineRenderer>();
+        _playerStateHolder = GetComponent<PlayerStateHolder>();
+    }
+
+    void FixedUpdate()
+    {
+        if(_playerStateHolder.BombCount > 0)
+        {
+            var start = _throwPoint.position;
+            var end = _bombTargetPoints[0].position;
+            _lineRenderer.positionCount = 10;
+            
+            for(int i = 0; i < 10; i++)
+            {
+                var basePos = Vector2.Lerp(start, end, i / 9f);
+                basePos.y += Mathf.Sin(i / 9f * Mathf.PI) * (end - start).magnitude * _throwHeight;
+                _lineRenderer.SetPosition(i, basePos);
+            }
+        }
+        else
+        {
+            _lineRenderer.positionCount = 0;
+        }
+    }
+
     /// <summary>
     /// 爆弾を投擲する
     /// </summary>
