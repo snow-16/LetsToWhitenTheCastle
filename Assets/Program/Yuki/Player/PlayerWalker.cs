@@ -30,14 +30,6 @@ public class PlayerWalker : MonoBehaviour
     /// <summary> ダッシュしているか </summary>
     private bool _isSprint = false;
 
-    /// <summary> Rigidbody2Dのインスタンス </summary>
-    private Rigidbody2D _rigidbody2D;
-
-    void Start()
-    {
-        _rigidbody2D = GetComponent<Rigidbody2D>();
-    }
-
     void FixedUpdate()
     {
         if(_nowDirection != 0)
@@ -53,7 +45,7 @@ public class PlayerWalker : MonoBehaviour
             {
                 _nowSpeed = initialSpeed * _nowDirection;
             }
-            else if(moveForword && Mathf.Abs(_rigidbody2D.linearVelocityX) > _maxSpeed.walk * (_isSprint ? _maxSpeed.sprintMultipiler : 1))
+            else if(moveForword && Mathf.Abs(_nowSpeed) > _maxSpeed.walk * (_isSprint ? _maxSpeed.sprintMultipiler : 1))
             {
                 _nowSpeed = maxSpeed * _nowDirection;
             }
