@@ -22,6 +22,9 @@ public class PlayerWalker : MonoBehaviour
     /// <summary> 速度減衰量 </summary>
     [SerializeField]
     private float _damping;
+    /// <summary> 空中制御力 </summary>
+    [SerializeField]
+    private float _airControl;
 
     /// <summary> 現在の速度 </summary>
     private float _nowSpeed = 0;
@@ -32,10 +35,13 @@ public class PlayerWalker : MonoBehaviour
 
     /// <summary> SpriteRendererのインスタンス </summary>
     private SpriteRenderer _spriteRenderer;
+    /// <summary> PlayerStateHolderのインスタンス </summary>
+    private PlayerStateHolder _playerStateHolder;
 
     void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _playerStateHolder = GetComponent<PlayerStateHolder>();
     }
 
     void FixedUpdate()
@@ -53,9 +59,14 @@ public class PlayerWalker : MonoBehaviour
             {
                 _nowSpeed = initialSpeed * _nowDirection;
             }
-            else if(moveForword && Mathf.Abs(_nowSpeed) > _maxSpeed.walk * (_isSprint ? _maxSpeed.sprintMultipiler : 1))
+            else if(moveForword && Mathf.Abs(_nowSpeed) > maxSpeed)
             {
                 _nowSpeed = maxSpeed * _nowDirection;
+            }
+
+            if(_playerStateHolder.PlayerJumpState != PlayerJumpState.OnGround)
+            {
+                _nowSpeed *= _airControl;
             }
         }
         else
