@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4458546962356451366}
   - component: {fileID: 4921536427919756457}
+  - component: {fileID: -6966494232901117598}
   m_Layer: 0
   m_Name: Syuriken
   m_TagString: Untagged
@@ -87,3 +88,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-6966494232901117598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5954587214335287671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d093901919c10441193ead60bfde63ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -30,6 +30,14 @@ public class PlayerWalker : MonoBehaviour
     /// <summary> ダッシュしているか </summary>
     private bool _isSprint = false;
 
+    /// <summary> SpriteRendererのインスタンス </summary>
+    private SpriteRenderer _spriteRenderer;
+
+    void Start()
+    {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
     void FixedUpdate()
     {
         if(_nowDirection != 0)
@@ -57,7 +65,20 @@ public class PlayerWalker : MonoBehaviour
 
         if(_nowSpeed != 0)
         {
-            transform.Translate(_nowSpeed, 0, 0);
+            transform.Translate(_nowSpeed, 0, 0, Space.World);
+        }
+    }
+
+    /// <summary>
+    /// プレイヤーの向きを変更する
+    /// </summary>
+    private void FlipPlayer()
+    {
+        if(_nowDirection != 0)
+        {
+            var rot = transform.localEulerAngles;
+            rot.y = _nowDirection > 0 ? 0 : 180;
+            transform.localEulerAngles = rot;
         }
     }
 
@@ -68,6 +89,7 @@ public class PlayerWalker : MonoBehaviour
     public void Walk(float direction)
     {
         _nowDirection += direction;
+        FlipPlayer();
     }
 
     /// <summary>
@@ -77,6 +99,7 @@ public class PlayerWalker : MonoBehaviour
     public void StopDirection(float direction)
     {
         _nowDirection -= direction;
+        FlipPlayer();
     }
 
     /// <summary>
