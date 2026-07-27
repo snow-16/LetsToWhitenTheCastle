@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 635e5d271e368488ea7392cf78d9e602, type: 3}
-  m_Name: KeyConfigContainer
+  m_Name: KeyBindContainer
   m_EditorClassIdentifier: 
-  _keyConfigs:
+  _keyBinds:
   - type: 0
     input:
       m_Name: Input
       m_Type: 1
       m_ExpectedControlType: Button
-      m_Id: 44dba8ab-9487-449f-9713-0f1936f5de9a
+      m_Id: 8ea08a2e-5c7e-462c-bf5e-c733a12c2223
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings:
       - m_Name: 
-        m_Id: 0b884d69-69b1-4850-9048-0a6335f7ecc2
+        m_Id: d121af2d-1768-458e-91af-248013c1d5ef
         m_Path: <Keyboard>/a
         m_Interactions: 
         m_Processors: Invert
@@ -31,7 +31,7 @@ MonoBehaviour:
         m_Action: Input
         m_Flags: 0
       - m_Name: 
-        m_Id: e929df5d-42ca-4304-b243-36531079bdb0
+        m_Id: f87d4b24-3dfd-42e1-8507-33c12d6cf012
         m_Path: <Keyboard>/leftArrow
         m_Interactions: 
         m_Processors: Invert
@@ -39,7 +39,7 @@ MonoBehaviour:
         m_Action: Input
         m_Flags: 0
       - m_Name: 
-        m_Id: b59cd786-bdda-4e89-8c9d-8f0ff332b3ba
+        m_Id: 4f6e2fc0-c44c-443c-8e15-5306e6c8ddd6
         m_Path: <Keyboard>/d
         m_Interactions: 
         m_Processors: 
@@ -47,7 +47,7 @@ MonoBehaviour:
         m_Action: Input
         m_Flags: 0
       - m_Name: 
-        m_Id: 95074b31-5a58-4c39-874c-491e68b872e5
+        m_Id: e6b19ae0-b624-489d-b747-be1cce5ff7d9
         m_Path: <Keyboard>/rightArrow
         m_Interactions: 
         m_Processors: 
@@ -60,13 +60,13 @@ MonoBehaviour:
       m_Name: Input
       m_Type: 1
       m_ExpectedControlType: Button
-      m_Id: e462a66f-41ff-494a-8197-d20986eb71c7
+      m_Id: 5716ea0d-ca73-4c34-8744-066932d17efd
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings:
       - m_Name: 
-        m_Id: 18ebd146-7b7d-434a-83e3-bbfbfbfa9a80
-        m_Path: <Keyboard>/b
+        m_Id: e9f654aa-4c6a-4f59-b90d-4a5f6300c95b
+        m_Path: <Keyboard>/shift
         m_Interactions: 
         m_Processors: 
         m_Groups: 
@@ -78,13 +78,13 @@ MonoBehaviour:
       m_Name: Input
       m_Type: 1
       m_ExpectedControlType: Button
-      m_Id: 51a578f7-e7d9-46cd-928e-0d0a98879f5b
+      m_Id: 9b66384e-6ffd-42b4-936f-12db4ce44092
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings:
       - m_Name: 
-        m_Id: 6abcc7ee-8eb6-4d3f-8768-b3db6a804a3e
-        m_Path: <Keyboard>/c
+        m_Id: 74749e84-dbd0-4260-8b91-a886487d24b9
+        m_Path: <Keyboard>/space
         m_Interactions: 
         m_Processors: 
         m_Groups: 
