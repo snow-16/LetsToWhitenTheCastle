@@ -13,12 +13,15 @@ public class PlayerBombThrower : MonoBehaviour
     private Transform[] _bombTargetPoints = new Transform[3];
     /// <summary> 爆弾を投げる中心 </summary>
     [SerializeField]
+    [Tooltip("手元の位置です。ここから投げます。")]
     private Transform _throwPoint;
     /// <summary> 爆弾を投げる高さ </summary>
     [SerializeField]
+    [Tooltip("爆弾を投げる高さです。大きいほど山形になります。")]
     private float _throwHeight;
     /// <summary> 爆弾の投擲速度 </summary>
     [SerializeField]
+    [Tooltip("爆弾の投擲速度です。")]
     private float _throwSpeed;
 
     /// <summary> LineRendererのインスタンス </summary>

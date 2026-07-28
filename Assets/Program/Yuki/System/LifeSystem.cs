@@ -8,6 +8,7 @@ public class LifeSystem : MonoBehaviour
 {
     /// <summary> 最大HP </summary>
     [SerializeField]
+    [Tooltip("最大HPです。")]
     private int _maxHP;
     /// <summary> 最大HP </summary>
     public int MaxHP { get => _maxHP; set => _maxHP = value; }

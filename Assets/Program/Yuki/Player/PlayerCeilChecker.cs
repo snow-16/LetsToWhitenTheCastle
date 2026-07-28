@@ -10,6 +10,7 @@ public class PlayerCeilChecker : MonoBehaviour
     private Collider2D _groundHitCircle;
     /// <summary> 天井のレイヤー </summary>
     [SerializeField]
+    [Tooltip("天井と認識するレイヤーです。複数設定できます。")]
     private LayerMask _groundLayer;
 
     /// <summary> PlayerStateHolderのインスタンス </summary>
