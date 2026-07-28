@@ -4,23 +4,33 @@ using UnityEngine;
 
 public class ATKList : MonoBehaviour
 {
+    private SpriteRenderer _spriteRenderer;
+    private Color _originalColor;
     [Header("対応するプレファブを設定してください")]
     [SerializeField] GameObject _arrowPrefab;//矢のプレファブ
     [SerializeField] GameObject _gunPrefab;//弾のプレファブ
     [SerializeField] GameObject _fireDastPrefab;//火の粉のプレファブ
     [SerializeField] GameObject _canonBalletPrefab;//砲弾のプレファブ
     [SerializeField] GameObject _fallStonePrefab;//落石のプレファブ
+    
     [Header("共通設定")]
     [Tooltip("生成されたオブジェクトの移動速度")]
     [SerializeField] float _moveSpeed = 6;
+    
     [Header("矢の設定")]
     [Tooltip("一度に生成される矢の本数")]
     [SerializeField] int _createArrowSam = 3;
     [Tooltip("生成された矢どうしのy軸の距離")]
     [SerializeField] float _createArrowPosPlasY = 1;
+    
     [Header("弾丸の設定")]
     [Tooltip("弾丸の移動速度にかかる_moveSpeed倍率")]
-    [SerializeField] float _gunMoveSpeedMagnification = 1.5f;
+    [SerializeField] float _gunMoveSpeedMagnification = 2;
+    [Tooltip("狙われたときの色")]
+    [SerializeField] private Color _flashColor = Color.red; 
+    [Tooltip("色が変わっている時間（秒）")]
+    [SerializeField] private float _flashDuration = 0.05f;
+    
     [Header("火の粉の設定")]
     [Tooltip("生成される火の粉の数")]
     [SerializeField] float _createFireDastSam = 6;
@@ -28,31 +38,26 @@ public class ATKList : MonoBehaviour
     [SerializeField] float _fireDastMoveSpeedMagnification = 0.7f;
     [Tooltip("火の粉が再度生成されるまでの時間")]
     [SerializeField] float _restCreateFireDastTime = 0.3f;
+    
     [Header("砲弾の設定")]
     [Tooltip("着弾するまでの時間")]
     [SerializeField] float _hitPredictionTime = 2;
+
     [Header("落石の設定")]
+    [Tooltip("生成される落石の数")]
+    [SerializeField] float _createStoneSam = 6;
     [Tooltip("プレイヤーのy軸上に生成される高さ")]
     [SerializeField] float _createStonePosYtoPlayer = 6;
+    [Tooltip("落石が再度生成されるまでの時間")]
+    [SerializeField] float _restCreateStoneTime = 0.1f;
     int _movementAttackDamge;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public IEnumerator Arrow(int damage)//bossの座標に矢を作成しプレイヤーに向かって飛ばす
     {
         float createArrowPosY = 0;
         for (int i =0; i < _createArrowSam; i++)
         {
+            Debug.Log("ArrowAttack");
             GameObject arrow = Instantiate(_arrowPrefab, transform.position + Vector3.up * createArrowPosY, Quaternion.identity);
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             Vector2 direction = player.transform.position - arrow.transform.position;
@@ -61,7 +66,7 @@ public class ATKList : MonoBehaviour
             Damage._damage = damage;
             Vector2 dir = player.transform.position - transform.position;
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0, 0, angle);
+            arrow.transform.rotation = Quaternion.Euler(0, 0, angle);
             rb.linearVelocity = direction.normalized * _moveSpeed;
             createArrowPosY += _createArrowPosPlasY;
             yield return null;
@@ -71,39 +76,40 @@ public class ATKList : MonoBehaviour
 
     public IEnumerator Gun(int damede)//bossの座標に弾を作成しプレイヤーに向かって飛ばす
     {
-        GameObject gun = Instantiate(_gunPrefab, transform.position, Quaternion.identity);
+        Debug.Log("GunAttack");
         GameObject player = GameObject.FindGameObjectWithTag("Player");
+        _spriteRenderer = player.GetComponent<SpriteRenderer>();
+        for (int i = 0; i < 3; i++)
+        {
+            _originalColor = _spriteRenderer.color;
+            _spriteRenderer.color = _flashColor;
+            yield return new WaitForSeconds(_flashDuration);
+            _spriteRenderer.color = _originalColor;
+            yield return new WaitForSeconds(_flashDuration);
+        }
+        GameObject gun = Instantiate(_gunPrefab, transform.position, Quaternion.identity);
         Vector2 direction = player.transform.position - gun.transform.position;
         Rigidbody2D rb = gun.GetComponent<Rigidbody2D>();
         BulletHitAndDestroySys Damage = gun.GetComponent<BulletHitAndDestroySys>();
         Damage._damage = damede;
         rb.linearVelocity = direction.normalized * _moveSpeed * _gunMoveSpeedMagnification;
-        yield return null;
     }
 
     public IEnumerator FireDast(int damege)//bossの座標に火の粉を作成しプレイヤーに向かって飛ばす
     {
         for (int i = 0; i < _createFireDastSam; i++)
         {
+            Debug.Log("FireDastAttack");
             GameObject fireDast = Instantiate(_fireDastPrefab, transform.position, Quaternion.identity);
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             Vector2 direction = player.transform.position - fireDast.transform.position;
             Rigidbody2D rb = fireDast.GetComponent<Rigidbody2D>();
             BulletHitAndDestroySys Damage = fireDast.GetComponent<BulletHitAndDestroySys>();
             Damage._damage = damege;
-            rb.linearVelocity = direction.normalized * _moveSpeed * 0.7f;
+            rb.linearVelocity = direction.normalized * _moveSpeed * _fireDastMoveSpeedMagnification;
             fireDast.transform.localScale *= 2;
             yield return new WaitForSeconds(_restCreateFireDastTime);
         }
-        //GameObject fireDast = Instantiate(_fireDastPrefab, transform.position, Quaternion.identity);
-        //GameObject player = GameObject.FindGameObjectWithTag("Player");
-        //Vector2 direction = player.transform.position - fireDast.transform.position;
-        //Rigidbody2D rb = fireDast.GetComponent<Rigidbody2D>();
-        //BulletHitAndDestroySys Damage = fireDast.GetComponent<BulletHitAndDestroySys>();
-        //Damage._damage = damege;
-        //rb.linearVelocity = direction.normalized * _moveSpeed * 0.7f;
-        //fireDast.transform.localScale *= 2;
-        //yield return null;
     }
 
     public void RandamLitteleATKSelect(int damage)//上記の攻撃をランダムに行う
@@ -134,6 +140,7 @@ public class ATKList : MonoBehaviour
 
     public IEnumerator Cannon(int damage)//放物線で弾をplayerに飛ばす
     {
+        Debug.Log("CannonAttack");
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         Vector2 distans = player.transform.position - transform.position;
         GameObject canonBullet = Instantiate(_canonBalletPrefab, transform.position, Quaternion.identity);
@@ -146,6 +153,7 @@ public class ATKList : MonoBehaviour
 
     public IEnumerator FallStone(int damage)//プレイヤー上部に岩を生成し落とす
     {
+        Debug.Log("FallStoneAttack");
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         GameObject fallStone = Instantiate(_fallStonePrefab, player.transform.position + Vector3.up * _createStonePosYtoPlayer, Quaternion.identity);
         BulletHitAndDestroySys fallStoneDmage = fallStone.GetComponent<BulletHitAndDestroySys>();

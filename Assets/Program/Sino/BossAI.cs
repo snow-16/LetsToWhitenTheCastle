@@ -7,10 +7,12 @@ public class BossAI : MonoBehaviour
 {
     Animator _anim;//アニメーション
     LifeSystem _lifeSystem;//ボスのライフシステム
+    [Header("共通設定")]
     [Tooltip("攻撃のクールダウン")]
     [SerializeField] float _attackCoolDownTime; //攻撃のクールダウン
     bool _isCoolDown = false;//クールダウンが発生しているか否か
     public bool _isActing = false;
+    [Header("AI設定")]
     [Tooltip("距離によって攻撃方法を変えるか")]
     public bool _attackChangeLange = true;//距離によって攻撃方法を変えるか
     [Tooltip("残り体力によって攻撃方法を変更するかどうか")]

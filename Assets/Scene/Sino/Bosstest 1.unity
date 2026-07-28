@@ -315,7 +315,13 @@ MonoBehaviour:
   _canonBalletPrefab: {fileID: 619392954}
   _fallStonePrefab: {fileID: 619392954}
   _moveSpeed: 6
+  _createArrowSam: 3
+  _createArrowPosPlasY: 1
+  _gunMoveSpeedMagnification: 1.5
+  _flashColor: {r: 1, g: 0, b: 0, a: 1}
+  _flashDuration: 0.15
   _createFireDastSam: 6
+  _fireDastMoveSpeedMagnification: 0.7
   _restCreateFireDastTime: 0.2
   _hitPredictionTime: 4
   _createStonePosYtoPlayer: 5
