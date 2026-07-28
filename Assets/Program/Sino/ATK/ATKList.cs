@@ -59,6 +59,9 @@ public class ATKList : MonoBehaviour
             Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
             BulletHitAndDestroySys Damage = arrow.GetComponent<BulletHitAndDestroySys>();
             Damage._damage = damage;
+            Vector2 dir = player.transform.position - transform.position;
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, angle);
             rb.linearVelocity = direction.normalized * _moveSpeed;
             createArrowPosY += _createArrowPosPlasY;
             yield return null;
