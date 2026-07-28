@@ -88,14 +88,18 @@ public class PlayerWalker : MonoBehaviour
     /// </summary>
     private void FlipPlayer()
     {
-        if(_nowDirection != 0)
+        if(GetDirection() != 0)
         {
             var rot = transform.localEulerAngles;
-            rot.y = _nowDirection > 0 ? 0 : 180;
+            rot.y = GetDirection() > 0 ? 0 : 180;
             transform.localEulerAngles = rot;
         }
     }
 
+    /// <summary>
+    /// PlayerMoveDirectionからint型の方向へ変換する
+    /// </summary>
+    /// <returns>進行方向</returns>
     private int GetDirection()
     {
         int direction = 0;

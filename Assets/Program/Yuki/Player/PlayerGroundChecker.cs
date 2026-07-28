@@ -38,7 +38,6 @@ public class PlayerGroundChecker : MonoBehaviour
         {
             if(_playerStateHolder.PlayerJumpState == PlayerJumpState.Fall)
             {
-                
                 _playerStateHolder.PlayerJumpState = PlayerJumpState.OnGround;
             }
         }

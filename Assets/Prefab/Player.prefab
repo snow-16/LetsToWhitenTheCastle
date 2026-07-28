@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 3391930106844871810}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.124, z: 0}
+  m_LocalPosition: {x: 0, y: 0.693, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -68,7 +68,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.11
+  m_Radius: 0.51
 --- !u!114 &3389395270314869402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -670,10 +670,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bombPrefab: {fileID: 2277894573388302933, guid: d8662a85197404ea3949337f56cbab60, type: 3}
-  _bombTargetPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  _bombLowTargetPoint: {fileID: 0}
+  _bombHighTargetPoint: {fileID: 0}
+  _bombTargetingLength: 30
   _throwPoint: {fileID: 4414567086151612565}
   _throwHeight: 0.4
   _throwSpeed: 0.5
