@@ -3,7 +3,7 @@ using UnityEngine;
 public class BulletHitAndDestroySys : MonoBehaviour
 {
     public int _damage;
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))//playerならダメージを与える
         {
