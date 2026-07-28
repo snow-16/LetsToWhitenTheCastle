@@ -10,6 +10,8 @@ public class BossAI : MonoBehaviour
     [Header("共通設定")]
     [Tooltip("攻撃のクールダウン")]
     [SerializeField] float _attackCoolDownTime; //攻撃のクールダウン
+    [Tooltip("第二形態時の攻撃のクールダウン")]
+    [SerializeField] float _LowHPattacCoolDownTime; //攻撃のクールダウン
     bool _isCoolDown = false;//クールダウンが発生しているか否か
     public bool _isActing = false;
     [Header("AI設定")]
@@ -130,7 +132,7 @@ public class BossAI : MonoBehaviour
             yield return new WaitForSeconds(animTime);
             _attackEventHP3.Invoke();
             Debug.Log("LowHP3攻撃");
-            yield return new WaitForSeconds(_attackCoolDownTime);
+            yield return new WaitForSeconds(_LowHPattacCoolDownTime);
             _isCoolDown = false;
         }
         else if (_nowAttackCount1To2 == _attackCount1To2) //一定回数小攻撃を行うと中攻撃を行う
@@ -142,7 +144,7 @@ public class BossAI : MonoBehaviour
             yield return new WaitForSeconds(animTime);
             _attackEventHP2.Invoke();
             Debug.Log("LowHP2攻撃");
-            yield return new WaitForSeconds(_attackCoolDownTime);
+            yield return new WaitForSeconds(_LowHPattacCoolDownTime);
             _isCoolDown = false;
             _nowAttackCount2To3++;
         }
@@ -154,7 +156,7 @@ public class BossAI : MonoBehaviour
             animTime = _anim.GetCurrentAnimatorStateInfo(0).length;
             yield return new WaitForSeconds(animTime);
             Debug.Log("LowHP1攻撃");
-            yield return new WaitForSeconds(_attackCoolDownTime);
+            yield return new WaitForSeconds(_LowHPattacCoolDownTime);
             _isCoolDown = false;
             _nowAttackCount1To2++;
         }
