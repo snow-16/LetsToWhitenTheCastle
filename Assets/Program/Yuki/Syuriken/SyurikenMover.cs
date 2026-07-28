@@ -6,6 +6,11 @@ using UnityEngine;
 /// </summary>
 public class SyurikenMover : MonoBehaviour
 {
+    /// <summary> 軌跡の長さ </summary>
+    [SerializeField]
+    [Tooltip("手裏剣から引かれる軌跡の長さです。")]
+    private float _orbitLength;
+
     /// <summary> 飛行速度 </summary>
     private float _moveSpeed;
     /// <summary> 飛行方向 </summary>
@@ -13,11 +18,22 @@ public class SyurikenMover : MonoBehaviour
     /// <summary> 手裏剣が存在できる範囲 </summary>
     private Collider2D _surviveArea;
 
+    /// <summary> LineRendererのインスタンス </summary>
+    private LineRenderer _lineRenderer;
+
     public bool HitEnemy { get; set; }
+
+    void Start()
+    {
+        _lineRenderer = GetComponent<LineRenderer>();
+    }
 
     void FixedUpdate()
     {
         transform.Translate(_forword * _moveSpeed, Space.World);
+        _lineRenderer.positionCount = 2;
+        _lineRenderer.SetPosition(0, transform.position);
+        _lineRenderer.SetPosition(1, transform.position - (Vector3)_forword * _orbitLength);
 
         if(!Physics2D.OverlapCircleAll(transform.position, 0).Any(item => item == _surviveArea))
         {
