@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4746145047324290926}
   - component: {fileID: 424525704453316403}
   - component: {fileID: 3389395270314869402}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CeilChecker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -670,11 +670,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bombPrefab: {fileID: 2277894573388302933, guid: d8662a85197404ea3949337f56cbab60, type: 3}
-  _bombLowTargetPoint: {fileID: 0}
-  _bombHighTargetPoint: {fileID: 0}
-  _bombTargetingLength: 30
-  _throwPoint: {fileID: 4414567086151612565}
+  _throwCurve: 0
   _throwHeight: 0.4
+  _throwPoint: {fileID: 4414567086151612565}
+  _throwLength: 10
   _throwSpeed: 0.5
 --- !u!1 &5079684434605668911
 GameObject:
@@ -749,7 +748,7 @@ GameObject:
   - component: {fileID: 960057181702943834}
   - component: {fileID: 3672348270402032429}
   - component: {fileID: 2264167988788363993}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: GroundChecker
   m_TagString: Untagged
   m_Icon: {fileID: 0}

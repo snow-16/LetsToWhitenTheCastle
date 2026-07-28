@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using UnityEngine;
 
@@ -6,24 +7,23 @@ using UnityEngine;
 /// </summary>
 public class BombMover : MonoBehaviour
 {
+    /// <summary> 障害物のレイヤー </summary>
+    [SerializeField]
+    [Tooltip("着弾可能なレイヤーです。複数設定できます。")]
+    private LayerMask _hitableLayer;
     /// <summary> 爆発範囲指定コライダー </summary>
     [SerializeField]
     [Tooltip("爆発範囲を示すコライダーです。")]
     private CircleCollider2D _bombRangeCollider;
 
-    /// <summary> 放物線の高さ </summary>
-    private float _throwHeight;
-    /// <summary> 飛行速度 </summary>
-    private float _moveSpeed;
-    /// <summary> 投擲地点 </summary>
-    private Vector2 _basePoint;
-    /// <summary> 着弾地点 </summary>
-    private Vector2 _targetPoint;
-
+    /// <summary> 移動速度 </summary>
+    private float _speed;
     /// <summary> 移動経過率 </summary>
     private float _progress;
     /// <summary> 爆発範囲 </summary>
     private float _bombRange;
+    /// <summary> 投擲軌道の計算関数 </summary>
+    private Func<float, Vector2> _throwFunc;
 
     void Start()
     {
@@ -33,12 +33,28 @@ public class BombMover : MonoBehaviour
 
     void FixedUpdate()
     {
-        var pos = Vector2.Lerp(_basePoint, _targetPoint, _progress);
-        pos.y += Mathf.Sin(_progress * Mathf.PI) * (_targetPoint - _basePoint).magnitude * _throwHeight;
-        transform.position = pos;
-        _progress = Mathf.Min(_progress + _moveSpeed / (_targetPoint - _basePoint).magnitude, 1);
+        transform.position = (Vector3)_throwFunc((_progress += Time.deltaTime) * _speed);
 
-        if(_progress == 1)
+        if(transform.position.y < -50)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    /// <summary>
+    /// 投擲時の初期化処理
+    /// </summary>
+    /// <param name="speed">飛行速度</param>
+    /// <param name="forword">飛行方向</param>
+    public void Throw(Func<float, Vector2> throwFunc, float speed)
+    {
+        _throwFunc = throwFunc;
+        _speed = speed;
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag != "Player" && ((1 << collision.gameObject.layer) & _hitableLayer) > 0)
         {
             var boss = Physics2D.OverlapCircleAll(transform.position, _bombRange);
 
@@ -49,18 +65,5 @@ public class BombMover : MonoBehaviour
 
             Destroy(gameObject);
         }
-    }
-
-    /// <summary>
-    /// 投擲時の初期化処理
-    /// </summary>
-    /// <param name="speed">飛行速度</param>
-    /// <param name="forword">飛行方向</param>
-    public void Throw(float speed, Vector2 targetPoint, float height)
-    {
-        _moveSpeed = speed;
-        _basePoint = transform.position;
-        _targetPoint = targetPoint;
-        _throwHeight = height;
     }
 }
