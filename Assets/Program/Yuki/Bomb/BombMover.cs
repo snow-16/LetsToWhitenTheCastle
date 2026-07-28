@@ -40,9 +40,9 @@ public class BombMover : MonoBehaviour
 
         if(_progress == 1)
         {
-            var boss = Physics2D.OverlapCircleAll(transform.position, _bombRange).First(hit => hit.tag != "Player");
+            var boss = Physics2D.OverlapCircleAll(transform.position, _bombRange);
 
-            if(boss != null && boss.TryGetComponent<LifeSystem>(out var bossLife))
+            if(boss.Length > 0 && boss.First(hit => hit.tag != "Player").TryGetComponent<LifeSystem>(out var bossLife))
             {
                 GetComponent<AttackDamager>().Attack(bossLife);
             }
