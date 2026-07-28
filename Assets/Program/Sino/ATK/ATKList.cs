@@ -89,7 +89,7 @@ public class ATKList : MonoBehaviour
         return new Vector2(velosityX, velosityY);
     }
 
-    public IEnumerator Cannon(int damage)
+    public IEnumerator Cannon(int damage)//放物線で弾をplayerに飛ばす
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         Vector2 distans = player.transform.position - transform.position;
@@ -101,7 +101,7 @@ public class ATKList : MonoBehaviour
         yield return null;
     }
 
-    public IEnumerator FallStone(int damage)
+    public IEnumerator FallStone(int damage)//プレイヤー上部に岩を生成し落とす
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         GameObject fallStone = Instantiate(_fallStonePrefab, player.transform.position + Vector3.up * _createStonePosYtoPlayer, Quaternion.identity);
