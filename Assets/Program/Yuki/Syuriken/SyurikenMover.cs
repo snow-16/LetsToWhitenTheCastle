@@ -6,6 +6,10 @@ using UnityEngine;
 /// </summary>
 public class SyurikenMover : MonoBehaviour
 {
+    /// <summary> 障害物のレイヤー </summary>
+    [SerializeField]
+    [Tooltip("障害物と認識するレイヤーです。複数設定できます。")]
+    private LayerMask _obstacleLayer;
     /// <summary> 軌跡の長さ </summary>
     [SerializeField]
     [Tooltip("手裏剣から引かれる軌跡の長さです。")]
@@ -59,6 +63,10 @@ public class SyurikenMover : MonoBehaviour
         {
             GetComponent<AttackDamager>().Attack(target);
             HitEnemy = true;
+        }
+        else if(((1 << collision.gameObject.layer) & _obstacleLayer) > 0)
+        {
+            Destroy(gameObject);
         }
     }
 }
