@@ -7,6 +7,7 @@ public class AttackDamager : MonoBehaviour
 {
     /// <summary> 与えるダメージ </summary>
     [SerializeField]
+    [Tooltip("与えるダメージ量です。")]
     private int _damage;
 
     /// <summary>

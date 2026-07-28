@@ -7,6 +7,7 @@ public class PlayerStateHolder : MonoBehaviour
 {
     /// <summary> 爆弾の入手に必要な手裏剣ヒット数 </summary>
     [SerializeField]
+    [Tooltip("爆弾を入手できる手裏剣のヒット回数です。")]
     private int _bombGetBorder;
     /// <summary> 爆弾の入手に必要な手裏剣ヒット数 </summary>
     public int BombGetBorder { get => _bombGetBorder; set => _bombGetBorder = value; }

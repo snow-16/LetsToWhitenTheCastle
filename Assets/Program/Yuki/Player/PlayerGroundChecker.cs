@@ -12,12 +12,15 @@ public class PlayerGroundChecker : MonoBehaviour
     private Collider2D _groundHitCircle;
     /// <summary> 地面のレイヤー </summary>
     [SerializeField]
+    [Tooltip("地面と認識するレイヤーです。複数設定できます。")]
     private LayerMask _groundLayer;
     /// <summary> 抜けられる床のレイヤー </summary>
     [SerializeField]
+    [Tooltip("すり抜けられる床と認識するレイヤーです。複数設定できます。")]
     private LayerMask _platformLayer;
     /// <summary> コヨーテタイムの長さ </summary>
     [SerializeField]
+    [Tooltip("床の判定が消えてからジャンプできなくなるまでの猶予時間です。")]
     private int _coyoteTime;
 
     /// <summary> PlayerStateHolderのインスタンス </summary>
@@ -35,7 +38,6 @@ public class PlayerGroundChecker : MonoBehaviour
         {
             if(_playerStateHolder.PlayerJumpState == PlayerJumpState.Fall)
             {
-                
                 _playerStateHolder.PlayerJumpState = PlayerJumpState.OnGround;
             }
         }
