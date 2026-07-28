@@ -7,15 +7,19 @@ public class PlayerJumper : MonoBehaviour
 {
     /// <summary> 各移動力の大きさの倍率。大きいほど細かく動く </summary>
     [SerializeField]
+    [Tooltip("動きの細やかさです。速度などを0.05〜などで設定しなくて良くします。")]
     private float _movingScale;
     /// <summary> ジャンプの初速 </summary>
     [SerializeField]
+    [Tooltip("ジャンプの初速です。")]
     private float _initialJumpPower;
     /// <summary> ジャンプの伸び率 </summary>
     [SerializeField]
+    [Tooltip("長押しでの上昇力です。")]
     private float _keepJumpPower;
     /// <summary> ジャンプの最大距離 </summary>
     [SerializeField]
+    [Tooltip("ジャンプの最大飛距離です。")]
     private float _maxJump;
 
     /// <summary> 現在の跳躍力 </summary>
