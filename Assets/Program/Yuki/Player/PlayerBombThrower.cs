@@ -51,7 +51,7 @@ public class PlayerBombThrower : MonoBehaviour
     {
         if(_playerStateHolder.BombCount > 0)
         {
-            var throwHeight = Mathf.Max(_bombTargetingLength - (_bombLowTargetPoint.position - transform.position).magnitude, 0) / _bombTargetingLength;
+            var throwHeight = Mathf.Max(_bombTargetingLength - Mathf.Abs(_bombLowTargetPoint.position.x - transform.position.x), 0) / _bombTargetingLength;
             var start = (Vector2)_throwPoint.position;
             var end = _bombTargetPoint = Vector2.Lerp(_bombLowTargetPoint.position, _bombHighTargetPoint.position, throwHeight);
             _lineRenderer.positionCount = 10;
