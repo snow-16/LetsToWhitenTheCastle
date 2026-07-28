@@ -13,7 +13,10 @@ public class BossAI : MonoBehaviour
     [Tooltip("第二形態時の攻撃のクールダウン")]
     [SerializeField] float _LowHPattacCoolDownTime; //攻撃のクールダウン
     bool _isCoolDown = false;//クールダウンが発生しているか否か
-    public bool _isActing = false;
+    [Tooltip("待機時のアニメーションのステート名")]
+    [SerializeField] string _restAnimName;//_restAnimName
+    [Tooltip("アニメーション以外で休憩時に行うイベント")]
+    [SerializeField] UnityEvent _restEvent = null;//アニメーション以外で休憩時に行うイベント
     [Header("AI設定")]
     [Tooltip("距離によって攻撃方法を変えるか")]
     public bool _attackChangeLange = true;//距離によって攻撃方法を変えるか
@@ -61,7 +64,13 @@ public class BossAI : MonoBehaviour
     void Update()
     {
         if (!_isCoolDown && !_attackChangeHP) StartCoroutine(StartAttack());
-        if(!_isCoolDown && _attackChangeHP)  StartHpAttack();
+        else if(!_isCoolDown && _attackChangeHP)  StartHpAttack();
+    }
+
+    public void StartRest()
+    {
+        _anim.Play(_restAnimName);
+        _restEvent?.Invoke();
     }
 
     public void StartHpAttack()
@@ -88,8 +97,9 @@ public class BossAI : MonoBehaviour
             yield return null;
             animTime = _anim.GetCurrentAnimatorStateInfo(0).length;
             yield return new WaitForSeconds(animTime);
-            _attackEvent3.Invoke();
+            _attackEvent3?.Invoke();
             Debug.Log("3攻撃");
+            StartRest();
             yield return new WaitForSeconds(_attackCoolDownTime);
             _isCoolDown = false;
         }
@@ -100,20 +110,22 @@ public class BossAI : MonoBehaviour
             yield return null;
             animTime = _anim.GetCurrentAnimatorStateInfo(0).length;
             yield return new WaitForSeconds(animTime);
-            _attackEvent2.Invoke();
+            _attackEvent2?.Invoke();
             Debug.Log("2攻撃");
+            StartRest();
             yield return new WaitForSeconds(_attackCoolDownTime);
             _isCoolDown = false;
             _nowAttackCount2To3++;
         }
         else if (_nowAttackCount1To2 != _attackCount1To2) //小攻撃を行うのと小攻撃の回数を記録する
         {
-            _attackEvent1.Invoke();
             _anim.Play(_attackEvent1AnimState1);
             yield return null;
             animTime = _anim.GetCurrentAnimatorStateInfo(0).length;
             yield return new WaitForSeconds(animTime);
+            _attackEvent1?.Invoke();
             Debug.Log("1攻撃");
+            StartRest();
             yield return new WaitForSeconds(_attackCoolDownTime);
             _isCoolDown = false;
             _nowAttackCount1To2++;
@@ -130,8 +142,9 @@ public class BossAI : MonoBehaviour
             yield return null;
             animTime = _anim.GetCurrentAnimatorStateInfo(0).length;
             yield return new WaitForSeconds(animTime);
-            _attackEventHP3.Invoke();
+            _attackEventHP3?.Invoke();
             Debug.Log("LowHP3攻撃");
+            StartRest();
             yield return new WaitForSeconds(_LowHPattacCoolDownTime);
             _isCoolDown = false;
         }
@@ -142,20 +155,22 @@ public class BossAI : MonoBehaviour
             yield return null;
             animTime = _anim.GetCurrentAnimatorStateInfo(0).length;
             yield return new WaitForSeconds(animTime);
-            _attackEventHP2.Invoke();
+            _attackEventHP2?.Invoke();
             Debug.Log("LowHP2攻撃");
+            StartRest();
             yield return new WaitForSeconds(_LowHPattacCoolDownTime);
             _isCoolDown = false;
             _nowAttackCount2To3++;
         }
         else if (_nowAttackCount1To2 != _attackCount1To2) //小攻撃を行うのと小攻撃の回数を記録する
-        {
-            _attackEventHP1.Invoke();
+        { 
             _anim.Play(_attackEventLowHp1AnimState1);
             yield return null;
             animTime = _anim.GetCurrentAnimatorStateInfo(0).length;
             yield return new WaitForSeconds(animTime);
+            _attackEventHP1?.Invoke();
             Debug.Log("LowHP1攻撃");
+            StartRest();
             yield return new WaitForSeconds(_LowHPattacCoolDownTime);
             _isCoolDown = false;
             _nowAttackCount1To2++;
