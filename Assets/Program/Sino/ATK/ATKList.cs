@@ -15,7 +15,7 @@ public class ATKList : MonoBehaviour
     
     [Header("共通設定")]
     [Tooltip("生成されたオブジェクトの移動速度")]
-    [SerializeField] float _moveSpeed = 6;
+    [SerializeField] float _moveSpeed = 8;
     
     [Header("矢の設定")]
     [Tooltip("一度に生成される矢の本数")]
@@ -25,7 +25,7 @@ public class ATKList : MonoBehaviour
     
     [Header("弾丸の設定")]
     [Tooltip("弾丸の移動速度にかかる_moveSpeed倍率")]
-    [SerializeField] float _gunMoveSpeedMagnification = 2;
+    [SerializeField] float _gunMoveSpeedMagnification = 3;
     [Tooltip("狙われたときの色")]
     [SerializeField] private Color _flashColor = Color.red; 
     [Tooltip("色が変わっている時間（秒）")]
@@ -37,7 +37,7 @@ public class ATKList : MonoBehaviour
     [Tooltip("火の粉の移動速度にかかる_moveSpeed倍率")]
     [SerializeField] float _fireDastMoveSpeedMagnification = 0.7f;
     [Tooltip("火の粉が再度生成されるまでの時間")]
-    [SerializeField] float _restCreateFireDastTime = 0.3f;
+    [SerializeField] float _restCreateFireDastTime = 0.2f;
     
     [Header("砲弾の設定")]
     [Tooltip("着弾するまでの時間")]
@@ -46,10 +46,12 @@ public class ATKList : MonoBehaviour
     [Header("落石の設定")]
     [Tooltip("生成される落石の数")]
     [SerializeField] float _createStoneSam = 6;
+    [Tooltip("落石が生成されるX軸の幅")]
+    [SerializeField] float _CreateStoneRandamPosx = 3;
     [Tooltip("プレイヤーのy軸上に生成される高さ")]
-    [SerializeField] float _createStonePosYtoPlayer = 6;
+    [SerializeField] float _createStonePosYtoPlayer = 5;
     [Tooltip("落石が再度生成されるまでの時間")]
-    [SerializeField] float _restCreateStoneTime = 0.1f;
+    [SerializeField] float _restCreateStoneTime = 1;
     int _movementAttackDamge;
 
     public IEnumerator Arrow(int damage)//bossの座標に矢を作成しプレイヤーに向かって飛ばす
@@ -155,10 +157,16 @@ public class ATKList : MonoBehaviour
     {
         Debug.Log("FallStoneAttack");
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        GameObject fallStone = Instantiate(_fallStonePrefab, player.transform.position + Vector3.up * _createStonePosYtoPlayer, Quaternion.identity);
-        BulletHitAndDestroySys fallStoneDmage = fallStone.GetComponent<BulletHitAndDestroySys>();
-        fallStoneDmage._damage = damage;
-        yield return null;
+        for (int i = 0; _createStoneSam > i; i++)
+        {
+            float posx = player.transform.position.x + Random.Range(-_CreateStoneRandamPosx, _CreateStoneRandamPosx);
+            float posy = player.transform.position.y + _createStonePosYtoPlayer;
+            Vector3 stonePos = new Vector3(posx,posy,player.transform.position.z);
+            GameObject fallStone = Instantiate(_fallStonePrefab,stonePos,Quaternion.identity);
+            BulletHitAndDestroySys fallStoneDmage = fallStone.GetComponent<BulletHitAndDestroySys>();
+            fallStoneDmage._damage = damage;
+            yield return new WaitForSeconds(_restCreateStoneTime);
+        }
     }
 
     public void RandamMediumATKSelect(int damage)//上記二つの攻撃をランダムに行う
