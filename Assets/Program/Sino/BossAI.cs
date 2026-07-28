@@ -52,14 +52,14 @@ public class BossAI : MonoBehaviour
         if (!_isCoolDown) StartCoroutine(StartAttack());
     }
 
-    IEnumerator StartHpAttack()
-    {
-        if ((_lifeSystem._hp / _lifeSystem._maxHP) * 100 >=  _attackChangePercent)
-        {
-            StartCoroutine(StartAttack());
-        }
-        yield return null;
-    }
+    //IEnumerator StartHpAttack()
+    //{
+    //    if ((_lifeSystem._hp / _lifeSystem._maxHP) * 100 >=  _attackChangePercent)
+    //    {
+    //        StartCoroutine(StartAttack());
+    //    }
+    //    yield return null;
+    //}
 
 
         IEnumerator StartAttack()
