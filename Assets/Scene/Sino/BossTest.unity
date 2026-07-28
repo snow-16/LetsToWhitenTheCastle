@@ -599,6 +599,7 @@ GameObject:
   m_Component:
   - component: {fileID: 524247441}
   - component: {fileID: 524247440}
+  - component: {fileID: 524247442}
   - component: {fileID: 524247439}
   - component: {fileID: 524247438}
   - component: {fileID: 524247437}
@@ -647,8 +648,11 @@ MonoBehaviour:
   _gunPrefab: {fileID: 290385556}
   _fireDastPrefab: {fileID: 290385556}
   _canonBalletPrefab: {fileID: 892638149}
+  _fallStonePrefab: {fileID: 892638149}
   _moveSpeed: 7
+  _createFireDastSam: 6
   _hitPredictionTime: 3
+  _createStonePosYtoPlayer: 5
 --- !u!114 &524247439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -661,19 +665,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 568a37b9e59843a4ebb038e63fb0b5cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackCoolDownTime: 1
+  _attackCoolDownTime: 2
   _isActing: 0
-  _attackChangeLange: 1
-  _attackChangeHP: 0
-  _attackCount1To2: 3
+  _attackChangeLange: 0
+  _attackChangeHP: 1
+  _attackCount1To2: 2
   _attackCount2To3: 3
   _attackEvent1AnimState1: test
   _attackEvent1:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 524247438}
-        m_TargetAssemblyTypeName: LittleATKList, Assembly-CSharp
-        m_MethodName: RandamLTLATK
+        m_TargetAssemblyTypeName: ATKList, Assembly-CSharp
+        m_MethodName: RandamLitteleATKSelect
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -689,7 +693,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 524247438}
         m_TargetAssemblyTypeName: ATKList, Assembly-CSharp
-        m_MethodName: MDLATK
+        m_MethodName: RandamMediumATKSelect
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -703,12 +707,16 @@ MonoBehaviour:
   _attackEvent3:
     m_PersistentCalls:
       m_Calls: []
+  _attackChangePercent: 0
+  _attackEventLowHp1AnimState1: test
   _attackEventHP1:
     m_PersistentCalls:
       m_Calls: []
+  _attackEventLowHp2AnimState1: test
   _attackEventHP2:
     m_PersistentCalls:
       m_Calls: []
+  _attackEventLowHp3AnimState1: test
   _attackEventHP3:
     m_PersistentCalls:
       m_Calls: []
@@ -782,6 +790,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &524247442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524247436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67cb2f05e1f624a808cff52d475010a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHP: 3
+  _whenDead:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &892638149
 GameObject:
   m_ObjectHideFlags: 0

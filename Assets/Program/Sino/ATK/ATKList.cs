@@ -10,6 +10,7 @@ public class ATKList : MonoBehaviour
     [SerializeField] GameObject _canonBalletPrefab;
     [SerializeField] GameObject _fallStonePrefab;
     [SerializeField] float _moveSpeed;
+    [SerializeField] float _createFireDastSam = 6;
     [SerializeField] float _hitPredictionTime;
     [SerializeField] float _createStonePosYtoPlayer;
     int _movementAttackDamge;
@@ -52,15 +53,27 @@ public class ATKList : MonoBehaviour
 
     public IEnumerator FireDast(int damege)//bossの座標に火の粉を作成しプレイヤーに向かって飛ばす
     {
-        GameObject fireDast = Instantiate(_fireDastPrefab, transform.position, Quaternion.identity);
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        Vector2 direction = player.transform.position - fireDast.transform.position;
-        Rigidbody2D rb = fireDast.GetComponent<Rigidbody2D>();
-        BulletHitAndDestroySys Damage = fireDast.GetComponent<BulletHitAndDestroySys>();
-        Damage._damage = damege;
-        rb.linearVelocity = direction.normalized * _moveSpeed * 0.7f;
-        fireDast.transform.localScale *= 2;
-        yield return null;
+        for (int i = 0; i < _createFireDastSam; i++)
+        {
+            GameObject fireDast = Instantiate(_fireDastPrefab, transform.position, Quaternion.identity);
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            Vector2 direction = player.transform.position - fireDast.transform.position;
+            Rigidbody2D rb = fireDast.GetComponent<Rigidbody2D>();
+            BulletHitAndDestroySys Damage = fireDast.GetComponent<BulletHitAndDestroySys>();
+            Damage._damage = damege;
+            rb.linearVelocity = direction.normalized * _moveSpeed * 0.7f;
+            fireDast.transform.localScale *= 2;
+            yield return new WaitForSeconds(0.3f);
+        }
+        //GameObject fireDast = Instantiate(_fireDastPrefab, transform.position, Quaternion.identity);
+        //GameObject player = GameObject.FindGameObjectWithTag("Player");
+        //Vector2 direction = player.transform.position - fireDast.transform.position;
+        //Rigidbody2D rb = fireDast.GetComponent<Rigidbody2D>();
+        //BulletHitAndDestroySys Damage = fireDast.GetComponent<BulletHitAndDestroySys>();
+        //Damage._damage = damege;
+        //rb.linearVelocity = direction.normalized * _moveSpeed * 0.7f;
+        //fireDast.transform.localScale *= 2;
+        //yield return null;
     }
 
     public void RandamLitteleATKSelect(int damage)//上記の攻撃をランダムに行う
