@@ -8,8 +8,10 @@ public class ATKList : MonoBehaviour
     [SerializeField] GameObject _gunPrefab;
     [SerializeField] GameObject _fireDastPrefab;
     [SerializeField] GameObject _canonBalletPrefab;
+    [SerializeField] GameObject _fallStonePrefab;
     [SerializeField] float _moveSpeed;
     [SerializeField] float _hitPredictionTime;
+    [SerializeField] float _createStonePosYtoPlayer;
     int _movementAttackDamge;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -61,26 +63,20 @@ public class ATKList : MonoBehaviour
         yield return null;
     }
 
-    public void RandamLTLATK(int damage)
+    public void RandamLitteleATKSelect(int damage)//上記の攻撃をランダムに行う
     {
         _movementAttackDamge = damage;
         int AttackNum = Random.Range(0, 3);
         if (AttackNum == 0)
         {
-            //BulletHitAndDestroySys arrowDamage = _arrowPrefab.GetComponent<BulletHitAndDestroySys>();
-            //arrowDamage._damage = damage;
             StartCoroutine(Arrow(damage));
         }
         else if (AttackNum == 1)
         {
-            //BulletHitAndDestroySys GunDamage = _gunPrefab.GetComponent<BulletHitAndDestroySys>();
-            //GunDamage._damage = damage;
             StartCoroutine(Gun(damage));
         }
         else
         {
-            //BulletHitAndDestroySys FireDastDamage = _fireDastPrefab.GetComponent<BulletHitAndDestroySys>();
-            //FireDastDamage._damage = damage;
             StartCoroutine(FireDast(damage));
         }
     }
@@ -105,8 +101,20 @@ public class ATKList : MonoBehaviour
         yield return null;
     }
 
-    public void MDLATK(int damage)
+    public IEnumerator FallStone(int damage)
     {
-        StartCoroutine(Cannon(damage));
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        GameObject fallStone = Instantiate(_fallStonePrefab, player.transform.position + Vector3.up * _createStonePosYtoPlayer, Quaternion.identity);
+        BulletHitAndDestroySys fallStoneDmage = fallStone.GetComponent<BulletHitAndDestroySys>();
+        fallStoneDmage._damage = damage;
+        yield return null;
+    }
+
+    public void RandamMediumATKSelect(int damage)//上記二つの攻撃をランダムに行う
+    {
+        int selectAttack = Random.Range(0, 2);
+        if (selectAttack == 0) StartCoroutine(Cannon(damage));
+        else if(selectAttack == 1) StartCoroutine(FallStone(damage));
+
     }
 }
