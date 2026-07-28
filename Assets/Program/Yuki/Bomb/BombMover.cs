@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -5,6 +6,11 @@ using UnityEngine;
 /// </summary>
 public class BombMover : MonoBehaviour
 {
+    /// <summary> 爆発範囲指定コライダー </summary>
+    [SerializeField]
+    [Tooltip("爆発範囲を示すコライダーです。")]
+    private CircleCollider2D _bombRangeCollider;
+
     /// <summary> 放物線の高さ </summary>
     private float _throwHeight;
     /// <summary> 飛行速度 </summary>
@@ -16,6 +22,14 @@ public class BombMover : MonoBehaviour
 
     /// <summary> 移動経過率 </summary>
     private float _progress;
+    /// <summary> 爆発範囲 </summary>
+    private float _bombRange;
+
+    void Start()
+    {
+        _bombRange = _bombRangeCollider.radius;
+        Destroy(_bombRangeCollider);
+    }
 
     void FixedUpdate()
     {
@@ -23,6 +37,18 @@ public class BombMover : MonoBehaviour
         pos.y += Mathf.Sin(_progress * Mathf.PI) * (_targetPoint - _basePoint).magnitude * _throwHeight;
         transform.position = pos;
         _progress = Mathf.Min(_progress + _moveSpeed / (_targetPoint - _basePoint).magnitude, 1);
+
+        if(_progress == 1)
+        {
+            var boss = Physics2D.OverlapCircleAll(transform.position, _bombRange).First(hit => hit.tag != "Player");
+
+            if(boss.TryGetComponent<LifeSystem>(out var bossLife))
+            {
+                GetComponent<AttackDamager>().Attack(bossLife);
+            }
+
+            Destroy(gameObject);
+        }
     }
 
     /// <summary>
