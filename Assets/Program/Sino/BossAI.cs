@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -35,12 +36,18 @@ public class BossAI : MonoBehaviour
     [SerializeField] UnityEvent _attackEvent3 = null;//大攻撃の処理
     [Header("HPによる攻撃時の処理")]
     [SerializeField] float _attackChangePercent;//何パーセントで攻撃が変化するか
-    [Tooltip("小攻撃")]
-    [SerializeField] UnityEvent _attackEventHP1 = null;
-    [Tooltip("中攻撃")]
-    [SerializeField] UnityEvent _attackEventHP2 = null;
-    [Tooltip("大攻撃")]
-    [SerializeField] UnityEvent _attackEventHP3 = null;
+    [Tooltip("LowHpの小攻撃のアニメーションの名前")]
+    public string _attackEventLowHp1AnimState1;//低体力時の小攻撃時のアニメーションのステート名
+    [Tooltip("LowHpの小攻撃")]
+    [SerializeField] UnityEvent _attackEventHP1 = null;//低体力の小攻撃
+    [Tooltip("中攻撃のアニメーションの名前")]
+    public string _attackEventLowHp2AnimState1;//低体力時の中攻撃時のアニメーションのステート名
+    [Tooltip("LowHpの中攻撃")]
+    [SerializeField] UnityEvent _attackEventHP2 = null;//低体力時の中攻撃
+    [Tooltip("LowHpの大攻撃のアニメーションの名前")]
+    public string _attackEventLowHp3AnimState1;//低体力時の大攻撃時のアニメーションのステート名
+    [Tooltip("HPLowの大攻撃")]
+    [SerializeField] UnityEvent _attackEventHP3 = null;//低体力時の大攻撃
     void Start()
     {
         _anim = GetComponent<Animator>();
@@ -49,61 +56,105 @@ public class BossAI : MonoBehaviour
 
     void Update()
     {
-        if (!_isCoolDown) StartCoroutine(StartAttack());
+        if (!_isCoolDown && !_attackChangeHP) StartCoroutine(StartAttack());
+        if(!_isCoolDown && _attackChangeHP)  StartHpAttack();
     }
 
-    //IEnumerator StartHpAttack()
-    //{
-    //    if ((_lifeSystem._hp / _lifeSystem._maxHP) * 100 >=  _attackChangePercent)
-    //    {
-    //        StartCoroutine(StartAttack());
-    //    }
-    //    yield return null;
-    //}
-
-
-        IEnumerator StartAttack()
+    public void StartHpAttack()
+    {
+        if ((float)(_lifeSystem.HP / _lifeSystem.MaxHP) * 100 >= _attackChangePercent)
         {
-            float animTime;
-            if (_nowAttackCount2To3 == _attackCount2To3)//中攻撃を一定回数行うと大攻撃を行う
-            {
-                _isCoolDown = true;
-                _nowAttackCount2To3 = 0;
-                _anim.Play(_attackEvent1AnimState3);
-                yield return null;
-                animTime = _anim.GetCurrentAnimatorStateInfo(0).length;
-                yield return new WaitForSeconds(animTime);
-                _attackEvent3.Invoke();
-                Debug.Log("3攻撃");
-                yield return new WaitForSeconds(_attackCoolDownTime);
-                _isCoolDown = false;
-            }
-            else if (_nowAttackCount1To2 == _attackCount1To2) //一定回数小攻撃を行うと中攻撃を行う
-            {
-                _isCoolDown = true;
-                _nowAttackCount1To2 = 0;
-                _anim.Play(_attackEvent1AnimState2);
-                yield return null;
-                animTime = _anim.GetCurrentAnimatorStateInfo(0).length;
-                yield return new WaitForSeconds(animTime);
-                _attackEvent2.Invoke();
-                Debug.Log("2攻撃");
-                yield return new WaitForSeconds(_attackCoolDownTime);
-                _isCoolDown = false;
-                _nowAttackCount2To3++;
-            }
-            else if (_nowAttackCount1To2 != _attackCount1To2) //小攻撃を行うのと小攻撃の回数を記録する
-            {
-                _isCoolDown = true;
-                _attackEvent1.Invoke();
-                _anim.Play(_attackEvent1AnimState1);
-                yield return null;
-                animTime = _anim.GetCurrentAnimatorStateInfo(0).length;
-                yield return new WaitForSeconds(animTime);
-                Debug.Log("1攻撃");
-                yield return new WaitForSeconds(_attackCoolDownTime);
-                _isCoolDown = false;
-                _nowAttackCount1To2++;
-            }
+            StartCoroutine(StartAttack());
         }
+        else
+        {
+            StartCoroutine(StartLowHpAttack());
+        }
+    }
+
+
+    IEnumerator StartAttack()
+    {
+        float animTime;
+        _isCoolDown = true;
+        if (_nowAttackCount2To3 == _attackCount2To3)//中攻撃を一定回数行うと大攻撃を行う
+        {
+            _nowAttackCount2To3 = 0;
+            _anim.Play(_attackEvent1AnimState3);
+            yield return null;
+            animTime = _anim.GetCurrentAnimatorStateInfo(0).length;
+            yield return new WaitForSeconds(animTime);
+            _attackEvent3.Invoke();
+            Debug.Log("3攻撃");
+            yield return new WaitForSeconds(_attackCoolDownTime);
+            _isCoolDown = false;
+        }
+        else if (_nowAttackCount1To2 == _attackCount1To2) //一定回数小攻撃を行うと中攻撃を行う
+        {
+            _nowAttackCount1To2 = 0;
+            _anim.Play(_attackEvent1AnimState2);
+            yield return null;
+            animTime = _anim.GetCurrentAnimatorStateInfo(0).length;
+            yield return new WaitForSeconds(animTime);
+            _attackEvent2.Invoke();
+            Debug.Log("2攻撃");
+            yield return new WaitForSeconds(_attackCoolDownTime);
+            _isCoolDown = false;
+            _nowAttackCount2To3++;
+        }
+        else if (_nowAttackCount1To2 != _attackCount1To2) //小攻撃を行うのと小攻撃の回数を記録する
+        {
+            _attackEvent1.Invoke();
+            _anim.Play(_attackEvent1AnimState1);
+            yield return null;
+            animTime = _anim.GetCurrentAnimatorStateInfo(0).length;
+            yield return new WaitForSeconds(animTime);
+            Debug.Log("1攻撃");
+            yield return new WaitForSeconds(_attackCoolDownTime);
+            _isCoolDown = false;
+            _nowAttackCount1To2++;
+        }
+    }
+    IEnumerator StartLowHpAttack()
+    {
+        _isCoolDown = true;
+        float animTime;
+        if (_nowAttackCount2To3 == _attackCount2To3)//中攻撃を一定回数行うと大攻撃を行う
+        {
+            _nowAttackCount2To3 = 0;
+            _anim.Play(_attackEventLowHp3AnimState1);
+            yield return null;
+            animTime = _anim.GetCurrentAnimatorStateInfo(0).length;
+            yield return new WaitForSeconds(animTime);
+            _attackEventHP3.Invoke();
+            Debug.Log("LowHP3攻撃");
+            yield return new WaitForSeconds(_attackCoolDownTime);
+            _isCoolDown = false;
+        }
+        else if (_nowAttackCount1To2 == _attackCount1To2) //一定回数小攻撃を行うと中攻撃を行う
+        {
+            _nowAttackCount1To2 = 0;
+            _anim.Play(_attackEventLowHp2AnimState1);
+            yield return null;
+            animTime = _anim.GetCurrentAnimatorStateInfo(0).length;
+            yield return new WaitForSeconds(animTime);
+            _attackEventHP2.Invoke();
+            Debug.Log("LowHP2攻撃");
+            yield return new WaitForSeconds(_attackCoolDownTime);
+            _isCoolDown = false;
+            _nowAttackCount2To3++;
+        }
+        else if (_nowAttackCount1To2 != _attackCount1To2) //小攻撃を行うのと小攻撃の回数を記録する
+        {
+            _attackEventHP1.Invoke();
+            _anim.Play(_attackEventLowHp1AnimState1);
+            yield return null;
+            animTime = _anim.GetCurrentAnimatorStateInfo(0).length;
+            yield return new WaitForSeconds(animTime);
+            Debug.Log("LowHP1攻撃");
+            yield return new WaitForSeconds(_attackCoolDownTime);
+            _isCoolDown = false;
+            _nowAttackCount1To2++;
+        }
+    }
 }
