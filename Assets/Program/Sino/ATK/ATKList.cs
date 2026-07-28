@@ -11,6 +11,7 @@ public class ATKList : MonoBehaviour
     [SerializeField] GameObject _fallStonePrefab;
     [SerializeField] float _moveSpeed;
     [SerializeField] float _createFireDastSam = 6;
+    [SerializeField] float _restCreateFireDastTime= 0.3f;
     [SerializeField] float _hitPredictionTime;
     [SerializeField] float _createStonePosYtoPlayer;
     int _movementAttackDamge;
@@ -63,7 +64,7 @@ public class ATKList : MonoBehaviour
             Damage._damage = damege;
             rb.linearVelocity = direction.normalized * _moveSpeed * 0.7f;
             fireDast.transform.localScale *= 2;
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(_restCreateFireDastTime);
         }
         //GameObject fireDast = Instantiate(_fireDastPrefab, transform.position, Quaternion.identity);
         //GameObject player = GameObject.FindGameObjectWithTag("Player");
