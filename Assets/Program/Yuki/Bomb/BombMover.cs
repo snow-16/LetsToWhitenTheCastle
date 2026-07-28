@@ -42,7 +42,7 @@ public class BombMover : MonoBehaviour
         {
             var boss = Physics2D.OverlapCircleAll(transform.position, _bombRange).First(hit => hit.tag != "Player");
 
-            if(boss.TryGetComponent<LifeSystem>(out var bossLife))
+            if(boss != null && boss.TryGetComponent<LifeSystem>(out var bossLife))
             {
                 GetComponent<AttackDamager>().Attack(bossLife);
             }
