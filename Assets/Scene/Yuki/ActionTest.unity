@@ -129,7 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 113861478}
   - component: {fileID: 113861477}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SyurikenSurviveArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1086,6 +1086,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1125391145342804999, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
+      propertyPath: _throwCurve
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125391145342804999, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
+      propertyPath: _throwSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125391145342804999, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
+      propertyPath: _throwHeight
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125391145342804999, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
+      propertyPath: _throwLength
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1125391145342804999, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
       propertyPath: _bombLowTargetPoint
       value: 
