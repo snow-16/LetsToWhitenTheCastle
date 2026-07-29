@@ -10,10 +10,6 @@ public class BombMover : MonoBehaviour
     /// <summary> エフェクト再生プレハブ </summary>
     [SerializeField]
     private GameObject _effect;
-    /// <summary> 障害物のレイヤー </summary>
-    [SerializeField]
-    [Tooltip("着弾可能なレイヤーです。複数設定できます。")]
-    private LayerMask _hitableLayer;
     /// <summary> 爆発範囲指定コライダー </summary>
     [SerializeField]
     [Tooltip("爆発範囲を示すコライダーです。")]
@@ -27,6 +23,8 @@ public class BombMover : MonoBehaviour
     private float _bombRange;
     /// <summary> 投擲軌道の計算関数 </summary>
     private Func<float, Vector2> _throwFunc;
+    /// <summary> 障害物のレイヤー </summary>
+    private LayerMask _hitableLayer;
 
     void Start()
     {
@@ -49,10 +47,11 @@ public class BombMover : MonoBehaviour
     /// </summary>
     /// <param name="speed">飛行速度</param>
     /// <param name="forword">飛行方向</param>
-    public void Throw(Func<float, Vector2> throwFunc, float speed)
+    public void Throw(Func<float, Vector2> throwFunc, float speed, LayerMask hitableLayer)
     {
         _throwFunc = throwFunc;
         _speed = speed;
+        _hitableLayer = hitableLayer;
     }
 
     void OnTriggerEnter2D(Collider2D collision)

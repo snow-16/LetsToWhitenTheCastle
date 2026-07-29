@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 870586941054070271}
   - component: {fileID: -6966494232901117598}
   - component: {fileID: -2072316617476697376}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Syuriken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -284,9 +284,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: {fileID: 2930221021752662231, guid: ebf0657d3fa05402b9e4028419655dfe, type: 3}
-  _obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 64
   _orbitLength: 1.5
 --- !u!114 &-2072316617476697376
 MonoBehaviour:
