@@ -104,7 +104,6 @@ GameObject:
   - component: {fileID: 1847830595433688677}
   - component: {fileID: 2828093316223380007}
   - component: {fileID: 1125391145342804999}
-  - component: {fileID: 4204033351905856078}
   - component: {fileID: 5646415806626894085}
   m_Layer: 8
   m_Name: Player
@@ -128,6 +127,7 @@ Transform:
   m_Children:
   - {fileID: 960057181702943834}
   - {fileID: 4746145047324290926}
+  - {fileID: 5342029228614075840}
   - {fileID: 1459949135720045824}
   - {fileID: 4414567086151612565}
   - {fileID: 4858946373651788254}
@@ -686,7 +686,7 @@ MonoBehaviour:
       action:
         m_PersistentCalls:
           m_Calls:
-          - m_Target: {fileID: 4204033351905856078}
+          - m_Target: {fileID: 1412544172250269678}
             m_TargetAssemblyTypeName: PlayerParry, Assembly-CSharp
             m_MethodName: StandParry
             m_Mode: 1
@@ -793,19 +793,6 @@ MonoBehaviour:
   _bombPrefab: {fileID: 2277894573388302933, guid: d8662a85197404ea3949337f56cbab60, type: 3}
   _targetPoiner: {fileID: 9121124591300543872}
   _throwPoint: {fileID: 4414567086151612565}
---- !u!114 &4204033351905856078
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4494743871027244820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a17434252717144028c05bcd9a593a74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _parryData: {fileID: 11400000, guid: 29b5b7c57ac0c4ec282cec4eed21ed9d, type: 2}
 --- !u!114 &5646415806626894085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -853,6 +840,89 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4235919441849591464}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5231984324695194016
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5342029228614075840}
+  - component: {fileID: 5339697746054454610}
+  - component: {fileID: 1412544172250269678}
+  m_Layer: 5
+  m_Name: ParryArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5342029228614075840
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5231984324695194016}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.193, y: 0.092, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4235919441849591464}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &5339697746054454610
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5231984324695194016}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.58
+--- !u!114 &1412544172250269678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5231984324695194016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a17434252717144028c05bcd9a593a74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parryData: {fileID: 11400000, guid: 29b5b7c57ac0c4ec282cec4eed21ed9d, type: 2}
+  _hitCollider: {fileID: 5339697746054454610}
 --- !u!1 &5451156591036558416
 GameObject:
   m_ObjectHideFlags: 0

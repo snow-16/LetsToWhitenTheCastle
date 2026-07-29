@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   _parryTime: 0.2
