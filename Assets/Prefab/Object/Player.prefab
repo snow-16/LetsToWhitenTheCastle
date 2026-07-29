@@ -528,7 +528,7 @@ MonoBehaviour:
             m_CallState: 2
   - inputSettings:
     - name: "\u6295\u64F2"
-      state: 0
+      state: 2
       inputFilters:
       - inputFilter:
           rid: 8914003054335361272

@@ -38,6 +38,8 @@ public class PlayerWalker : MonoBehaviour
     private PlayerMoveDirection _nowDirection;
     /// <summary> ダッシュしているか </summary>
     private bool _isSprint = false;
+    /// <summary> 方向転換が無効化されているか </summary>
+    private bool _isLockFlip = false;
 
     /// <summary> PlayerStateHolderのインスタンス </summary>
     private PlayerStateHolder _playerStateHolder;
@@ -88,7 +90,7 @@ public class PlayerWalker : MonoBehaviour
     /// </summary>
     private void FlipPlayer()
     {
-        if(GetDirection() != 0)
+        if(GetDirection() != 0 && !_isLockFlip)
         {
             var rot = transform.localEulerAngles;
             rot.y = GetDirection() > 0 ? 0 : 180;
@@ -142,6 +144,26 @@ public class PlayerWalker : MonoBehaviour
     public void SwitchSprint()
     {
         _isSprint = !_isSprint;
+    }
+
+    /// <summary>
+    /// 方向転換を無効・有効化する
+    /// </summary>
+    /// <param name="isLock">方向転換をさせるか</param>
+    public void LockForword(bool isLock)
+    {
+        _isLockFlip = isLock;
+
+        if(isLock)
+        {
+            var rot = transform.localEulerAngles;
+            rot.y = 0;
+            transform.localEulerAngles = rot;
+        }
+        else
+        {
+            FlipPlayer();
+        }
     }
 
     /// <summary>

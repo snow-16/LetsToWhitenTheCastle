@@ -39,6 +39,8 @@ public class PlayerBombThrower : MonoBehaviour
 
     /// <summary> 投擲軌道の計算関数 </summary>
     private Func<float, Vector2> _throwFunc;
+    /// <summary> 爆弾を構えているか </summary>
+    private bool _isTargeting = false;
 
     /// <summary> LineRendererのインスタンス </summary>
     private LineRenderer _lineRenderer;
@@ -65,6 +67,7 @@ public class PlayerBombThrower : MonoBehaviour
             };
 
             _lineRenderer.positionCount = 30;
+            _lineRenderer.startColor = _lineRenderer.endColor = new(1, 1, 1, _isTargeting ? 0.5f : 0.1f);
             
             for(int i = 0; i < 30; i++)
             {
@@ -100,5 +103,14 @@ public class PlayerBombThrower : MonoBehaviour
     {
         var bomb = Instantiate(_bombPrefab, _throwPoint.position, _bombPrefab.transform.rotation).GetComponent<BombMover>();
         bomb.Throw(_throwFunc, _throwSpeed, _hitableLayer);
+    }
+
+    /// <summary>
+    /// 爆弾を構えているかを変更する
+    /// </summary>
+    /// <param name="isTargeting"></param>
+    public void SwitchTargeting(bool isTargeting)
+    {
+        _isTargeting = isTargeting;
     }
 }
