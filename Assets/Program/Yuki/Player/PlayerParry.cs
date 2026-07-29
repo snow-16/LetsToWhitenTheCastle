@@ -29,7 +29,6 @@ public class PlayerParry : MonoBehaviour
         {
             _stand = true;
             var timer = Observable.Timer(TimeSpan.FromSeconds(_parryData.ParryTime)).First();
-            transform.gameObject.tag = "Untagged";
 
             Observable.EveryUpdate().TakeUntil(timer).Where(_ => (_hits = Physics2D.OverlapCircleAll((Vector2)transform.position, _hitCollider.radius, _parryData.AttackLayer)).Length > 0).Subscribe(_ =>
                 {
@@ -46,7 +45,6 @@ public class PlayerParry : MonoBehaviour
             timer.Subscribe(_ =>
                 {
                     _stand = false;
-                    transform.gameObject.tag = "Player";
                 }
             );
         }

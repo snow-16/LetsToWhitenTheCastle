@@ -15,4 +15,5 @@ MonoBehaviour:
   _attackLayer:
     serializedVersion: 2
     m_Bits: 512
-  _parryTime: 0.2
+  _parryTime: 0.1
+  _parrySpeed: 20
