@@ -18,4 +18,6 @@ public enum InputType
     Syuriken = 1 << 4,
     /// <summary> 爆弾攻撃キー </summary>
     Bomb = 1 << 5,
+    /// <summary> しゃがみ・床すり抜けキー </summary>
+    Squat = 1 << 6,
 }
