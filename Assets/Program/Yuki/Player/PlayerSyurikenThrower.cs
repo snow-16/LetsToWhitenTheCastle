@@ -16,6 +16,11 @@ public class PlayerSyurikenThrower : MonoBehaviour
     [SerializeField]
     [Tooltip("手裏剣が存在できる範囲を示すコライダーです。外に出たら消えます。")]
     private Collider2D _surviveArea;
+
+    /// <summary> 障害物のレイヤー </summary>
+    [SerializeField]
+    [Tooltip("障害物と認識するレイヤーです。複数設定できます。")]
+    private LayerMask _obstacleLayer;
     /// <summary> 手裏剣を投げる中心 </summary>
     [SerializeField]
     [Tooltip("手元の位置です。ここから投げます。")]
@@ -45,7 +50,7 @@ public class PlayerSyurikenThrower : MonoBehaviour
     public void ThrowSyuriken()
     {
         var syuriken = Instantiate(_syurikenPrefab, _throwPoint.position, _syurikenPrefab.transform.rotation).GetComponent<SyurikenMover>();
-        syuriken.Throw(_throwSpeed, _surviveArea);
+        syuriken.Throw(_throwSpeed, _surviveArea, _obstacleLayer);
 
         //手裏剣の攻撃判定付与
         this.ObserveEveryValueChanged(_ => syuriken.HitEnemy).Where(hit => hit).Subscribe(_ =>

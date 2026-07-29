@@ -154,4 +154,12 @@ MonoBehaviour:
         m_Groups: 
         m_Action: Input
         m_Flags: 0
+      - m_Name: 
+        m_Id: 2c5daadf-058d-46f6-9397-b626611908f5
+        m_Path: <Keyboard>/downArrow
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Input
+        m_Flags: 0
       m_Flags: 0

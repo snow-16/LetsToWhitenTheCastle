@@ -9,10 +9,6 @@ public class SyurikenMover : MonoBehaviour
     /// <summary> エフェクト再生プレハブ </summary>
     [SerializeField]
     private GameObject _effect;
-    /// <summary> 障害物のレイヤー </summary>
-    [SerializeField]
-    [Tooltip("障害物と認識するレイヤーです。複数設定できます。")]
-    private LayerMask _obstacleLayer;
     /// <summary> 軌跡の長さ </summary>
     [SerializeField]
     [Tooltip("手裏剣から引かれる軌跡の長さです。")]
@@ -22,6 +18,8 @@ public class SyurikenMover : MonoBehaviour
     private float _moveSpeed;
     /// <summary> 手裏剣が存在できる範囲 </summary>
     private Collider2D _surviveArea;
+    /// <summary> 障害物のレイヤー </summary>
+    private LayerMask _obstacleLayer;
 
     /// <summary> LineRendererのインスタンス </summary>
     private LineRenderer _lineRenderer;
@@ -51,10 +49,11 @@ public class SyurikenMover : MonoBehaviour
     /// </summary>
     /// <param name="speed">飛行速度</param>
     /// <param name="forword">飛行方向</param>
-    public void Throw(float speed, Collider2D surviveArea)
+    public void Throw(float speed, Collider2D surviveArea, LayerMask obstacleLayer)
     {
         _moveSpeed = speed;
         _surviveArea = surviveArea;
+        _obstacleLayer = obstacleLayer;
     }
 
     void OnTriggerEnter2D(Collider2D collision)

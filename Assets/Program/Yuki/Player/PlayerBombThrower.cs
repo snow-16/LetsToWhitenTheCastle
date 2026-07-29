@@ -9,6 +9,10 @@ public class PlayerBombThrower : MonoBehaviour
     /// <summary> 爆弾のプレハブ </summary>
     [SerializeField]
     private GameObject _bombPrefab;
+    /// <summary> 障害物のレイヤー </summary>
+    [SerializeField]
+    [Tooltip("着弾可能なレイヤーです。複数設定できます。")]
+    private LayerMask _hitableLayer;
     /// <summary> 爆弾の軌道の傾き </summary>
     [SerializeField]
     [Tooltip("爆弾の軌道のなだらかさです。")]
@@ -61,7 +65,20 @@ public class PlayerBombThrower : MonoBehaviour
             
             for(int i = 0; i < 30; i++)
             {
-                _lineRenderer.SetPosition(i, _throwFunc(i));
+                var startPos = i == 0 ? (Vector2)_throwPoint.position : _throwFunc(i - 1);
+                var endPos = _throwFunc(i);
+
+                var predictionCast = Physics2D.Linecast(startPos, endPos, _hitableLayer);
+                if(predictionCast)
+                {
+                    _lineRenderer.SetPosition(i, predictionCast.point);
+                    _lineRenderer.positionCount = i + 1;
+                    break;
+                }
+                else
+                {
+                    _lineRenderer.SetPosition(i, endPos);
+                }
             }
         }
         else
@@ -76,6 +93,6 @@ public class PlayerBombThrower : MonoBehaviour
     public void ThrowBomb()
     {
         var bomb = Instantiate(_bombPrefab, _throwPoint.position, _bombPrefab.transform.rotation).GetComponent<BombMover>();
-        bomb.Throw(_throwFunc, _throwSpeed);
+        bomb.Throw(_throwFunc, _throwSpeed, _hitableLayer);
     }
 }

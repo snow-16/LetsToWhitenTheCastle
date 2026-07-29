@@ -988,6 +988,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1742350473}
     - target: {fileID: 1125391145342804999, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
+      propertyPath: _hitableLayer.m_Bits
+      value: 193
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125391145342804999, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
       propertyPath: '_bombTargetPoints.Array.data[0]'
       value: 
       objectReference: {fileID: 658917958}
@@ -1003,6 +1007,14 @@ PrefabInstance:
       propertyPath: _surviveArea
       value: 
       objectReference: {fileID: 113861477}
+    - target: {fileID: 2828093316223380007, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
+      propertyPath: _obstacleLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 3391930106844871810, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4235919441849591464, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.63
@@ -1139,9 +1151,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4494743871027244820, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5079684434605668911, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451156591036558416, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6029527001280572135, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
       propertyPath: m_LayerOverridePriority
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7483659782096205221, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7969295920567037490, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
       propertyPath: _keepJumpPower
