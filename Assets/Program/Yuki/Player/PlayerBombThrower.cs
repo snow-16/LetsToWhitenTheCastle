@@ -9,6 +9,9 @@ public class PlayerBombThrower : MonoBehaviour
     /// <summary> 爆弾のプレハブ </summary>
     [SerializeField]
     private GameObject _bombPrefab;
+    /// <summary> 着弾予測地点表示 </summary>
+    [SerializeField]
+    private GameObject _targetPoiner;
     /// <summary> 障害物のレイヤー </summary>
     [SerializeField]
     [Tooltip("着弾可能なレイヤーです。複数設定できます。")]
@@ -73,6 +76,8 @@ public class PlayerBombThrower : MonoBehaviour
                 {
                     _lineRenderer.SetPosition(i, predictionCast.point);
                     _lineRenderer.positionCount = i + 1;
+                    _targetPoiner.SetActive(true);
+                    _targetPoiner.transform.position = predictionCast.point;
                     break;
                 }
                 else
@@ -84,6 +89,7 @@ public class PlayerBombThrower : MonoBehaviour
         else
         {
             _lineRenderer.positionCount = 0;
+            _targetPoiner.SetActive(false);
         }
     }
 
