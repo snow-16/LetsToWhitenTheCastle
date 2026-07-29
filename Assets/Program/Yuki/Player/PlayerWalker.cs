@@ -7,30 +7,12 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerWalker : MonoBehaviour
 {
+    /// <summary> 設定データ </summary>
+    [SerializeField]
+    private PlayerWalkdata _walkData;
     /// <summary> 各移動力の大きさの倍率。大きいほど細かく動く </summary>
     [SerializeField]
-    [Tooltip("動きの細やかさです。速度などを0.05〜などで設定しなくて良くします。")]
     private float _movingScale;
-    /// <summary> 移動速度 </summary>
-    [SerializeField]
-    [Tooltip("加速力です。")]
-    private WalkOrSprintProperty _speed;
-    /// <summary> 最大移動速度 </summary>
-    [SerializeField]
-    [Tooltip("最大速度です。")]
-    private WalkOrSprintProperty _maxSpeed;
-    /// <summary> 移動の初速 </summary>
-    [SerializeField]
-    [Tooltip("初速です。")]
-    private WalkOrSprintProperty _initialSpeed;
-    /// <summary> 速度減衰量 </summary>
-    [SerializeField]
-    [Tooltip("横方向の速度減衰率です。〜1で設定してください。")]
-    private float _damping;
-    /// <summary> 空中制御力 </summary>
-    [SerializeField]
-    [Tooltip("空中での速度減衰率です。〜1で設定してください。")]
-    private float _airControl;
 
     /// <summary> 現在の速度 </summary>
     private float _nowSpeed = 0;
@@ -53,9 +35,9 @@ public class PlayerWalker : MonoBehaviour
     {
         if(_nowDirection != 0)
         {
-            var defaultSpeed = _speed.walk * (_isSprint ? _speed.sprintMultipiler : 1) / _movingScale;
-            var maxSpeed = _maxSpeed.walk * (_isSprint ? _maxSpeed.sprintMultipiler : 1) / _movingScale;
-            var initialSpeed = _initialSpeed.walk * (_isSprint ? _initialSpeed.sprintMultipiler : 1) / _movingScale;
+            var defaultSpeed = _walkData.Speed.walk * (_isSprint ? _walkData.Speed.sprintMultipiler : 1) / _movingScale;
+            var maxSpeed = _walkData.MaxSpeed.walk * (_isSprint ? _walkData.MaxSpeed.sprintMultipiler : 1) / _movingScale;
+            var initialSpeed = _walkData.InitialSpeed.walk * (_isSprint ? _walkData.InitialSpeed.sprintMultipiler : 1) / _movingScale;
 
             _nowSpeed += defaultSpeed * GetDirection();
             var moveForword = _nowSpeed == 0 || Mathf.Sign(_nowSpeed) == GetDirection();
@@ -71,12 +53,12 @@ public class PlayerWalker : MonoBehaviour
 
             if(_playerStateHolder.PlayerJumpState != PlayerJumpState.OnGround)
             {
-                _nowSpeed *= _airControl;
+                _nowSpeed *= _walkData.AirControl;
             }
         }
         else
         {
-            _nowSpeed = Mathf.Max((1 - _damping) * Mathf.Abs(_nowSpeed), 0) * Mathf.Sign(_nowSpeed);
+            _nowSpeed = Mathf.Max((1 - _walkData.Damping) * Mathf.Abs(_nowSpeed), 0) * Mathf.Sign(_nowSpeed);
         }
 
         if(_nowSpeed != 0)

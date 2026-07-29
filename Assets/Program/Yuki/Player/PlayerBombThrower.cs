@@ -6,36 +6,18 @@ using UnityEngine;
 /// </summary>
 public class PlayerBombThrower : MonoBehaviour
 {
+    /// <summary> 設定データ </summary>
+    [SerializeField]
+    private BombData _bombData;
     /// <summary> 爆弾のプレハブ </summary>
     [SerializeField]
     private GameObject _bombPrefab;
     /// <summary> 着弾予測地点表示 </summary>
     [SerializeField]
     private GameObject _targetPoiner;
-    /// <summary> 障害物のレイヤー </summary>
-    [SerializeField]
-    [Tooltip("着弾可能なレイヤーです。複数設定できます。")]
-    private LayerMask _hitableLayer;
-    /// <summary> 爆弾の軌道の傾き </summary>
-    [SerializeField]
-    [Tooltip("爆弾の軌道のなだらかさです。")]
-    private float _throwCurve;
-    /// <summary> 爆弾を投げる高さ </summary>
-    [SerializeField]
-    [Tooltip("爆弾を投げる高さです。大きいほど山形になります。")]
-    private float _throwHeight;
     /// <summary> 爆弾を投げる中心 </summary>
     [SerializeField]
-    [Tooltip("手元の位置です。ここから投げます。")]
     private Transform _throwPoint;
-    /// <summary> 爆弾の投擲距離 </summary>
-    [SerializeField]
-    [Tooltip("爆弾の投擲距離です。")]
-    private float _throwLength;
-    /// <summary> 爆弾の投擲速度 </summary>
-    [SerializeField]
-    [Tooltip("爆弾の投擲速度です。")]
-    private float _throwSpeed;
 
     /// <summary> 投擲軌道の計算関数 </summary>
     private Func<float, Vector2> _throwFunc;
@@ -57,13 +39,13 @@ public class PlayerBombThrower : MonoBehaviour
     {
         if(_playerStateHolder.BombCount > 0)
         {
-            var zeroPoint = -Mathf.Abs(Mathf.Sqrt((0 - _throwHeight) / -_throwCurve));
+            var zeroPoint = -Mathf.Abs(Mathf.Sqrt((0 - _bombData.ThrowHeight) / -_bombData.ThrowCurve));
             var basePoint = _throwPoint.position;
             _throwFunc = distance =>
             {
-                var x = zeroPoint + _throwLength * distance;
+                var x = zeroPoint + _bombData.ThrowLength * distance;
 
-                return (Vector2)basePoint + new Vector2(x - zeroPoint, -_throwCurve * Mathf.Pow(x, 2) + _throwHeight);
+                return (Vector2)basePoint + new Vector2(x - zeroPoint, -_bombData.ThrowCurve * Mathf.Pow(x, 2) + _bombData.ThrowHeight);
             };
 
             _lineRenderer.positionCount = 30;
@@ -74,7 +56,7 @@ public class PlayerBombThrower : MonoBehaviour
                 var startPos = i == 0 ? (Vector2)_throwPoint.position : _throwFunc(i - 1);
                 var endPos = _throwFunc(i);
 
-                var predictionCast = Physics2D.Linecast(startPos, endPos, _hitableLayer);
+                var predictionCast = Physics2D.Linecast(startPos, endPos, _bombData.HitableLayer);
                 if(predictionCast)
                 {
                     _lineRenderer.SetPosition(i, predictionCast.point);
@@ -102,7 +84,7 @@ public class PlayerBombThrower : MonoBehaviour
     public void ThrowBomb()
     {
         var bomb = Instantiate(_bombPrefab, _throwPoint.position, _bombPrefab.transform.rotation).GetComponent<BombMover>();
-        bomb.Throw(_throwFunc, _throwSpeed, _hitableLayer);
+        bomb.Throw(_throwFunc, _bombData.ThrowSpeed, _bombData.HitableLayer);
     }
 
     /// <summary>
