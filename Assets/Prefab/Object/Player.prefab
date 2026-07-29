@@ -528,7 +528,7 @@ MonoBehaviour:
             m_CallState: 2
   - inputSettings:
     - name: "\u6295\u64F2"
-      state: 0
+      state: 2
       inputFilters:
       - inputFilter:
           rid: 8914003054335361272
@@ -644,9 +644,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movingScale: 100
-  _initialJumpPower: 10
-  _keepJumpPower: 15
-  _maxJump: 1
+  _initialJumpPower: 6
+  _keepJumpPower: 10
+  _maxJump: 4
 --- !u!114 &1847830595433688677
 MonoBehaviour:
   m_ObjectHideFlags: 0
