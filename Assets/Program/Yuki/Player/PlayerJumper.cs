@@ -22,6 +22,8 @@ public class PlayerJumper : MonoBehaviour
     [Tooltip("ジャンプの最大飛距離です。")]
     private float _maxJump;
 
+    /// <summary> ジャンプ時の地面の高さ </summary>
+    private float _groundHeight;
     /// <summary> 現在の跳躍力 </summary>
     private float _nowJumpPower;
     /// <summary> 飛距離を伸ばすかどうか </summary>
@@ -46,12 +48,13 @@ public class PlayerJumper : MonoBehaviour
             {
                 if(_isStrain)
                 {
-                    _nowJumpPower = Mathf.Min(_nowJumpPower + _keepJumpPower / _movingScale, _maxJump);
+                    _rigidbody2D.linearVelocityY = 0;
+                    _nowJumpPower += _keepJumpPower / _movingScale;
                 }
 
                 transform.Translate(0, _nowJumpPower, 0);
 
-                if(Mathf.Abs(_rigidbody2D.linearVelocityY) / _rigidbody2D.gravityScale > _nowJumpPower)
+                if(transform.position.y >= _groundHeight + _maxJump || _rigidbody2D.linearVelocityY < 0)
                 {
                     _playerStateHolder.PlayerJumpState = PlayerJumpState.Fall;
                     _rigidbody2D.linearVelocityY = 0;
@@ -59,7 +62,6 @@ public class PlayerJumper : MonoBehaviour
             }
             else if(_isStrain)
             {
-                _rigidbody2D.linearVelocityY = 0;
                 _isStrain = false;
             }
         }
@@ -71,6 +73,7 @@ public class PlayerJumper : MonoBehaviour
     public void StartJump()
     {
         _rigidbody2D.linearVelocityY = 0;
+        _groundHeight = transform.position.y;
         _nowJumpPower = _initialJumpPower / _movingScale;
         _isStrain = true;
         _playerStateHolder.PlayerJumpState = PlayerJumpState.Rise;
