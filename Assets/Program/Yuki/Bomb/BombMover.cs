@@ -7,6 +7,9 @@ using UnityEngine;
 /// </summary>
 public class BombMover : MonoBehaviour
 {
+    /// <summary> エフェクト再生プレハブ </summary>
+    [SerializeField]
+    private GameObject _effect;
     /// <summary> 障害物のレイヤー </summary>
     [SerializeField]
     [Tooltip("着弾可能なレイヤーです。複数設定できます。")]
@@ -60,9 +63,11 @@ public class BombMover : MonoBehaviour
 
             if(boss.Length > 0 && boss.First(hit => hit.tag != "Player").TryGetComponent<LifeSystem>(out var bossLife))
             {
+                Instantiate(_effect, transform.position, Quaternion.identity);
                 GetComponent<AttackDamager>().Attack(bossLife);
             }
 
+            Instantiate(_effect, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

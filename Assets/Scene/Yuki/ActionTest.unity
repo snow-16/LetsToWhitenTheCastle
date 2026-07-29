@@ -354,7 +354,7 @@ Transform:
   m_GameObject: {fileID: 167425158}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.54, y: 5.54, z: 0}
+  m_LocalPosition: {x: 7, y: -2.3, z: 0}
   m_LocalScale: {x: 2.4142, y: 2.4142, z: 2.4142}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -544,8 +544,8 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
+  m_RenderPostProcessing: 1
+  m_Antialiasing: 1
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
@@ -600,7 +600,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 12.55
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -625,7 +625,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.9, y: 2.2, z: -10}
+  m_LocalPosition: {x: -1.4, y: -1.8, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1088,7 +1088,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1125391145342804999, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
       propertyPath: _throwCurve
-      value: 0.05
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1125391145342804999, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
       propertyPath: _throwSpeed
@@ -1096,11 +1096,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1125391145342804999, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
       propertyPath: _throwHeight
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1125391145342804999, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
       propertyPath: _throwLength
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1125391145342804999, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
       propertyPath: _bombLowTargetPoint
@@ -1169,6 +1169,10 @@ PrefabInstance:
     - target: {fileID: 4494743871027244820, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7969295920567037490, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
+      propertyPath: _keepJumpPower
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
