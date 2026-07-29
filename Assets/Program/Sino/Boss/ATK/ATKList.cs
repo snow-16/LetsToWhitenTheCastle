@@ -103,6 +103,7 @@ public class ATKList : MonoBehaviour
         {
             Debug.Log("FireDastAttack");
             GameObject fireDast = Instantiate(_fireDastPrefab, transform.position, Quaternion.identity);
+            SpriteRenderer sp = fireDast.GetComponent<SpriteRenderer>();
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             Vector2 direction = player.transform.position - fireDast.transform.position;
             Rigidbody2D rb = fireDast.GetComponent<Rigidbody2D>();
@@ -110,6 +111,8 @@ public class ATKList : MonoBehaviour
             Damage._damage = damege;
             rb.linearVelocity = direction.normalized * _moveSpeed * _fireDastMoveSpeedMagnification;
             fireDast.transform.localScale *= 2;
+            sp.sortingOrder = 0 - i;
+
             yield return new WaitForSeconds(_restCreateFireDastTime);
         }
     }
