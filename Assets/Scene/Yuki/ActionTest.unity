@@ -954,7 +954,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1125391145342804999, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
       propertyPath: _hitableLayer.m_Bits
-      value: 193
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 2828093316223380007, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
       propertyPath: _surviveArea
