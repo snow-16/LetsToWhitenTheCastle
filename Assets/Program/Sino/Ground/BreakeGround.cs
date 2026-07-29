@@ -9,7 +9,7 @@ public class BreakeGround : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("CanonBullet"))
         {
-            _whenCollisonCanonBullet.Invoke();
+            _whenCollisonCanonBullet?.Invoke();
         }
     }
 }
