@@ -23,6 +23,9 @@ public class PlayerGroundChecker : MonoBehaviour
     [Tooltip("床の判定が消えてからジャンプできなくなるまでの猶予時間です。")]
     private int _coyoteTime;
 
+    /// <summary> すり抜け床をすり抜けるか </summary>
+    private bool _skipPlatform = false;
+
     /// <summary> PlayerStateHolderのインスタンス </summary>
     private PlayerStateHolder _playerStateHolder;
 
@@ -31,10 +34,21 @@ public class PlayerGroundChecker : MonoBehaviour
         _playerStateHolder = transform.parent.GetComponent<PlayerStateHolder>();
     }
 
+    /// <summary>
+    /// 床のすり抜け状態を更新する
+    /// </summary>
+    /// <param name="skip">すり抜けるか</param>
+    public void SwitchSkipPlatform(bool skip)
+    {
+        _skipPlatform = skip;
+
+        transform.parent.GetComponent<Rigidbody2D>().excludeLayers = skip ? _platformLayer : 0;
+    }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         var layer = 1 << collision.gameObject.layer;
-        if((layer & _groundLayer) > 0 || (layer & _platformLayer) > 0)
+        if((layer & _groundLayer) > 0 || (!_skipPlatform && (layer & _platformLayer) > 0))
         {
             if(_playerStateHolder.PlayerJumpState == PlayerJumpState.Fall)
             {
@@ -49,7 +63,7 @@ public class PlayerGroundChecker : MonoBehaviour
         .Where(col =>
             {
                 var layer = 1 << col.gameObject.layer;
-                return (layer & _groundLayer) > 0 || (layer & _platformLayer) > 0;
+                return (layer & _groundLayer) > 0 || (!_skipPlatform && (layer & _platformLayer) > 0);
             }
         ).ToArray().Length;
 
