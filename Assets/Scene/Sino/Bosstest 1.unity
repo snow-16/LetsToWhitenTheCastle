@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 3464050}
   - component: {fileID: 3464049}
   - component: {fileID: 3464048}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1016,6 +1016,63 @@ Transform:
   - {fileID: 925336706}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &871335793
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4235919441849591464, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235919441849591464, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235919441849591464, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235919441849591464, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235919441849591464, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235919441849591464, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235919441849591464, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235919441849591464, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235919441849591464, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235919441849591464, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4494743871027244820, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
 --- !u!1 &925336705
 GameObject:
   m_ObjectHideFlags: 0
@@ -1027,7 +1084,7 @@ GameObject:
   - component: {fileID: 925336706}
   - component: {fileID: 925336708}
   - component: {fileID: 925336707}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ground (3)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1161,7 +1218,7 @@ GameObject:
   - component: {fileID: 942046300}
   - component: {fileID: 942046302}
   - component: {fileID: 942046301}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ground (4)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1566,7 +1623,7 @@ GameObject:
   - component: {fileID: 1963481293}
   - component: {fileID: 1963481295}
   - component: {fileID: 1963481294}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ground (3)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1707,7 +1764,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &2103423533
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1863,7 +1920,7 @@ GameObject:
   - component: {fileID: 2108838324}
   - component: {fileID: 2108838326}
   - component: {fileID: 2108838325}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ground (2)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1997,7 +2054,7 @@ GameObject:
   - component: {fileID: 2122369377}
   - component: {fileID: 2122369379}
   - component: {fileID: 2122369378}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ground (2)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2131,3 +2188,4 @@ SceneRoots:
   - {fileID: 403595666}
   - {fileID: 619392959}
   - {fileID: 651549950}
+  - {fileID: 871335793}

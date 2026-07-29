@@ -16,4 +16,11 @@ public class ParryData : ScriptableObject
     private float _parryTime;
     /// <summary> パリィ受け付け時間 </summary>
     public float ParryTime => _parryTime;
+
+    /// <summary> パリィ速度 </summary>
+    [SerializeField]
+    [Tooltip("パリィで攻撃を吹き飛ばす速度です。")]
+    private float _parrySpeed;
+    /// <summary> パリィ速度 </summary>
+    public float ParrySpeed => _parrySpeed;
 }
