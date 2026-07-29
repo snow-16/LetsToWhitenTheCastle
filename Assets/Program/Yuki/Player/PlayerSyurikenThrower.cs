@@ -6,6 +6,12 @@ using UnityEngine;
 /// </summary>
 public class PlayerSyurikenThrower : MonoBehaviour
 {
+    /// <summary> 設定データ </summary>
+    [SerializeField]
+    private SyurikenData _syurikenData;
+    /// <summary> 設定データ </summary>
+    [SerializeField]
+    private BombData _bombData;
     /// <summary> 手裏剣のプレハブ </summary>
     [SerializeField]
     private GameObject _syurikenPrefab;
@@ -20,14 +26,6 @@ public class PlayerSyurikenThrower : MonoBehaviour
     [SerializeField]
     [Tooltip("手元の位置です。ここから投げます。")]
     private Transform _throwPoint;
-    /// <summary> 手裏剣の投擲間隔 </summary>
-    [SerializeField]
-    [Tooltip("長押しの際の手裏剣を投げる間隔です。")]
-    private float _throwInterval;
-    /// <summary> 手裏剣の投擲速度 </summary>
-    [SerializeField]
-    [Tooltip("手裏剣を投げる速さです。")]
-    private float _throwSpeed;
 
     /// <summary> PlayerStateHolderのインスタンス </summary>
     private PlayerStateHolder _playerStateHolder;
@@ -36,7 +34,7 @@ public class PlayerSyurikenThrower : MonoBehaviour
     {
         _playerStateHolder = GetComponent<PlayerStateHolder>();
 
-        _intervalData.Interval = _throwInterval;
+        _intervalData.Interval = _syurikenData.ThrowInterval;
     }
 
     /// <summary>
@@ -45,17 +43,17 @@ public class PlayerSyurikenThrower : MonoBehaviour
     public void ThrowSyuriken()
     {
         var syuriken = Instantiate(_syurikenPrefab, _throwPoint.position, _syurikenPrefab.transform.rotation).GetComponent<SyurikenMover>();
-        syuriken.Throw(_throwSpeed, transform.right, _surviveArea);
+        syuriken.Throw(_syurikenData.ThrowSpeed, _surviveArea, _syurikenData.ObstacleLayer);
 
         //手裏剣の攻撃判定付与
         this.ObserveEveryValueChanged(_ => syuriken.HitEnemy).Where(hit => hit).Subscribe(_ =>
             {
                 _playerStateHolder.HitCount++;
 
-                if(_playerStateHolder.HitCount == _playerStateHolder.BombGetBorder)
+                if(_playerStateHolder.HitCount == _bombData.CollectLate)
                 {
                     _playerStateHolder.HitCount = 0;
-                    _playerStateHolder.BombCount = Mathf.Min(_playerStateHolder.BombCount + 1, _playerStateHolder.MaxBombs);
+                    _playerStateHolder.BombCount = Mathf.Min(_playerStateHolder.BombCount + 1, _bombData.MaxBombs);
                     Debug.Log("爆弾生成");
                 }
 

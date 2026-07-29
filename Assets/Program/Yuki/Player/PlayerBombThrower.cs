@@ -6,32 +6,23 @@ using UnityEngine;
 /// </summary>
 public class PlayerBombThrower : MonoBehaviour
 {
+    /// <summary> 設定データ </summary>
+    [SerializeField]
+    private BombData _bombData;
     /// <summary> 爆弾のプレハブ </summary>
     [SerializeField]
     private GameObject _bombPrefab;
-    /// <summary> 爆弾の軌道の傾き </summary>
+    /// <summary> 着弾予測地点表示 </summary>
     [SerializeField]
-    [Tooltip("爆弾の軌道のなだらかさです。")]
-    private float _throwCurve;
-    /// <summary> 爆弾を投げる高さ </summary>
-    [SerializeField]
-    [Tooltip("爆弾を投げる高さです。大きいほど山形になります。")]
-    private float _throwHeight;
+    private GameObject _targetPoiner;
     /// <summary> 爆弾を投げる中心 </summary>
     [SerializeField]
-    [Tooltip("手元の位置です。ここから投げます。")]
     private Transform _throwPoint;
-    /// <summary> 爆弾の投擲距離 </summary>
-    [SerializeField]
-    [Tooltip("爆弾の投擲距離です。")]
-    private float _throwLength;
-    /// <summary> 爆弾の投擲速度 </summary>
-    [SerializeField]
-    [Tooltip("爆弾の投擲速度です。")]
-    private float _throwSpeed;
 
     /// <summary> 投擲軌道の計算関数 </summary>
     private Func<float, Vector2> _throwFunc;
+    /// <summary> 爆弾を構えているか </summary>
+    private bool _isTargeting = false;
 
     /// <summary> LineRendererのインスタンス </summary>
     private LineRenderer _lineRenderer;
@@ -48,25 +39,42 @@ public class PlayerBombThrower : MonoBehaviour
     {
         if(_playerStateHolder.BombCount > 0)
         {
-            var zeroPoint = -Mathf.Abs(Mathf.Sqrt((0 - _throwHeight) / -_throwCurve));
+            var zeroPoint = -Mathf.Abs(Mathf.Sqrt((0 - _bombData.ThrowHeight) / -_bombData.ThrowCurve));
             var basePoint = _throwPoint.position;
             _throwFunc = distance =>
             {
-                var x = zeroPoint + _throwLength * distance;
+                var x = zeroPoint + _bombData.ThrowLength * distance;
 
-                return (Vector2)basePoint + new Vector2(x - zeroPoint, -_throwCurve * Mathf.Pow(x, 2) + _throwHeight);
+                return (Vector2)basePoint + new Vector2(x - zeroPoint, -_bombData.ThrowCurve * Mathf.Pow(x, 2) + _bombData.ThrowHeight);
             };
 
             _lineRenderer.positionCount = 30;
+            _lineRenderer.startColor = _lineRenderer.endColor = new(1, 1, 1, _isTargeting ? 0.5f : 0.1f);
             
             for(int i = 0; i < 30; i++)
             {
-                _lineRenderer.SetPosition(i, _throwFunc(i));
+                var startPos = i == 0 ? (Vector2)_throwPoint.position : _throwFunc(i - 1);
+                var endPos = _throwFunc(i);
+
+                var predictionCast = Physics2D.Linecast(startPos, endPos, _bombData.HitableLayer);
+                if(predictionCast)
+                {
+                    _lineRenderer.SetPosition(i, predictionCast.point);
+                    _lineRenderer.positionCount = i + 1;
+                    _targetPoiner.SetActive(true);
+                    _targetPoiner.transform.position = predictionCast.point;
+                    break;
+                }
+                else
+                {
+                    _lineRenderer.SetPosition(i, endPos);
+                }
             }
         }
         else
         {
             _lineRenderer.positionCount = 0;
+            _targetPoiner.SetActive(false);
         }
     }
 
@@ -76,6 +84,15 @@ public class PlayerBombThrower : MonoBehaviour
     public void ThrowBomb()
     {
         var bomb = Instantiate(_bombPrefab, _throwPoint.position, _bombPrefab.transform.rotation).GetComponent<BombMover>();
-        bomb.Throw(_throwFunc, _throwSpeed);
+        bomb.Throw(_throwFunc, _bombData.ThrowSpeed, _bombData.HitableLayer);
+    }
+
+    /// <summary>
+    /// 爆弾を構えているかを変更する
+    /// </summary>
+    /// <param name="isTargeting"></param>
+    public void SwitchTargeting(bool isTargeting)
+    {
+        _isTargeting = isTargeting;
     }
 }
