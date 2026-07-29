@@ -1005,6 +1005,10 @@ PrefabInstance:
       propertyPath: _syurikenData
       value: 
       objectReference: {fileID: 11400000, guid: f4ff0adace40142dda91a301d2d86fc7, type: 2}
+    - target: {fileID: 4204033351905856078, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
+      propertyPath: _parryData
+      value: 
+      objectReference: {fileID: 11400000, guid: 29b5b7c57ac0c4ec282cec4eed21ed9d, type: 2}
     - target: {fileID: 4235919441849591464, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.63
@@ -1044,6 +1048,10 @@ PrefabInstance:
     - target: {fileID: 4235919441849591464, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4384845968121242775, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
+      propertyPath: _observableInputs.Array.size
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4384845968121242775, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
       propertyPath: _observableInputs.Array.data[4].inputSettings.Array.size

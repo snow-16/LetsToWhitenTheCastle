@@ -20,4 +20,6 @@ public enum InputType
     Bomb = 1 << 5,
     /// <summary> しゃがみ・床すり抜けキー </summary>
     Squat = 1 << 6,
+    /// <summary> パリィキー </summary>
+    Parry = 1 << 7,
 }
