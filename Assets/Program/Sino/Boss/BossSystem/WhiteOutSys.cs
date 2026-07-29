@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class WhiteOutSys : MonoBehaviour
 {
+    GameObject _mine;
     LifeSystem _lifeSystem;
     SpriteRenderer _spriteRenderer;
     Color _color;
@@ -11,7 +12,8 @@ public class WhiteOutSys : MonoBehaviour
 
     void Start()
     {
-        _lifeSystem = GetComponent<LifeSystem>();
+        _mine = GameObject.FindWithTag("Boss");
+        _lifeSystem = _mine.GetComponent<LifeSystem>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _color = _spriteRenderer.color;
     }
