@@ -102,10 +102,10 @@ GameObject:
   - component: {fileID: 1042027325966768506}
   - component: {fileID: 7969295920567037490}
   - component: {fileID: 1847830595433688677}
-  - component: {fileID: 5646415806626894085}
   - component: {fileID: 2828093316223380007}
   - component: {fileID: 1125391145342804999}
-  m_Layer: 0
+  - component: {fileID: 5646415806626894085}
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -306,8 +306,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.048610687
-        value: 0.26612854
+        time: 0.055553436
+        value: 0.13709259
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -319,8 +319,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0, g: 0, b: 0, a: 0.67058825}
-      key1: {r: 0, g: 0, b: 0, a: 0.67058825}
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 1, g: 1, b: 1, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -506,6 +506,24 @@ MonoBehaviour:
               m_BoolArgument: 0
             m_CallState: 2
   - inputSettings:
+    - name: "\u72D9\u3046"
+      state: 0
+      inputFilters: []
+      action:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1042027325966768506}
+            m_TargetAssemblyTypeName: PlayerWalker, Assembly-CSharp
+            m_MethodName: LockForword
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
     - name: "\u6295\u3052\u308B"
       state: 1
       inputFilters:
@@ -515,9 +533,27 @@ MonoBehaviour:
         m_PersistentCalls:
           m_Calls:
           - m_Target: {fileID: 2828093316223380007}
-            m_TargetAssemblyTypeName: PlayerAttacker, Assembly-CSharp
+            m_TargetAssemblyTypeName: PlayerSyurikenThrower, Assembly-CSharp
             m_MethodName: ThrowSyuriken
             m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+    - name: "\u3084\u3081\u308B"
+      state: 2
+      inputFilters: []
+      action:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1042027325966768506}
+            m_TargetAssemblyTypeName: PlayerWalker, Assembly-CSharp
+            m_MethodName: LockForword
+            m_Mode: 6
             m_Arguments:
               m_ObjectArgument: {fileID: 0}
               m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -527,6 +563,38 @@ MonoBehaviour:
               m_BoolArgument: 0
             m_CallState: 2
   - inputSettings:
+    - name: "\u72D9\u3046"
+      state: 0
+      inputFilters:
+      - inputFilter:
+          rid: 8914003054335361272
+      action:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1042027325966768506}
+            m_TargetAssemblyTypeName: PlayerWalker, Assembly-CSharp
+            m_MethodName: LockForword
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+          - m_Target: {fileID: 1125391145342804999}
+            m_TargetAssemblyTypeName: PlayerBombThrower, Assembly-CSharp
+            m_MethodName: SwitchTargeting
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
     - name: "\u6295\u64F2"
       state: 2
       inputFilters:
@@ -541,6 +609,30 @@ MonoBehaviour:
             m_TargetAssemblyTypeName: PlayerBombThrower, Assembly-CSharp
             m_MethodName: ThrowBomb
             m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+          - m_Target: {fileID: 1042027325966768506}
+            m_TargetAssemblyTypeName: PlayerWalker, Assembly-CSharp
+            m_MethodName: LockForword
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+          - m_Target: {fileID: 1125391145342804999}
+            m_TargetAssemblyTypeName: PlayerBombThrower, Assembly-CSharp
+            m_MethodName: SwitchTargeting
+            m_Mode: 6
             m_Arguments:
               m_ObjectArgument: {fileID: 0}
               m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -619,18 +711,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b5fff14427364e3787be43b8c5e7580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _walkData: {fileID: 11400000, guid: 7137fb00757894494a229631584863f2, type: 2}
   _movingScale: 100
-  _speed:
-    walk: 1
-    sprintMultipiler: 2
-  _maxSpeed:
-    walk: 20
-    sprintMultipiler: 2
-  _initialSpeed:
-    walk: 2
-    sprintMultipiler: 2
-  _damping: 0.24
-  _airControl: 0.95
 --- !u!114 &7969295920567037490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -643,10 +725,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e968cd5be5dfa4502b12d267049c848b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _jumpData: {fileID: 11400000, guid: a62628365653e4770a64f35fdfe5a085, type: 2}
   _movingScale: 100
-  _initialJumpPower: 6
-  _keepJumpPower: 10
-  _maxJump: 4
 --- !u!114 &1847830595433688677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -659,8 +739,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4e6020ba882042ca8f47ffd5c6f155d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bombGetBorder: 10
-  _maxBombs: 3
+--- !u!114 &2828093316223380007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4494743871027244820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebd2d5ff31e0b40c1912d124e66c8d7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _syurikenData: {fileID: 11400000, guid: f4ff0adace40142dda91a301d2d86fc7, type: 2}
+  _bombData: {fileID: 11400000, guid: 8d7664000d881483cad233aeb6d8e63f, type: 2}
+  _syurikenPrefab: {fileID: 5954587214335287671, guid: 7a1449770cd624792a9ca044a867af21, type: 3}
+  _intervalData: {fileID: 11400000, guid: 661116f87778d4da7adce4f3c2bca000, type: 2}
+  _surviveArea: {fileID: 0}
+  _throwPoint: {fileID: 1459949135720045824}
+--- !u!114 &1125391145342804999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4494743871027244820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4597c03a75ba4deb8945d0035671bd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bombData: {fileID: 11400000, guid: 8d7664000d881483cad233aeb6d8e63f, type: 2}
+  _bombPrefab: {fileID: 2277894573388302933, guid: d8662a85197404ea3949337f56cbab60, type: 3}
+  _targetPoiner: {fileID: 9121124591300543872}
+  _throwPoint: {fileID: 4414567086151612565}
 --- !u!114 &5646415806626894085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -677,49 +789,6 @@ MonoBehaviour:
   _whenDead:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2828093316223380007
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4494743871027244820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebd2d5ff31e0b40c1912d124e66c8d7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _syurikenPrefab: {fileID: 5954587214335287671, guid: 7a1449770cd624792a9ca044a867af21, type: 3}
-  _intervalData: {fileID: 11400000, guid: 661116f87778d4da7adce4f3c2bca000, type: 2}
-  _surviveArea: {fileID: 0}
-  _obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 192
-  _throwPoint: {fileID: 1459949135720045824}
-  _throwInterval: 0.1
-  _throwSpeed: 1
---- !u!114 &1125391145342804999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4494743871027244820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4597c03a75ba4deb8945d0035671bd2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bombPrefab: {fileID: 2277894573388302933, guid: d8662a85197404ea3949337f56cbab60, type: 3}
-  _targetPoiner: {fileID: 9121124591300543872}
-  _hitableLayer:
-    serializedVersion: 2
-    m_Bits: 193
-  _throwCurve: 0.1
-  _throwHeight: 4
-  _throwPoint: {fileID: 4414567086151612565}
-  _throwLength: 1
-  _throwSpeed: 20
 --- !u!1 &5079684434605668911
 GameObject:
   m_ObjectHideFlags: 0

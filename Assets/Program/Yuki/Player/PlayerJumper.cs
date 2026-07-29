@@ -5,22 +5,13 @@ using UnityEngine;
 /// </summary>
 public class PlayerJumper : MonoBehaviour
 {
+    /// <summary> 設定データ </summary>
+    [SerializeField]
+    private PlayerJumpdata _jumpData;
     /// <summary> 各移動力の大きさの倍率。大きいほど細かく動く </summary>
     [SerializeField]
     [Tooltip("動きの細やかさです。速度などを0.05〜などで設定しなくて良くします。")]
     private float _movingScale;
-    /// <summary> ジャンプの初速 </summary>
-    [SerializeField]
-    [Tooltip("ジャンプの初速です。")]
-    private float _initialJumpPower;
-    /// <summary> ジャンプの伸び率 </summary>
-    [SerializeField]
-    [Tooltip("長押しでの上昇力です。")]
-    private float _keepJumpPower;
-    /// <summary> ジャンプの最大距離 </summary>
-    [SerializeField]
-    [Tooltip("ジャンプの最大飛距離です。")]
-    private float _maxJump;
 
     /// <summary> ジャンプ時の地面の高さ </summary>
     private float _groundHeight;
@@ -49,12 +40,12 @@ public class PlayerJumper : MonoBehaviour
                 if(_isStrain)
                 {
                     _rigidbody2D.linearVelocityY = 0;
-                    _nowJumpPower += _keepJumpPower / _movingScale;
+                    _nowJumpPower += _jumpData.KeepJumpPower / _movingScale;
                 }
 
                 transform.Translate(0, _nowJumpPower, 0);
 
-                if(transform.position.y >= _groundHeight + _maxJump || _rigidbody2D.linearVelocityY < 0)
+                if(transform.position.y >= _groundHeight + _jumpData.MaxJump || _rigidbody2D.linearVelocityY < 0)
                 {
                     _playerStateHolder.PlayerJumpState = PlayerJumpState.Fall;
                     _rigidbody2D.linearVelocityY = 0;
@@ -74,7 +65,7 @@ public class PlayerJumper : MonoBehaviour
     {
         _rigidbody2D.linearVelocityY = 0;
         _groundHeight = transform.position.y;
-        _nowJumpPower = _initialJumpPower / _movingScale;
+        _nowJumpPower = _jumpData.InitialJumpPower / _movingScale;
         _isStrain = true;
         _playerStateHolder.PlayerJumpState = PlayerJumpState.Rise;
     }

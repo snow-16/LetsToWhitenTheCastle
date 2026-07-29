@@ -1,0 +1,26 @@
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "SyurikenData", menuName = "Scriptable Objects/SyurikenData")]
+public class SyurikenData : ScriptableObject
+{
+    /// <summary> 障害物のレイヤー </summary>
+    [SerializeField]
+    [Tooltip("障害物と認識するレイヤーです。複数設定できます。")]
+    private LayerMask _obstacleLayer;
+    /// <summary> 障害物のレイヤー </summary>
+    public LayerMask ObstacleLayer => _obstacleLayer;
+
+    /// <summary> 手裏剣の投擲間隔 </summary>
+    [SerializeField]
+    [Tooltip("長押しの際の手裏剣を投げる間隔です。")]
+    private float _throwInterval;
+    /// <summary> 手裏剣の投擲間隔 </summary>
+    public float ThrowInterval => _throwInterval;
+
+    /// <summary> 手裏剣の投擲速度 </summary>
+    [SerializeField]
+    [Tooltip("手裏剣を投げる速さです。")]
+    private float _throwSpeed;
+    /// <summary> 手裏剣の投擲速度 </summary>
+    public float ThrowSpeed => _throwSpeed;
+}
