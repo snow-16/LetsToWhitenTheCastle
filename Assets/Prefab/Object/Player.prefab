@@ -549,7 +549,43 @@ MonoBehaviour:
               m_StringArgument: 
               m_BoolArgument: 0
             m_CallState: 2
-  - inputSettings: []
+  - inputSettings:
+    - name: "\u3057\u3083\u304C\u307F"
+      state: 0
+      inputFilters: []
+      action:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 2264167988788363993}
+            m_TargetAssemblyTypeName: PlayerGroundChecker, Assembly-CSharp
+            m_MethodName: SwitchSkipPlatform
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+    - name: "\u3057\u3083\u304C\u307F\u89E3\u9664"
+      state: 2
+      inputFilters: []
+      action:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 2264167988788363993}
+            m_TargetAssemblyTypeName: PlayerGroundChecker, Assembly-CSharp
+            m_MethodName: SwitchSkipPlatform
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
   references:
     version: 2
     RefIds:
