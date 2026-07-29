@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 3391930106844871810}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.693, z: 0}
+  m_LocalPosition: {x: 0.097, y: 0.278, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -68,7 +68,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.51
+  m_Radius: 0.3
 --- !u!114 &3389395270314869402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,7 +175,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 32c1917cde5bc42ce97cdd71e4ab118f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -220,8 +220,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Offset: {x: 0.09390664, y: 0.051594853}
+  m_Size: {x: 0.58884096, y: 0.9289354}
   m_Direction: 0
 --- !u!50 &5980897707393280193
 Rigidbody2D:
@@ -583,10 +583,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _movingScale: 100
   _speed:
-    walk: 3
+    walk: 1
     sprintMultipiler: 2
   _maxSpeed:
-    walk: 40
+    walk: 20
     sprintMultipiler: 2
   _initialSpeed:
     walk: 2
@@ -605,10 +605,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e968cd5be5dfa4502b12d267049c848b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movingScale: 60
-  _initialJumpPower: 15
-  _keepJumpPower: 10
-  _maxJump: 1.4
+  _movingScale: 100
+  _initialJumpPower: 10
+  _keepJumpPower: 15
+  _maxJump: 1
 --- !u!114 &1847830595433688677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -670,11 +670,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bombPrefab: {fileID: 2277894573388302933, guid: d8662a85197404ea3949337f56cbab60, type: 3}
-  _throwCurve: 0
-  _throwHeight: 0.4
+  _throwCurve: 0.1
+  _throwHeight: 4
   _throwPoint: {fileID: 4414567086151612565}
-  _throwLength: 10
-  _throwSpeed: 0.5
+  _throwLength: 2
+  _throwSpeed: 20
 --- !u!1 &5079684434605668911
 GameObject:
   m_ObjectHideFlags: 0
@@ -764,7 +764,7 @@ Transform:
   m_GameObject: {fileID: 7483659782096205221}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.127, z: 0}
+  m_LocalPosition: {x: 0.069, y: -0.924, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -804,8 +804,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.11
+  m_Offset: {x: 0, y: 0.44}
+  m_Radius: 0.06
 --- !u!114 &2264167988788363993
 MonoBehaviour:
   m_ObjectHideFlags: 0

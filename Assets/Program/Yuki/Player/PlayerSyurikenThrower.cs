@@ -45,7 +45,7 @@ public class PlayerSyurikenThrower : MonoBehaviour
     public void ThrowSyuriken()
     {
         var syuriken = Instantiate(_syurikenPrefab, _throwPoint.position, _syurikenPrefab.transform.rotation).GetComponent<SyurikenMover>();
-        syuriken.Throw(_throwSpeed, transform.right, _surviveArea);
+        syuriken.Throw(_throwSpeed, _surviveArea);
 
         //手裏剣の攻撃判定付与
         this.ObserveEveryValueChanged(_ => syuriken.HitEnemy).Where(hit => hit).Subscribe(_ =>
