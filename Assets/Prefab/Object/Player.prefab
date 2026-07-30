@@ -705,7 +705,7 @@ MonoBehaviour:
       type: {class: PlayerJumpStateFilter, ns: , asm: Assembly-CSharp}
       data:
         _stateHolder: {fileID: 1847830595433688677}
-        _state: 0
+        _state: 0000000003000000
     - rid: 8914003054335361271
       type: {class: TimeFilter, ns: , asm: Assembly-CSharp}
       data:
@@ -714,7 +714,7 @@ MonoBehaviour:
       type: {class: PlayerJumpStateFilter, ns: , asm: Assembly-CSharp}
       data:
         _stateHolder: {fileID: 1847830595433688677}
-        _state: 0
+        _state: 
     - rid: 8914003054335361273
       type: {class: PlayerBombCountFilter, ns: , asm: Assembly-CSharp}
       data:

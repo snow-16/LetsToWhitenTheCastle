@@ -50,7 +50,7 @@ public class PlayerGroundChecker : MonoBehaviour
         var layer = 1 << collision.gameObject.layer;
         if((layer & _groundLayer) > 0 || (!_skipPlatform && (layer & _platformLayer) > 0))
         {
-            if(_playerStateHolder.PlayerJumpState == PlayerJumpState.Fall)
+            if(_playerStateHolder.PlayerJumpState == PlayerJumpState.Fall || _playerStateHolder.PlayerJumpState == PlayerJumpState.Coyote)
             {
                 _playerStateHolder.PlayerJumpState = PlayerJumpState.OnGround;
             }
@@ -69,7 +69,8 @@ public class PlayerGroundChecker : MonoBehaviour
 
         if(existGroundsCount == 0 && _playerStateHolder.PlayerJumpState == PlayerJumpState.OnGround)
         {
-            Observable.Timer(new System.TimeSpan(0, 0, 0, 0, _coyoteTime)).TakeUntil(Observable.EveryUpdate().Where(_ => _playerStateHolder.PlayerJumpState != PlayerJumpState.OnGround)).Subscribe(_ =>
+            _playerStateHolder.PlayerJumpState = PlayerJumpState.Coyote;
+            Observable.Timer(new System.TimeSpan(0, 0, 0, 0, _coyoteTime)).TakeUntil(Observable.EveryUpdate().Where(_ => _playerStateHolder.PlayerJumpState != PlayerJumpState.Coyote)).Subscribe(_ =>
                 {
                     _playerStateHolder.PlayerJumpState = PlayerJumpState.Fall;
                 }
