@@ -36,20 +36,8 @@ public class PlayerWalker : MonoBehaviour
         if(_nowDirection != 0)
         {
             var defaultSpeed = _walkData.Speed.walk * (_isSprint ? _walkData.Speed.sprintMultipiler : 1) / _movingScale;
-            var maxSpeed = _walkData.MaxSpeed.walk * (_isSprint ? _walkData.MaxSpeed.sprintMultipiler : 1) / _movingScale;
-            var initialSpeed = _walkData.InitialSpeed.walk * (_isSprint ? _walkData.InitialSpeed.sprintMultipiler : 1) / _movingScale;
 
-            _nowSpeed += defaultSpeed * GetDirection();
-            var moveForword = _nowSpeed == 0 || Mathf.Sign(_nowSpeed) == GetDirection();
-
-            if(moveForword && Mathf.Abs(_nowSpeed) < initialSpeed)
-            {
-                _nowSpeed = initialSpeed * GetDirection();
-            }
-            else if(moveForword && Mathf.Abs(_nowSpeed) > maxSpeed)
-            {
-                _nowSpeed = maxSpeed * GetDirection();
-            }
+            _nowSpeed = defaultSpeed * GetDirection();
 
             if(_playerStateHolder.PlayerJumpState != PlayerJumpState.OnGround)
             {

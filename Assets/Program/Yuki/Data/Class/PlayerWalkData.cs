@@ -10,20 +10,6 @@ public class PlayerWalkdata : ScriptableObject
     private WalkOrSprintProperty _speed;
     /// <summary> 移動速度 </summary>
     public WalkOrSprintProperty Speed => _speed;
-
-    /// <summary> 最大移動速度 </summary>
-    [SerializeField]
-    [Tooltip("最大速度です。")]
-    private WalkOrSprintProperty _maxSpeed;
-    /// <summary> 最大移動速度 </summary>
-    public WalkOrSprintProperty MaxSpeed => _maxSpeed;
-
-    /// <summary> 移動の初速 </summary>
-    [SerializeField]
-    [Tooltip("初速です。")]
-    private WalkOrSprintProperty _initialSpeed;
-    /// <summary> 移動の初速 </summary>
-    public WalkOrSprintProperty InitialSpeed => _initialSpeed;
     
     /// <summary> 速度減衰量 </summary>
     [SerializeField]

@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: PlayerWalkdata
   m_EditorClassIdentifier: 
   _speed:
-    walk: 1
+    walk: 20
     sprintMultipiler: 2
   _maxSpeed:
     walk: 20
     sprintMultipiler: 2
   _initialSpeed:
-    walk: 2
+    walk: 20
     sprintMultipiler: 2
   _damping: 0.24
   _airControl: 0.95
