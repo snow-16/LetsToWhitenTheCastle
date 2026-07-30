@@ -6,6 +6,9 @@ using UnityEngine;
 /// </summary>
 public class SyurikenMover : MonoBehaviour
 {
+    /// <summary> 設定データ </summary>
+    [SerializeField]
+    private SyurikenData _syurikenData;
     /// <summary> エフェクト再生プレハブ </summary>
     [SerializeField]
     private GameObject _effect;
@@ -20,6 +23,9 @@ public class SyurikenMover : MonoBehaviour
     private Collider2D _surviveArea;
     /// <summary> 障害物のレイヤー </summary>
     private LayerMask _obstacleLayer;
+
+    /// <summary> 発射位置 </summary>
+    private Vector2 _throwPoint;
 
     /// <summary> LineRendererのインスタンス </summary>
     private LineRenderer _lineRenderer;
@@ -54,6 +60,7 @@ public class SyurikenMover : MonoBehaviour
         _moveSpeed = speed;
         _surviveArea = surviveArea;
         _obstacleLayer = obstacleLayer;
+        _throwPoint = transform.position;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -61,7 +68,7 @@ public class SyurikenMover : MonoBehaviour
         if(collision.gameObject.tag != "Player" && collision.TryGetComponent<LifeSystem>(out var target))
         {
             Instantiate(_effect, transform.position, Quaternion.identity);
-            GetComponent<AttackDamager>().Attack(target);
+            GetComponent<AttackDamager>().AttackByConstant(target, (int)(_syurikenData.BaseDamage + Mathf.Abs(transform.position.x - _throwPoint.x) * _syurikenData.DistanceMultiplier));
             HitEnemy = true;
         }
         else if(((1 << collision.gameObject.layer) & _obstacleLayer) > 0)

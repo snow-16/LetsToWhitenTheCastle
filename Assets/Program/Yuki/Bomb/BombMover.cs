@@ -7,6 +7,9 @@ using UnityEngine;
 /// </summary>
 public class BombMover : MonoBehaviour
 {
+    /// <summary> 設定データ </summary>
+    [SerializeField]
+    private BombData _bombData;
     /// <summary> エフェクト再生プレハブ </summary>
     [SerializeField]
     private GameObject _effect;
@@ -14,6 +17,9 @@ public class BombMover : MonoBehaviour
     [SerializeField]
     [Tooltip("爆発範囲を示すコライダーです。")]
     private CircleCollider2D _bombRangeCollider;
+
+    /// <summary> 発射位置 </summary>
+    private Vector2 _throwPoint;
 
     /// <summary> 移動速度 </summary>
     private float _speed;
@@ -52,6 +58,7 @@ public class BombMover : MonoBehaviour
         _throwFunc = throwFunc;
         _speed = speed;
         _hitableLayer = hitableLayer;
+        _throwPoint = transform.position;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -63,7 +70,7 @@ public class BombMover : MonoBehaviour
             if(boss.Length > 0 && boss.First(hit => hit.tag != "Player").TryGetComponent<LifeSystem>(out var bossLife))
             {
                 Instantiate(_effect, transform.position, Quaternion.identity);
-                GetComponent<AttackDamager>().Attack(bossLife);
+                GetComponent<AttackDamager>().AttackByConstant(bossLife, (int)(_bombData.BaseDamage + Mathf.Abs(transform.position.x - _throwPoint.x) * _bombData.DistanceMultiplier));
             }
 
             Instantiate(_effect, transform.position, Quaternion.identity);

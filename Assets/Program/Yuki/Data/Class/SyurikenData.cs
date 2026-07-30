@@ -3,6 +3,20 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SyurikenData", menuName = "Scriptable Objects/SyurikenData")]
 public class SyurikenData : ScriptableObject
 {
+    /// <summary> 基礎ダメージ </summary>
+    [SerializeField]
+    [Tooltip("基準となるダメージ量です。")]
+    private int _baseDamage;
+    /// <summary> 基礎ダメージ </summary>
+    public int BaseDamage => _baseDamage;
+
+    /// <summary> 距離ダメージ倍率 </summary>
+    [SerializeField]
+    [Tooltip("距離によるダメージ倍率です。")]
+    private float _distanceMultiplier;
+    /// <summary> 距離ダメージ倍率 </summary>
+    public float DistanceMultiplier => _distanceMultiplier;
+    
     /// <summary> 障害物のレイヤー </summary>
     [SerializeField]
     [Tooltip("障害物と認識するレイヤーです。複数設定できます。")]
