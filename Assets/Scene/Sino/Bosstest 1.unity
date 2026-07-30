@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9eef99958ed9594e8f348e361eb33d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _whitePercent: 1
+  _whitePercent: 0.5
 --- !u!1 &651549949
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,12 +308,17 @@ Transform:
   - {fileID: 925336706}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &735270992 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7209548260746357353, guid: 42cbb9724f9f0334392cb11ec833febc, type: 3}
+  m_PrefabInstance: {fileID: 6624338081970370272}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &735270997 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1059647237313408932, guid: 42cbb9724f9f0334392cb11ec833febc, type: 3}
   m_PrefabInstance: {fileID: 6624338081970370272}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 735270992}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b07714bed5d138648b70cdbb59600d23, type: 3}
@@ -1654,6 +1659,30 @@ PrefabInstance:
       propertyPath: _slashPrefab
       value: 
       objectReference: {fileID: 2977719857930039445, guid: 618c493dc455d4a47a5b8b3ff3d666fe, type: 3}
+    - target: {fileID: 1059647237313408932, guid: 42cbb9724f9f0334392cb11ec833febc, type: 3}
+      propertyPath: _createStonePosYtoPlayer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1059647237313408932, guid: 42cbb9724f9f0334392cb11ec833febc, type: 3}
+      propertyPath: _fallStonePrefab.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1059647237313408932, guid: 42cbb9724f9f0334392cb11ec833febc, type: 3}
+      propertyPath: '_fallStonePrefab.Array.data[0]'
+      value: 
+      objectReference: {fileID: 3262472693003872983, guid: fe49a3b2068d05e488a7332296010393, type: 3}
+    - target: {fileID: 1059647237313408932, guid: 42cbb9724f9f0334392cb11ec833febc, type: 3}
+      propertyPath: '_fallStonePrefab.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8342176784380729016, guid: 7afdf24868cd8604daa0d4d7b1613a73, type: 3}
+    - target: {fileID: 1059647237313408932, guid: 42cbb9724f9f0334392cb11ec833febc, type: 3}
+      propertyPath: '_fallStonePrefab.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2186075575816457936, guid: f90d05124dcf10b48901259ec2903f60, type: 3}
+    - target: {fileID: 1249159598350733022, guid: 42cbb9724f9f0334392cb11ec833febc, type: 3}
+      propertyPath: _attackChangeHP
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1249159598350733022, guid: 42cbb9724f9f0334392cb11ec833febc, type: 3}
       propertyPath: _attackEvent3.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 3
@@ -1717,6 +1746,38 @@ PrefabInstance:
     - target: {fileID: 2889058508967580732, guid: 42cbb9724f9f0334392cb11ec833febc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4148298628064063589, guid: 42cbb9724f9f0334392cb11ec833febc, type: 3}
+      propertyPath: _maxHP
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4148298628064063589, guid: 42cbb9724f9f0334392cb11ec833febc, type: 3}
+      propertyPath: _whenDead.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4148298628064063589, guid: 42cbb9724f9f0334392cb11ec833febc, type: 3}
+      propertyPath: _whenDead.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4148298628064063589, guid: 42cbb9724f9f0334392cb11ec833febc, type: 3}
+      propertyPath: _whenDead.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 735270992}
+    - target: {fileID: 4148298628064063589, guid: 42cbb9724f9f0334392cb11ec833febc, type: 3}
+      propertyPath: _whenDead.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4148298628064063589, guid: 42cbb9724f9f0334392cb11ec833febc, type: 3}
+      propertyPath: _whenDead.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 4148298628064063589, guid: 42cbb9724f9f0334392cb11ec833febc, type: 3}
+      propertyPath: _whenDead.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4148298628064063589, guid: 42cbb9724f9f0334392cb11ec833febc, type: 3}
+      propertyPath: _whenDead.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7209548260746357353, guid: 42cbb9724f9f0334392cb11ec833febc, type: 3}
       propertyPath: m_Name
