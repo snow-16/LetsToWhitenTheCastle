@@ -23,4 +23,11 @@ public class PlayerJumpdata : ScriptableObject
     private float _maxJump;
     /// <summary> ジャンプの最大距離 </summary>
     public float MaxJump => _maxJump;
+
+    /// <summary> ジャンプ可能回数 </summary>
+    [SerializeField]
+    [Tooltip("ジャンプできる回数です。")]
+    private int _jumpableCount;
+    /// <summary> ジャンプ可能回数 </summary>
+    public int JumpableCount => _jumpableCount;
 }
