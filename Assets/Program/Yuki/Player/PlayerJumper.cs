@@ -63,11 +63,15 @@ public class PlayerJumper : MonoBehaviour
     /// </summary>
     public void StartJump()
     {
-        _rigidbody2D.linearVelocityY = 0;
-        _groundHeight = transform.position.y;
-        _nowJumpPower = _jumpData.InitialJumpPower / _movingScale;
-        _isStrain = true;
-        _playerStateHolder.PlayerJumpState = PlayerJumpState.Rise;
+        if(_playerStateHolder.JumpCount < _jumpData.JumpableCount)
+        {
+            _rigidbody2D.linearVelocityY = 0;
+            _groundHeight = transform.position.y;
+            _nowJumpPower = _jumpData.InitialJumpPower / _movingScale;
+            _isStrain = true;
+            _playerStateHolder.PlayerJumpState = PlayerJumpState.Rise;
+            _playerStateHolder.JumpCount++;
+        }
     }
 
     /// <summary>
