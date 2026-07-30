@@ -67,10 +67,14 @@ public class BossAI : MonoBehaviour
         else if(!_isCoolDown && _attackChangeHP)  StartHpAttack();
     }
 
-    public void StartRest()
+    public IEnumerator StartRest()
     {
+        float animTime;
         _anim.Play(_restAnimName);
         _restEvent?.Invoke();
+        yield return null;
+        animTime = _anim.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(animTime);
     }
 
     public void StartHpAttack()
@@ -99,7 +103,7 @@ public class BossAI : MonoBehaviour
             yield return new WaitForSeconds(animTime);
             _attackEvent3?.Invoke();
             Debug.Log("3攻撃");
-            StartRest();
+            StartCoroutine(StartRest());
             yield return new WaitForSeconds(_attackCoolDownTime);
             _isCoolDown = false;
         }
@@ -112,7 +116,7 @@ public class BossAI : MonoBehaviour
             yield return new WaitForSeconds(animTime);
             _attackEvent2?.Invoke();
             Debug.Log("2攻撃");
-            StartRest();
+            StartCoroutine(StartRest());
             yield return new WaitForSeconds(_attackCoolDownTime);
             _isCoolDown = false;
             _nowAttackCount2To3++;
@@ -125,7 +129,7 @@ public class BossAI : MonoBehaviour
             yield return new WaitForSeconds(animTime);
             _attackEvent1?.Invoke();
             Debug.Log("1攻撃");
-            StartRest();
+            StartCoroutine(StartRest());
             yield return new WaitForSeconds(_attackCoolDownTime);
             _isCoolDown = false;
             _nowAttackCount1To2++;
@@ -144,7 +148,7 @@ public class BossAI : MonoBehaviour
             yield return new WaitForSeconds(animTime);
             _attackEventHP3?.Invoke();
             Debug.Log("LowHP3攻撃");
-            StartRest();
+            StartCoroutine(StartRest());
             yield return new WaitForSeconds(_LowHPattacCoolDownTime);
             _isCoolDown = false;
         }
@@ -157,7 +161,7 @@ public class BossAI : MonoBehaviour
             yield return new WaitForSeconds(animTime);
             _attackEventHP2?.Invoke();
             Debug.Log("LowHP2攻撃");
-            StartRest();
+            StartCoroutine(StartRest());
             yield return new WaitForSeconds(_LowHPattacCoolDownTime);
             _isCoolDown = false;
             _nowAttackCount2To3++;
@@ -170,7 +174,7 @@ public class BossAI : MonoBehaviour
             yield return new WaitForSeconds(animTime);
             _attackEventHP1?.Invoke();
             Debug.Log("LowHP1攻撃");
-            StartRest();
+            StartCoroutine(StartRest());
             yield return new WaitForSeconds(_LowHPattacCoolDownTime);
             _isCoolDown = false;
             _nowAttackCount1To2++;

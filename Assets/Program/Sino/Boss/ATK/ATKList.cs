@@ -12,25 +12,26 @@ public class ATKList : MonoBehaviour
     [SerializeField] GameObject _fireDastPrefab;//火の粉のプレファブ
     [SerializeField] GameObject _canonBalletPrefab;//砲弾のプレファブ
     [SerializeField] GameObject _fallStonePrefab;//落石のプレファブ
-    
+    [SerializeField] GameObject _slashPrefab;//斬撃のプレファブ
+
     [Header("共通設定")]
     [Tooltip("生成されたオブジェクトの移動速度")]
     [SerializeField] float _moveSpeed = 8;
-    
+
     [Header("矢の設定")]
     [Tooltip("一度に生成される矢の本数")]
     [SerializeField] int _createArrowSam = 3;
     [Tooltip("生成された矢どうしのy軸の距離")]
     [SerializeField] float _createArrowPosPlasY = 1;
-    
+
     [Header("弾丸の設定")]
     [Tooltip("弾丸の移動速度にかかる_moveSpeed倍率")]
     [SerializeField] float _gunMoveSpeedMagnification = 3;
     [Tooltip("狙われたときの色")]
-    [SerializeField] private Color _flashColor = Color.red; 
+    [SerializeField] private Color _flashColor = Color.red;
     [Tooltip("色が変わっている時間（秒）")]
     [SerializeField] private float _flashDuration = 0.05f;
-    
+
     [Header("火の粉の設定")]
     [Tooltip("生成される火の粉の数")]
     [SerializeField] float _createFireDastSam = 6;
@@ -38,7 +39,7 @@ public class ATKList : MonoBehaviour
     [SerializeField] float _fireDastMoveSpeedMagnification = 0.7f;
     [Tooltip("火の粉が再度生成されるまでの時間")]
     [SerializeField] float _restCreateFireDastTime = 0.2f;
-    
+
     [Header("砲弾の設定")]
     [Tooltip("着弾するまでの時間")]
     [SerializeField] float _hitPredictionTime = 2;
@@ -52,12 +53,20 @@ public class ATKList : MonoBehaviour
     [SerializeField] float _createStonePosYtoPlayer = 5;
     [Tooltip("落石が再度生成されるまでの時間")]
     [SerializeField] float _restCreateStoneTime = 1;
+
+    [Header("斬撃の設定")]
+    [Tooltip("生成される斬撃の数")]
+    [SerializeField] float _createSlashSam = 6;
+    [Tooltip("斬撃の移動速度にかかる_moveSpeed倍率")]
+    [SerializeField] float _SlashMoveSpeedMagnification = 1.3f;
+    [Tooltip("斬撃が再度生成されるまでの時間")]
+    [SerializeField] float _restCreateSlashTime = 0.5f;
     int _movementAttackDamge;
 
     public IEnumerator Arrow(int damage)//bossの座標に矢を作成しプレイヤーに向かって飛ばす
     {
         float createArrowPosY = 0;
-        for (int i =0; i < _createArrowSam; i++)
+        for (int i = 0; i < _createArrowSam; i++)
         {
             Debug.Log("ArrowAttack");
             GameObject arrow = Instantiate(_arrowPrefab, transform.position + Vector3.up * createArrowPosY, Quaternion.identity);
@@ -73,7 +82,7 @@ public class ATKList : MonoBehaviour
             createArrowPosY += _createArrowPosPlasY;
             yield return null;
         }
-        
+
     }
 
     public IEnumerator Gun(int damede)//bossの座標に弾を作成しプレイヤーに向かって飛ばす
@@ -164,10 +173,10 @@ public class ATKList : MonoBehaviour
         {
             float posx = player.transform.position.x + Random.Range(-_CreateStoneRandamPosx, _CreateStoneRandamPosx);
             float posy = player.transform.position.y + _createStonePosYtoPlayer;
-            Vector3 stonePos = new Vector3(posx,posy,player.transform.position.z);
-            GameObject fallStone = Instantiate(_fallStonePrefab,stonePos,Quaternion.identity);
-            BulletHitAndDestroySys fallStoneDmage = fallStone.GetComponent<BulletHitAndDestroySys>();
-            fallStoneDmage._damage = damage;
+            Vector3 stonePos = new Vector3(posx, posy, player.transform.position.z);
+            GameObject fallStone = Instantiate(_fallStonePrefab, stonePos, Quaternion.identity);
+            BulletHitAndDestroySys fallStoneDamage = fallStone.GetComponent<BulletHitAndDestroySys>();
+            fallStoneDamage._damage = damage;
             yield return new WaitForSeconds(_restCreateStoneTime);
         }
     }
@@ -176,7 +185,25 @@ public class ATKList : MonoBehaviour
     {
         int selectAttack = Random.Range(0, 2);
         if (selectAttack == 0) StartCoroutine(Cannon(damage));
-        else if(selectAttack == 1) StartCoroutine(FallStone(damage));
+        else if (selectAttack == 1) StartCoroutine(FallStone(damage));
 
+    }
+
+    public IEnumerator Slash(int damege)
+    {
+        for (int i = 0; i < _createSlashSam; i++)
+        {
+            GameObject slash = Instantiate(_slashPrefab, transform.position, Quaternion.identity);
+            Rigidbody2D rb = slash.GetComponent<Rigidbody2D>();
+            BulletHitAndDestroySys slashDamage = slash.GetComponent<BulletHitAndDestroySys>();
+            rb.linearVelocityX = -_moveSpeed * _SlashMoveSpeedMagnification;
+            slashDamage._damage = damege;
+            yield return new WaitForSeconds(_restCreateSlashTime);
+        }
+    }
+
+    public void UltATK(int damage)
+    {
+        StartCoroutine(Slash(damage));
     }
 }
