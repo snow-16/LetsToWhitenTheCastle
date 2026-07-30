@@ -2,21 +2,18 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// LifeSystemのHPを体力ゲージに表示するコンポーネント
+/// 現在値と最大値をゲージに表示するコンポーネント
 /// </summary>
 public class GaugeUI : MonoBehaviour
 {
-    /// <summary> HPや忍術ゲージを管理しているSystem </summary>
-    [SerializeField]
-    private LifeSystem _System;
+    /// <summary> ゲージのImage </summary>
+    [SerializeField]private Image _fillImage;
 
-    /// <summary> HPや忍術ゲージのImage </summary>
-    [SerializeField]
-    private Image _fillImage;
-
-    private void Update()
+    /// <summary>ゲージを更新する</summary>
+    /// <param name="currentValue">現在値</param>
+    /// <param name="maxValue">最大値</param>
+    public void UpdateGauge(int currentValue, int maxValue)
     {
-        // 現在HP ÷ 最大HP でゲージの割合を計算
-        _fillImage.fillAmount = (float)_System.HP / _System.MaxHP;
+        _fillImage.fillAmount = (float)currentValue / maxValue;
     }
 }
