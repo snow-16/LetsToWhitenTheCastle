@@ -11,7 +11,7 @@ public class ATKList : MonoBehaviour
     [SerializeField] GameObject _gunPrefab;//弾のプレファブ
     [SerializeField] GameObject _fireDastPrefab;//火の粉のプレファブ
     [SerializeField] GameObject _canonBalletPrefab;//砲弾のプレファブ
-    [SerializeField] GameObject _fallStonePrefab;//落石のプレファブ
+    [SerializeField] GameObject[] _fallStonePrefab;//落石のプレファブ
     [SerializeField] GameObject _slashPrefab;//斬撃のプレファブ
 
     [Header("共通設定")]
@@ -171,10 +171,11 @@ public class ATKList : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         for (int i = 0; _createStoneSam > i; i++)
         {
+            int randamFallStoneNam = Random.Range(0, _fallStonePrefab.Length);
             float posx = player.transform.position.x + Random.Range(-_CreateStoneRandamPosx, _CreateStoneRandamPosx);
             float posy = player.transform.position.y + _createStonePosYtoPlayer;
             Vector3 stonePos = new Vector3(posx, posy, player.transform.position.z);
-            GameObject fallStone = Instantiate(_fallStonePrefab, stonePos, Quaternion.identity);
+            GameObject fallStone = Instantiate(_fallStonePrefab[randamFallStoneNam], stonePos, Quaternion.identity);
             BulletHitAndDestroySys fallStoneDamage = fallStone.GetComponent<BulletHitAndDestroySys>();
             fallStoneDamage._damage = damage;
             yield return new WaitForSeconds(_restCreateStoneTime);
