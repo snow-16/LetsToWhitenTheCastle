@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -12,10 +14,10 @@ public class PlayerJumpStateFilter : IInputFilter
     private PlayerStateHolder _stateHolder;
     /// <summary> 比較する状態 </summary>
     [SerializeField]
-    private PlayerJumpState _state;
+    private List<PlayerJumpState> _state;
 
     public bool IsCanInput()
     {
-        return _stateHolder.PlayerJumpState == _state;
+        return _state.Any(state => _stateHolder.PlayerJumpState == state);
     }
 }
