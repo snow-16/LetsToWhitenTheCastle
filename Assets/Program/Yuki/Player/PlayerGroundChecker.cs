@@ -53,6 +53,7 @@ public class PlayerGroundChecker : MonoBehaviour
             if(_playerStateHolder.PlayerJumpState == PlayerJumpState.Fall || _playerStateHolder.PlayerJumpState == PlayerJumpState.Coyote)
             {
                 _playerStateHolder.PlayerJumpState = PlayerJumpState.OnGround;
+                _playerStateHolder.JumpCount = 0;
             }
         }
     }
