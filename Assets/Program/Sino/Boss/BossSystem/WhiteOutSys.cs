@@ -7,7 +7,7 @@ public class WhiteOutSys : MonoBehaviour
     SpriteRenderer _spriteRenderer;
     Color _color;
     [Tooltip("どれだけ白くなるか")]
-    [SerializeField] float _whitePercent = 1;
+    [SerializeField] float _whitePercent = 0.5f;
     float _lifePercent;
 
     void Start()
@@ -20,8 +20,8 @@ public class WhiteOutSys : MonoBehaviour
 
     void Update()
     {
-        _lifePercent = 1f - (float)_lifeSystem.HP / _lifeSystem.MaxHP;
-        _color.a = _lifePercent * _whitePercent;
-        _spriteRenderer.color = _color;
+            _lifePercent = 1f - (float)_lifeSystem.HP / _lifeSystem.MaxHP;
+            _color.a = _lifePercent * _whitePercent;
+            _spriteRenderer.color = _color;
     }
 }
