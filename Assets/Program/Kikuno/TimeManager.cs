@@ -4,8 +4,7 @@ using UnityEngine;
 public class TimeManager : MonoBehaviour
 {
     /// <summary> 制限時間 </summary>
-    [SerializeField]
-    private float _maxTime = 120f;
+    [SerializeField] private float _maxTime = 120f;
 
     /// <summary> 現在の残り時間 </summary>
     public float CurrentTime { get; private set; }
