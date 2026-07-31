@@ -7,6 +7,12 @@ public class BossAI : MonoBehaviour
 {
     Animator _anim;//アニメーション
     LifeSystem _lifeSystem;//ボスのライフシステム
+    [Header("最初の咆哮")]
+    [Tooltip("最初のアニメーションのステート名")]
+    [SerializeField] string _startAnimName;
+    [Tooltip("アニメーション以外で開始時に行うイベント")]
+    [SerializeField] UnityEvent _startEvent = null;
+    bool _isStartAnim = true;
     [Header("共通設定")]
     [Tooltip("攻撃のクールダウン")]
     [SerializeField] float _attackCoolDownTime; //攻撃のクールダウン
@@ -63,10 +69,24 @@ public class BossAI : MonoBehaviour
 
     void Update()
     {
-        if (!_isCoolDown && !_attackChangeHP) StartCoroutine(StartAttack());
-        else if(!_isCoolDown && _attackChangeHP)  StartHpAttack();
+        if(_isStartAnim) StartCoroutine(StartAnim());
+        if(_isStartAnim == false)
+        {
+            if (!_isCoolDown && !_attackChangeHP) StartCoroutine(StartAttack());
+            else if (!_isCoolDown && _attackChangeHP) StartHpAttack();
+        }
     }
 
+    public IEnumerator StartAnim()
+    {
+        float animTime;
+        _anim.Play(_startAnimName);
+        _startEvent.Invoke();
+        yield return null;
+        animTime = _anim.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(animTime);
+        _isStartAnim = false;
+    }
     public IEnumerator StartRest()
     {
         float animTime;
