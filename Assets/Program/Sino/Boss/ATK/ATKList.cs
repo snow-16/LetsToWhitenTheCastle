@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ATKList : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class ATKList : MonoBehaviour
     [SerializeField] int _createArrowSam = 3;
     [Tooltip("生成された矢どうしのy軸の距離")]
     [SerializeField] float _createArrowPosPlasY = 1;
+    [Tooltip("攻撃時に起きるイベント")]
+    [SerializeField] UnityEvent _arrowEvent = null;
 
     [Header("弾丸の設定")]
     [Tooltip("弾丸の移動速度にかかる_moveSpeed倍率")]
@@ -31,6 +34,8 @@ public class ATKList : MonoBehaviour
     [SerializeField] private Color _flashColor = Color.red;
     [Tooltip("色が変わっている時間（秒）")]
     [SerializeField] private float _flashDuration = 0.05f;
+    [Tooltip("攻撃時に起きるイベント")]
+    [SerializeField] UnityEvent _gunEvent = null;
 
     [Header("火の粉の設定")]
     [Tooltip("生成される火の粉の数")]
@@ -39,10 +44,18 @@ public class ATKList : MonoBehaviour
     [SerializeField] float _fireDastMoveSpeedMagnification = 0.7f;
     [Tooltip("火の粉が再度生成されるまでの時間")]
     [SerializeField] float _restCreateFireDastTime = 0.2f;
+    [Tooltip("攻撃時に起きるイベント")]
+    [SerializeField] UnityEvent _fireDastEvent = null;
 
     [Header("砲弾の設定")]
+    [Tooltip("生成される砲弾の数")]
+    [SerializeField] float _createCanonBulletSam = 6;
     [Tooltip("着弾するまでの時間")]
     [SerializeField] float _hitPredictionTime = 2;
+    [Tooltip("砲弾が再度生成されるまでの時間")]
+    [SerializeField] float _restCreateCanonBulletTime = 1;
+    [Tooltip("攻撃時に起きるイベント")]
+    [SerializeField] UnityEvent _canonEvent = null;
 
     [Header("落石の設定")]
     [Tooltip("生成される落石の数")]
@@ -53,6 +66,8 @@ public class ATKList : MonoBehaviour
     [SerializeField] float _createStonePosYtoPlayer = 5;
     [Tooltip("落石が再度生成されるまでの時間")]
     [SerializeField] float _restCreateStoneTime = 1;
+    [Tooltip("攻撃時に起きるイベント")]
+    [SerializeField] UnityEvent _fallStoneEvent = null;
 
     [Header("斬撃の設定")]
     [Tooltip("生成される斬撃の数")]
@@ -61,6 +76,8 @@ public class ATKList : MonoBehaviour
     [SerializeField] float _SlashMoveSpeedMagnification = 1.3f;
     [Tooltip("斬撃が再度生成されるまでの時間")]
     [SerializeField] float _restCreateSlashTime = 0.5f;
+    [Tooltip("攻撃時に起きるイベント")]
+    [SerializeField] UnityEvent _slashEvent = null;
     int _movementAttackDamge;
 
     public IEnumerator Arrow(int damage)//bossの座標に矢を作成しプレイヤーに向かって飛ばす
@@ -68,6 +85,7 @@ public class ATKList : MonoBehaviour
         float createArrowPosY = 0;
         for (int i = 0; i < _createArrowSam; i++)
         {
+            _arrowEvent?.Invoke();
             Debug.Log("ArrowAttack");
             GameObject arrow = Instantiate(_arrowPrefab, transform.position + Vector3.up * createArrowPosY, Quaternion.identity);
             GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -98,6 +116,7 @@ public class ATKList : MonoBehaviour
             _spriteRenderer.color = _originalColor;
             yield return new WaitForSeconds(_flashDuration);
         }
+        _gunEvent?.Invoke();
         GameObject gun = Instantiate(_gunPrefab, transform.position, Quaternion.identity);
         Vector2 direction = player.transform.position - gun.transform.position;
         Rigidbody2D rb = gun.GetComponent<Rigidbody2D>();
@@ -108,6 +127,7 @@ public class ATKList : MonoBehaviour
 
     public IEnumerator FireDast(int damege)//bossの座標に火の粉を作成しプレイヤーに向かって飛ばす
     {
+        _fireDastEvent?.Invoke();
         for (int i = 0; i < _createFireDastSam; i++)
         {
             Debug.Log("FireDastAttack");
@@ -156,13 +176,18 @@ public class ATKList : MonoBehaviour
     {
         Debug.Log("CannonAttack");
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        Vector2 distans = player.transform.position - transform.position;
-        GameObject canonBullet = Instantiate(_canonBalletPrefab, transform.position, Quaternion.identity);
-        Rigidbody2D rb = canonBullet.GetComponent<Rigidbody2D>();
-        BulletHitAndDestroySys canonDamage = canonBullet.GetComponent<BulletHitAndDestroySys>();
-        canonDamage._damage = damage;
-        rb.linearVelocity = CalcuateArcVelocity2D(rb, distans, _hitPredictionTime);
-        yield return null;
+        for(int i = 0; i <= _createCanonBulletSam; i++)
+        {
+            _canonEvent?.Invoke();
+            Vector2 distans = player.transform.position - transform.position;
+            GameObject canonBullet = Instantiate(_canonBalletPrefab, transform.position, Quaternion.identity);
+            Rigidbody2D rb = canonBullet.GetComponent<Rigidbody2D>();
+            BulletHitAndDestroySys canonDamage = canonBullet.GetComponent<BulletHitAndDestroySys>();
+            canonDamage._damage = damage;
+            rb.linearVelocity = CalcuateArcVelocity2D(rb, distans, _hitPredictionTime);
+            yield return new WaitForSeconds(_restCreateCanonBulletTime);
+        }
+        
     }
 
     public IEnumerator FallStone(int damage)//プレイヤー上部に岩を生成し落とす
@@ -171,6 +196,7 @@ public class ATKList : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         for (int i = 0; _createStoneSam > i; i++)
         {
+            _fallStoneEvent?.Invoke();
             int randamFallStoneNam = Random.Range(0, _fallStonePrefab.Length);
             float posx = player.transform.position.x + Random.Range(-_CreateStoneRandamPosx, _CreateStoneRandamPosx);
             float posy = player.transform.position.y + _createStonePosYtoPlayer;
@@ -194,6 +220,7 @@ public class ATKList : MonoBehaviour
     {
         for (int i = 0; i < _createSlashSam; i++)
         {
+            _slashEvent?.Invoke();
             GameObject slash = Instantiate(_slashPrefab, transform.position, Quaternion.identity);
             Rigidbody2D rb = slash.GetComponent<Rigidbody2D>();
             BulletHitAndDestroySys slashDamage = slash.GetComponent<BulletHitAndDestroySys>();
