@@ -1,3 +1,5 @@
+using System;
+using UniRx;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -21,6 +23,14 @@ public class LifeSystem : MonoBehaviour
     /// <summary> 現在のHP </summary>
     public int HP { get => _hp; set => _hp = value; }
 
+    /// <summary> 無敵時間 </summary>
+    private float _invincibleTime;
+    /// <summary> 無敵時間 </summary>
+    public float InvincibleTime { get => _invincibleTime; set => _invincibleTime = value; }
+
+    /// <summary> 現在ダメージ処理を受け付けるか </summary>
+    private bool _canDamage = true;
+
     void Start()
     {
         _hp = _maxHP;
@@ -32,11 +42,17 @@ public class LifeSystem : MonoBehaviour
     /// <param name="value">変化値</param>
     public void FluctuationHP(int value)
     {
-        _hp = Mathf.Max(_hp - value, 0);
-
-        if(_hp <= 0)
+        if(_canDamage)
         {
-            _whenDead?.Invoke();
+            _hp = Mathf.Max(_hp - value, 0);
+
+            if(_hp <= 0)
+            {
+                _whenDead?.Invoke();
+            }
+
+            _canDamage = false;
+            Observable.Timer(TimeSpan.FromSeconds(_invincibleTime)).First().Subscribe(_ => _canDamage = true);
         }
     }
 }
