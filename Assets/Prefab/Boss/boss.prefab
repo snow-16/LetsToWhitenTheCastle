@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9174403138831064518}
   - component: {fileID: 6780842825838843266}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BossMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 4108491533028971695}
   - component: {fileID: 9172345065669453454}
   - component: {fileID: 7326173450733721623}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WhiteOut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -205,7 +205,7 @@ GameObject:
   - component: {fileID: 3203683628112214124}
   - component: {fileID: 5755375406859557057}
   - component: {fileID: 8088399342940315050}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: boss
   m_TagString: Boss
   m_Icon: {fileID: 0}
