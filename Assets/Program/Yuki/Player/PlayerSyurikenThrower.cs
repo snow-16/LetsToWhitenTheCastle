@@ -48,13 +48,16 @@ public class PlayerSyurikenThrower : MonoBehaviour
         //手裏剣の攻撃判定付与
         this.ObserveEveryValueChanged(_ => syuriken.HitEnemy).Where(hit => hit).Subscribe(_ =>
             {
-                _playerStateHolder.HitCount++;
-
-                if(_playerStateHolder.HitCount == _bombData.CollectLate)
+                if(_playerStateHolder.BombCount < _bombData.MaxBombs)
                 {
-                    _playerStateHolder.HitCount = 0;
-                    _playerStateHolder.BombCount = Mathf.Min(_playerStateHolder.BombCount + 1, _bombData.MaxBombs);
-                    Debug.Log("爆弾生成");
+                    _playerStateHolder.HitCount++;
+
+                    if(_playerStateHolder.HitCount == _bombData.CollectLate)
+                    {
+                        _playerStateHolder.HitCount = 0;
+                        _playerStateHolder.BombCount++;
+                        Debug.Log("爆弾生成");
+                    }
                 }
 
                 Destroy(syuriken.gameObject);
