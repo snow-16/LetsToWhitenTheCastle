@@ -470,9 +470,7 @@ MonoBehaviour:
   - inputSettings:
     - name: "\u30B8\u30E3\u30F3\u30D7"
       state: 0
-      inputFilters:
-      - inputFilter:
-          rid: 8914003054335361269
+      inputFilters: []
       action:
         m_PersistentCalls:
           m_Calls:
@@ -701,11 +699,6 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 8914003054335361269
-      type: {class: PlayerJumpStateFilter, ns: , asm: Assembly-CSharp}
-      data:
-        _stateHolder: {fileID: 1847830595433688677}
-        _state: 0
     - rid: 8914003054335361271
       type: {class: TimeFilter, ns: , asm: Assembly-CSharp}
       data:
@@ -714,7 +707,7 @@ MonoBehaviour:
       type: {class: PlayerJumpStateFilter, ns: , asm: Assembly-CSharp}
       data:
         _stateHolder: {fileID: 1847830595433688677}
-        _state: 0
+        _state: 
     - rid: 8914003054335361273
       type: {class: PlayerBombCountFilter, ns: , asm: Assembly-CSharp}
       data:

@@ -11,4 +11,6 @@ public class PlayerStateHolder : MonoBehaviour
     public int HitCount { get; set; }
     /// <summary> 爆弾の所持数 </summary>
     public int BombCount { get; set; }
+    /// <summary> 現在のジャンプ回数 </summary>
+    public int JumpCount { get; set; }
 }

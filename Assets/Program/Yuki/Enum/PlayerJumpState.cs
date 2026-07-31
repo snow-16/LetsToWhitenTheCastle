@@ -6,4 +6,5 @@ public enum PlayerJumpState
     OnGround,
     Rise,
     Fall,
+    Coyote,
 }

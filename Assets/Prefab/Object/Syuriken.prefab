@@ -283,6 +283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d093901919c10441193ead60bfde63ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _syurikenData: {fileID: 11400000, guid: f4ff0adace40142dda91a301d2d86fc7, type: 2}
   _effect: {fileID: 2930221021752662231, guid: ebf0657d3fa05402b9e4028419655dfe, type: 3}
   _orbitLength: 1.5
 --- !u!114 &-2072316617476697376

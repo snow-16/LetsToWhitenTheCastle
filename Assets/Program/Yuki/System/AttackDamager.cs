@@ -18,4 +18,14 @@ public class AttackDamager : MonoBehaviour
     {
         target.FluctuationHP(_damage);
     }
+
+    /// <summary>
+    /// 定数を元にダメージを与えるメソッド
+    /// </summary>
+    /// <param name="target">攻撃対象</param>
+    /// <param name="damage">ダメージ定数</param>
+    public void AttackByConstant(LifeSystem target, int damage)
+    {
+        target.FluctuationHP(damage);
+    }
 }
