@@ -2,17 +2,11 @@ using UnityEngine;
 
 public class BulletTimeDestroy : MonoBehaviour
 {
-    int _destroyTime;
-    int _nowTime;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    [SerializeField]float _destroyTime = 10;
+    float _nowTime;
     void Update()
     {
-        
+        if (_destroyTime < _nowTime) Destroy(gameObject);
+        else _nowTime += Time.deltaTime;
     }
 }

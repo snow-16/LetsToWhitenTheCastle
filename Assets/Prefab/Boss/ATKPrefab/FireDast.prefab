@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 121110826297032692}
   - component: {fileID: 6406841997028910245}
   - component: {fileID: 542266910253926202}
+  - component: {fileID: 7876073568531806087}
   m_Layer: 0
   m_Name: FireDast
   m_TagString: Untagged
@@ -103,6 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 0
+  _isParry: 0
 --- !u!58 &6406841997028910245
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -166,3 +168,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7876073568531806087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236764601173926468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 051133196f9365646afb6627909ed53b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _destroyTime: 10
