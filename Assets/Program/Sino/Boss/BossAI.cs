@@ -6,6 +6,8 @@ using UnityEngine.Events;
 public class BossAI : MonoBehaviour
 {
     Animator _anim;//アニメーション
+    [Tooltip("カメラのアニメーター")]
+    [SerializeField]Animator _cameraAnim;//カメラのアニメーション
     LifeSystem _lifeSystem;//ボスのライフシステム
     [Header("最初の咆哮")]
     [Tooltip("最初のアニメーションのステート名")]
@@ -80,10 +82,10 @@ public class BossAI : MonoBehaviour
     public IEnumerator StartAnim()
     {
         float animTime;
-        _anim.Play(_startAnimName);
+        _cameraAnim.Play(_startAnimName);
         _startEvent.Invoke();
         yield return null;
-        animTime = _anim.GetCurrentAnimatorStateInfo(0).length;
+        animTime = _cameraAnim.GetCurrentAnimatorStateInfo(0).length;
         yield return new WaitForSeconds(animTime);
         _isStartAnim = false;
     }
