@@ -1680,8 +1680,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2186075575816457936, guid: f90d05124dcf10b48901259ec2903f60, type: 3}
     - target: {fileID: 1249159598350733022, guid: 42cbb9724f9f0334392cb11ec833febc, type: 3}
+      propertyPath: _startAnimName
+      value: test
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249159598350733022, guid: 42cbb9724f9f0334392cb11ec833febc, type: 3}
       propertyPath: _attackChangeHP
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1249159598350733022, guid: 42cbb9724f9f0334392cb11ec833febc, type: 3}
       propertyPath: _attackEvent3.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
