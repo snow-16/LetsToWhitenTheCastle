@@ -14,7 +14,7 @@ public class BossAI : MonoBehaviour
     [SerializeField] string _startAnimName;
     [Tooltip("アニメーション以外で開始時に行うイベント")]
     [SerializeField] UnityEvent _startEvent = null;
-    bool _isStartAnim = true;
+    public bool _isStartAnim = true;
     [Header("共通設定")]
     [Tooltip("攻撃のクールダウン")]
     [SerializeField] float _attackCoolDownTime; //攻撃のクールダウン
