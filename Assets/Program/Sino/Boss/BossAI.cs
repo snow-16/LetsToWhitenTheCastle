@@ -101,7 +101,7 @@ public class BossAI : MonoBehaviour
 
     public void StartHpAttack()
     {
-        if ((float)(_lifeSystem.HP / _lifeSystem.MaxHP) * 100 >= _attackChangePercent)
+        if ((float)(_lifeSystem.HP / _lifeSystem.MaxHP) * 100 <= _attackChangePercent)
         {
             StartCoroutine(StartAttack());
         }
