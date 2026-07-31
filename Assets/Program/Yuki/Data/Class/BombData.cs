@@ -17,6 +17,13 @@ public class BombData : ScriptableObject
     /// <summary> 距離ダメージ倍率 </summary>
     public float DistanceMultiplier => _distanceMultiplier;
 
+    /// <summary> 高度ダメージ倍率 </summary>
+    [SerializeField]
+    [Tooltip("高度によるダメージ倍率です。")]
+    private float _heightMultiplier;
+    /// <summary> 高度ダメージ倍率 </summary>
+    public float HeightMultiplier => _heightMultiplier;
+
     /// <summary> 障害物のレイヤー </summary>
     [SerializeField]
     [Tooltip("着弾可能なレイヤーです。複数設定できます。")]

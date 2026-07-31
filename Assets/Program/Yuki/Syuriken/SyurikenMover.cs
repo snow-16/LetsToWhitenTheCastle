@@ -68,7 +68,9 @@ public class SyurikenMover : MonoBehaviour
         if(collision.gameObject.tag != "Player" && collision.TryGetComponent<LifeSystem>(out var target))
         {
             Instantiate(_effect, transform.position, Quaternion.identity);
-            GetComponent<AttackDamager>().AttackByConstant(target, (int)(_syurikenData.BaseDamage + _syurikenData.DistanceMultiplier / Mathf.Abs(transform.position.x - _throwPoint.x)));
+            var distanceMulti = _syurikenData.DistanceMultiplier / Mathf.Abs(transform.position.x - _throwPoint.x);
+            var heightMulti = Mathf.Abs(transform.position.y) * _syurikenData.HeightMultiplier;
+            GetComponent<AttackDamager>().AttackByConstant(target, (int)(_syurikenData.BaseDamage + distanceMulti + heightMulti));
             HitEnemy = true;
         }
         else if(((1 << collision.gameObject.layer) & _obstacleLayer) > 0)

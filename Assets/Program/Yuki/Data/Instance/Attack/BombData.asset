@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc2a4f00502a146acbba918156fe5f52, type: 3}
   m_Name: BombData
   m_EditorClassIdentifier: 
+  _baseDamage: 5
+  _distanceMultiplier: 1
+  _heightMultiplier: 1
   _hitableLayer:
     serializedVersion: 2
     m_Bits: 65
