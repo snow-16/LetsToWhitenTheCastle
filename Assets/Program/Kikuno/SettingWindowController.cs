@@ -2,23 +2,23 @@ using UnityEngine;
 
 public class SettingWindowController : MonoBehaviour
 {
-    [SerializeField] private GameObject settingWindow;
-    [SerializeField] private Animator animator;
+    [SerializeField] private GameObject _settingWindow;
+    [SerializeField] private Animator _animator;
 
     public void OpenSettingWindow()
     {
-        settingWindow.SetActive(true);
+        _settingWindow.SetActive(true);
 
-        animator.Play("SettingWindow_Open");
+        _animator.Play("SettingWindow_Open");
     }
 
     public void CloseSettingWindow()
     {
-        animator.Play("SettingWindow_Close");
+        _animator.Play("SettingWindow_Close");
     }
 
     public void HideSettingWindow()
     {
-        settingWindow.SetActive(false);
+        _settingWindow.SetActive(false);
     }
 }
