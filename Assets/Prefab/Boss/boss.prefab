@@ -97,6 +97,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4108491533028971695}
   - component: {fileID: 9172345065669453454}
+  - component: {fileID: 7326173450733721623}
   m_Layer: 0
   m_Name: WhiteOut
   m_TagString: Untagged
@@ -174,6 +175,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
+--- !u!114 &7326173450733721623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5216421995162894285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9eef99958ed9594e8f348e361eb33d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _whitePercent: 0.5
 --- !u!1 &7209548260746357353
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,7 +199,6 @@ GameObject:
   - component: {fileID: 2889058508967580732}
   - component: {fileID: 4465412908572668309}
   - component: {fileID: 4148298628064063589}
-  - component: {fileID: 6652848157523484256}
   - component: {fileID: 1249159598350733022}
   - component: {fileID: 1059647237313408932}
   - component: {fileID: 8206002603609780984}
@@ -287,19 +300,6 @@ MonoBehaviour:
   _whenDead:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &6652848157523484256
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7209548260746357353}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9eef99958ed9594e8f348e361eb33d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _whitePercent: 1
 --- !u!114 &1249159598350733022
 MonoBehaviour:
   m_ObjectHideFlags: 0
