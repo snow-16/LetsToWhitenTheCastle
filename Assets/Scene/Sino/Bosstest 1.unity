@@ -247,8 +247,8 @@ Transform:
   m_GameObject: {fileID: 3464047}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.45, y: 1, z: 1}
+  m_LocalPosition: {x: 8.8265, y: 0, z: 0}
+  m_LocalScale: {x: 21.10296, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 651549950}
@@ -395,6 +395,34 @@ PrefabInstance:
     - target: {fileID: 5451156591036558416, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5646415806626894085, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
+      propertyPath: _whenDead.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5646415806626894085, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
+      propertyPath: _whenDead.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5646415806626894085, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
+      propertyPath: _whenDead.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1566517296}
+    - target: {fileID: 5646415806626894085, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
+      propertyPath: _whenDead.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5646415806626894085, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
+      propertyPath: _whenDead.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 5646415806626894085, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
+      propertyPath: _whenDead.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5646415806626894085, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
+      propertyPath: _whenDead.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7483659782096205221, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
       propertyPath: m_Layer
@@ -814,6 +842,11 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!1 &1566517296 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4494743871027244820, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
+  m_PrefabInstance: {fileID: 871335793}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1810285336
 GameObject:
   m_ObjectHideFlags: 0
@@ -1679,6 +1712,10 @@ PrefabInstance:
       propertyPath: '_fallStonePrefab.Array.data[2]'
       value: 
       objectReference: {fileID: 2186075575816457936, guid: f90d05124dcf10b48901259ec2903f60, type: 3}
+    - target: {fileID: 1249159598350733022, guid: 42cbb9724f9f0334392cb11ec833febc, type: 3}
+      propertyPath: _startAnimName
+      value: test
+      objectReference: {fileID: 0}
     - target: {fileID: 1249159598350733022, guid: 42cbb9724f9f0334392cb11ec833febc, type: 3}
       propertyPath: _attackChangeHP
       value: 0
