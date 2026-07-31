@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6053d012a9f8444caec6cdf741cad6e, type: 3}
   m_Name: SyurikenData
   m_EditorClassIdentifier: 
+  _baseDamage: 1
+  _distanceMultiplier: 1
+  _heightMultiplier: 1
   _obstacleLayer:
     serializedVersion: 2
     m_Bits: 64

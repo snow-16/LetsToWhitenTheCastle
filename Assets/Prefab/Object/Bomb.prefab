@@ -203,6 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9a68f7c491c04c63a7ece400c103686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bombData: {fileID: 11400000, guid: 8d7664000d881483cad233aeb6d8e63f, type: 2}
   _effect: {fileID: 7675105930826551793, guid: 6fe9fbe92a12c41afa8eb314b1857db6, type: 3}
   _bombRangeCollider: {fileID: 1301451651054115817}
 --- !u!114 &4499256868958666262
