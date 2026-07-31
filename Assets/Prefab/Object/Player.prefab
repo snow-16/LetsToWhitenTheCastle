@@ -743,6 +743,7 @@ MonoBehaviour:
       type: {class: PlayerJumpCountFilter, ns: , asm: Assembly-CSharp}
       data:
         _stateHolder: {fileID: 1847830595433688677}
+        _jumpData: {fileID: 11400000, guid: a62628365653e4770a64f35fdfe5a085, type: 2}
 --- !u!114 &1042027325966768506
 MonoBehaviour:
   m_ObjectHideFlags: 0
