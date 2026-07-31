@@ -70,7 +70,7 @@ public class BombMover : MonoBehaviour
             if(boss.Length > 0 && boss.First(hit => hit.tag != "Player").TryGetComponent<LifeSystem>(out var bossLife))
             {
                 Instantiate(_effect, transform.position, Quaternion.identity);
-                GetComponent<AttackDamager>().AttackByConstant(bossLife, (int)(_bombData.BaseDamage + Mathf.Abs(transform.position.x - _throwPoint.x) * _bombData.DistanceMultiplier));
+                GetComponent<AttackDamager>().AttackByConstant(bossLife, (int)(_bombData.BaseDamage + _bombData.DistanceMultiplier / Mathf.Abs(transform.position.x - _throwPoint.x)));
             }
 
             Instantiate(_effect, transform.position, Quaternion.identity);
