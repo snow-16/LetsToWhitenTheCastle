@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4746145047324290926}
   - component: {fileID: 424525704453316403}
   - component: {fileID: 3389395270314869402}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CeilChecker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -470,7 +470,29 @@ MonoBehaviour:
   - inputSettings:
     - name: "\u30B8\u30E3\u30F3\u30D7"
       state: 0
-      inputFilters: []
+      inputFilters:
+      - inputFilter:
+          rid: 8914003159655645265
+      action:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 7969295920567037490}
+            m_TargetAssemblyTypeName: PlayerJumper, Assembly-CSharp
+            m_MethodName: StartJump
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+    - name: "\u30B8\u30E3\u30F3\u30D7"
+      state: 0
+      inputFilters:
+      - inputFilter:
+          rid: 8914003159655645266
       action:
         m_PersistentCalls:
           m_Calls:
@@ -707,11 +729,21 @@ MonoBehaviour:
       type: {class: PlayerJumpStateFilter, ns: , asm: Assembly-CSharp}
       data:
         _stateHolder: {fileID: 1847830595433688677}
-        _state: 
+        _state: 00000000
     - rid: 8914003054335361273
       type: {class: PlayerBombCountFilter, ns: , asm: Assembly-CSharp}
       data:
         _stateHolder: {fileID: 1847830595433688677}
+    - rid: 8914003159655645265
+      type: {class: PlayerJumpStateFilter, ns: , asm: Assembly-CSharp}
+      data:
+        _stateHolder: {fileID: 1847830595433688677}
+        _state: 0000000003000000
+    - rid: 8914003159655645266
+      type: {class: PlayerJumpCountFilter, ns: , asm: Assembly-CSharp}
+      data:
+        _stateHolder: {fileID: 1847830595433688677}
+        _jumpData: {fileID: 11400000, guid: a62628365653e4770a64f35fdfe5a085, type: 2}
 --- !u!114 &1042027325966768506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -811,7 +843,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1459949135720045824}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SyurikenThrowPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -844,7 +876,7 @@ GameObject:
   - component: {fileID: 5342029228614075840}
   - component: {fileID: 5339697746054454610}
   - component: {fileID: 1412544172250269678}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ParryArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -925,7 +957,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4414567086151612565}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BombThrowPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -958,7 +990,7 @@ GameObject:
   - component: {fileID: 960057181702943834}
   - component: {fileID: 3672348270402032429}
   - component: {fileID: 2264167988788363993}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GroundChecker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1046,7 +1078,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4858946373651788254}
   - component: {fileID: 1251055229464359915}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TargetPoiner
   m_TagString: Untagged
   m_Icon: {fileID: 0}

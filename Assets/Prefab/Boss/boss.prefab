@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9174403138831064518}
   - component: {fileID: 6780842825838843266}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BossMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4108491533028971695}
   - component: {fileID: 9172345065669453454}
-  m_Layer: 0
+  - component: {fileID: 7326173450733721623}
+  m_Layer: 10
   m_Name: WhiteOut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,6 +175,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
+--- !u!114 &7326173450733721623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5216421995162894285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9eef99958ed9594e8f348e361eb33d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _whitePercent: 0.5
 --- !u!1 &7209548260746357353
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,14 +199,13 @@ GameObject:
   - component: {fileID: 2889058508967580732}
   - component: {fileID: 4465412908572668309}
   - component: {fileID: 4148298628064063589}
-  - component: {fileID: 6652848157523484256}
   - component: {fileID: 1249159598350733022}
   - component: {fileID: 1059647237313408932}
   - component: {fileID: 8206002603609780984}
   - component: {fileID: 3203683628112214124}
   - component: {fileID: 5755375406859557057}
   - component: {fileID: 8088399342940315050}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: boss
   m_TagString: Boss
   m_Icon: {fileID: 0}
@@ -287,19 +300,6 @@ MonoBehaviour:
   _whenDead:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &6652848157523484256
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7209548260746357353}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9eef99958ed9594e8f348e361eb33d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _whitePercent: 1
 --- !u!114 &1249159598350733022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,6 +312,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 568a37b9e59843a4ebb038e63fb0b5cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _startAnimName: test
+  _startEvent:
+    m_PersistentCalls:
+      m_Calls: []
   _attackCoolDownTime: 2
   _LowHPattacCoolDownTime: 0
   _restAnimName: test
@@ -319,7 +323,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _attackChangeLange: 0
-  _attackChangeHP: 1
+  _attackChangeHP: 0
   _attackCount1To2: 3
   _attackCount2To3: 2
   _attackEvent1AnimState1: test
@@ -399,7 +403,11 @@ MonoBehaviour:
   _gunPrefab: {fileID: 6790866481913038463, guid: 3903dbe1e2c9bef48b96aa1af3a73589, type: 3}
   _fireDastPrefab: {fileID: 1236764601173926468, guid: ee45523bdd7c26245b29d3040ae63381, type: 3}
   _canonBalletPrefab: {fileID: 5778599076228967470, guid: e621fe14d9e87404daa99391ae686a94, type: 3}
-  _fallStonePrefab: {fileID: 3262472693003872983, guid: fe49a3b2068d05e488a7332296010393, type: 3}
+  _fallStonePrefab:
+  - {fileID: 3262472693003872983, guid: fe49a3b2068d05e488a7332296010393, type: 3}
+  - {fileID: 8342176784380729016, guid: 7afdf24868cd8604daa0d4d7b1613a73, type: 3}
+  - {fileID: 2186075575816457936, guid: f90d05124dcf10b48901259ec2903f60, type: 3}
+  _slashPrefab: {fileID: 0}
   _moveSpeed: 8
   _createArrowSam: 3
   _createArrowPosPlasY: 1
@@ -414,6 +422,9 @@ MonoBehaviour:
   _CreateStoneRandamPosx: 3
   _createStonePosYtoPlayer: 5
   _restCreateStoneTime: 1
+  _createSlashSam: 6
+  _SlashMoveSpeedMagnification: 1.3
+  _restCreateSlashTime: 0.5
 --- !u!95 &8206002603609780984
 Animator:
   serializedVersion: 7
