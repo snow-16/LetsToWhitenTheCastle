@@ -13,12 +13,6 @@ public class PlayerBombCountFilter : IInputFilter
 
     public bool IsCanInput()
     {
-        if(_stateHolder.BombCount > 0)
-        {
-            _stateHolder.BombCount--;
-            return true;
-        }
-
-        return false;
+        return _stateHolder.BombCount > 0;
     }
 }

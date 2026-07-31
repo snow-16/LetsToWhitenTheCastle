@@ -83,8 +83,12 @@ public class PlayerBombThrower : MonoBehaviour
     /// </summary>
     public void ThrowBomb()
     {
-        var bomb = Instantiate(_bombPrefab, _throwPoint.position, _bombPrefab.transform.rotation).GetComponent<BombMover>();
-        bomb.Throw(_throwFunc, _bombData.ThrowSpeed, _bombData.HitableLayer);
+        if(_isTargeting)
+        {
+            var bomb = Instantiate(_bombPrefab, _throwPoint.position, _bombPrefab.transform.rotation).GetComponent<BombMover>();
+            bomb.Throw(_throwFunc, _bombData.ThrowSpeed, _bombData.HitableLayer);
+            _playerStateHolder.BombCount--;
+        }
     }
 
     /// <summary>

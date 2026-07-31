@@ -1877,6 +1877,14 @@ PrefabInstance:
       propertyPath: managedReferences[8914003054335361272]._state.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4384845968121242775, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
+      propertyPath: _observableInputs.Array.data[5].inputSettings.Array.data[1].inputFilters.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4384845968121242775, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
+      propertyPath: _observableInputs.Array.data[5].inputSettings.Array.data[1].inputFilters.Array.data[0].inputFilter
+      value: 8914003054335361273
+      objectReference: {fileID: 0}
     - target: {fileID: 4494743871027244820, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
       propertyPath: m_Name
       value: Player
