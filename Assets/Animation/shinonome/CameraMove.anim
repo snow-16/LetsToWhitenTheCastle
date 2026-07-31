@@ -354,4 +354,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 1
+    functionName: StartTimer
+    data: 
+    objectReferenceParameter: {fileID: 803324619110175068, guid: 6e990ade89384c24e939ae54378a26d1, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
