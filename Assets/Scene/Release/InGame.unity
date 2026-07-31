@@ -1370,6 +1370,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9127146912987458027, guid: 5b4e7f17f78d7406f81fdf1b7e25206f, type: 3}
   m_PrefabInstance: {fileID: 1198664499}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1236017632 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1847830595433688677, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
+  m_PrefabInstance: {fileID: 2023931208}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4e6020ba882042ca8f47ffd5c6f155d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1333806062
 GameObject:
   m_ObjectHideFlags: 0
@@ -1768,6 +1779,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2264167988788363993, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
+      propertyPath: _coyoteTime
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 2828093316223380007, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
       propertyPath: _surviveArea
       value: 
@@ -1812,6 +1827,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4384845968121242775, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
+      propertyPath: managedReferences[8914003159655645266]._stateHolder
+      value: 
+      objectReference: {fileID: 1236017632}
     - target: {fileID: 4494743871027244820, guid: 8176381ee22c445f294f0601bc57d3bf, type: 3}
       propertyPath: m_Name
       value: Player
