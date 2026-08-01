@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,7 +19,21 @@ public class BombIconUI : MonoBehaviour
     [SerializeField]
     private GameObject _bombIconPrefab;
 
+    /// <summary> 爆弾アイコンのスプライト </summary>
+    [SerializeField]
+    private Sprite[] _bombSprites = new Sprite[2];
+
     private int _oldBombCount = -1;
+    /// <summary> 全爆弾のアイコン </summary>
+    private List<Image> _bombIcons = new();
+
+    void Start()
+    {
+        for(int i = 0; i < 3; i++)
+        {
+            _bombIcons.Add(Instantiate(_bombIconPrefab, _iconParent).GetComponent<Image>());
+        }
+    }
 
     private void Update()
     {
@@ -38,16 +53,16 @@ public class BombIconUI : MonoBehaviour
     /// </summary>
     private void UpdateIcons()
     {
-        // 今あるアイコンを全部削除
-        foreach (Transform child in _iconParent)
+        for(int i = 0; i < _bombIcons.Count; i++)
         {
-            Destroy(child.gameObject);
-        }
-
-        // 所持している爆弾の数だけアイコンを作る
-        for (int i = 0; i < _stateHolder.BombCount; i++)
-        {
-            Instantiate(_bombIconPrefab, _iconParent);
+            if(i < _stateHolder.BombCount)
+            {
+                _bombIcons[i].sprite = _bombSprites[1];
+            }
+            else
+            {
+                _bombIcons[i].sprite = _bombSprites[0];
+            }
         }
     }
 }
