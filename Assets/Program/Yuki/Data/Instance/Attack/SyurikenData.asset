@@ -12,11 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6053d012a9f8444caec6cdf741cad6e, type: 3}
   m_Name: SyurikenData
   m_EditorClassIdentifier: 
-  _baseDamage: 1
+  _baseDamage: 2
   _distanceMultiplier: 1
   _heightMultiplier: 1
   _obstacleLayer:
     serializedVersion: 2
+<<<<<<< HEAD
+    m_Bits: 64
+  _throwInterval: 0.2
+=======
     m_Bits: 2112
   _throwInterval: 0.1
+>>>>>>> e6f9c088da7e4aec4d84853aca8ebeed5a5b2e40
   _throwSpeed: 1
