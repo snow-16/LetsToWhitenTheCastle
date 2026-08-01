@@ -14,4 +14,39 @@ public class SoundSystem : MonoBehaviour
     /// <summary> SE用AudioSource </summary>
     [SerializeField]
     private AudioSource _seSource;
+
+    /// <summary> 自身のインスタンス </summary>
+    public static SoundSystem Instance { get; private set; }
+
+    void Start()
+    {
+        Instance = this;
+    }
+
+    /// <summary>
+    /// BGMを再生する
+    /// </summary>
+    /// <param name="bgm">再生するBGM</param>
+    public void PlayBGM(BGMType bgm)
+    {
+        _bgmSource.clip = _soundData.BGMList[(int)bgm];
+        _bgmSource.Play();
+    }
+
+    /// <summary>
+    /// BGMを停止する
+    /// </summary>
+    public void StopBGM()
+    {
+        _bgmSource.Stop();
+    }
+
+    /// <summary>
+    /// SEを再生する
+    /// </summary>
+    /// <param name="se">再生するSE</param>
+    public void PlaySE(SEType se)
+    {
+        _seSource.PlayOneShot(_soundData.SEList[(int)se]);
+    }
 }
