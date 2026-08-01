@@ -11,4 +11,5 @@ public enum SEType
     HitBomb,
     CollectBomb,
     PlayerDamaged,
+    Parry,
 }

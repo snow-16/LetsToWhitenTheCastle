@@ -38,6 +38,7 @@ public class PlayerParry : MonoBehaviour
                             var rb2d = hit.GetComponent<Rigidbody2D>();
                             rb2d.linearVelocity = (hit.transform.position - transform.position).normalized * _parryData.ParrySpeed;
                             hit.GetComponent<BulletHitAndDestroySys>()._isParry = true;
+                            SoundSystem.Instance.PlaySE(SEType.Parry);
                         }
                     );
                 }
