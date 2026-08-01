@@ -20,7 +20,15 @@ public class SoundSystem : MonoBehaviour
 
     void Start()
     {
-        Instance = this;
+        if(FindObjectsByType<SoundSystem>(FindObjectsSortMode.None).Length == 1)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     /// <summary>
