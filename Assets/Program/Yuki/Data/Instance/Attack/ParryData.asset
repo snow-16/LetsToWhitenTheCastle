@@ -16,4 +16,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   _parryTime: 0.1
-  _parrySpeed: 20
+  _parrySpeed: 50
