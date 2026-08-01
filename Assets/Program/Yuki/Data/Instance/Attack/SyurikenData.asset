@@ -17,6 +17,6 @@ MonoBehaviour:
   _heightMultiplier: 1
   _obstacleLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 2112
   _throwInterval: 0.1
   _throwSpeed: 1

@@ -533,6 +533,8 @@ MonoBehaviour:
       inputFilters:
       - inputFilter:
           rid: 8914003054335361271
+      - inputFilter:
+          rid: 8702124390350585929
       action:
         m_PersistentCalls:
           m_Calls:
@@ -690,6 +692,10 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
+    - rid: 8702124390350585929
+      type: {class: BossAnimationFilter, ns: , asm: Assembly-CSharp}
+      data:
+        _bossAI: {fileID: 0}
     - rid: 8914003054335361271
       type: {class: TimeFilter, ns: , asm: Assembly-CSharp}
       data:
