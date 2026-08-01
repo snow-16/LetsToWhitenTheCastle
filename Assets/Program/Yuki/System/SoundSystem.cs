@@ -1,16 +1,17 @@
 using UnityEngine;
 
+/// <summary>
+/// サウンドの管理を行うコンポーネント
+/// </summary>
 public class SoundSystem : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    /// <summary> 設定データ </summary>
+    [SerializeField]
+    private SoundData _soundData;
+    /// <summary> BGM用AudioSource </summary>
+    [SerializeField]
+    private AudioSource _bgmSource;
+    /// <summary> SE用AudioSource </summary>
+    [SerializeField]
+    private AudioSource _seSource;
 }
