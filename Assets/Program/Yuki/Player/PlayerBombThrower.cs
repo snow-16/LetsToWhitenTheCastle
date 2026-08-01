@@ -73,7 +73,6 @@ public class PlayerBombThrower : MonoBehaviour
                 var predictionCast = Physics2D.Linecast(startPos, endPos, _bombData.HitableLayer);
                 if(predictionCast)
                 {
-                    Debug.Log("do");
                     _lineRenderer.SetPosition(i, predictionCast.point);
                     _lineRenderer.positionCount = i + 1;
                     _targetPoiner.SetActive(true);
