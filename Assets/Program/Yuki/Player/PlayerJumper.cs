@@ -39,21 +39,25 @@ public class PlayerJumper : MonoBehaviour
             {
                 if(_isStrain)
                 {
-                    _rigidbody2D.linearVelocityY = 0;
+                    _rigidbody2D.linearVelocityY = -0.01f;
                     _nowJumpPower += _jumpData.KeepJumpPower / _movingScale;
                 }
 
-                transform.Translate(0, _nowJumpPower, 0);
+                transform.Translate(0, _nowJumpPower, -0.01f);
 
-                if(transform.position.y >= _groundHeight + _jumpData.MaxJump || _rigidbody2D.linearVelocityY < 0)
+                if(transform.position.y >= _groundHeight + _jumpData.MaxJump || _rigidbody2D.linearVelocityY < -0.01f)
                 {
                     _playerStateHolder.PlayerJumpState = PlayerJumpState.Fall;
-                    _rigidbody2D.linearVelocityY = 0;
+                    _rigidbody2D.linearVelocityY = -0.01f;
                 }
             }
             else if(_isStrain)
             {
                 _isStrain = false;
+            }
+            else if(_playerStateHolder.PlayerJumpState == PlayerJumpState.Fall && _rigidbody2D.linearVelocityY == 0)
+            {
+                _playerStateHolder.PlayerJumpState = PlayerJumpState.OnGround;
             }
         }
     }
