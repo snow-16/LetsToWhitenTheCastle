@@ -787,6 +787,7 @@ MonoBehaviour:
   _bombPrefab: {fileID: 2277894573388302933, guid: d8662a85197404ea3949337f56cbab60, type: 3}
   _targetPoiner: {fileID: 9121124591300543872}
   _throwPoint: {fileID: 4414567086151612565}
+  _throwLineGradationLevel: 8
 --- !u!114 &3847191311951805826
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -18,6 +20,9 @@ public class PlayerBombThrower : MonoBehaviour
     /// <summary> 爆弾を投げる中心 </summary>
     [SerializeField]
     private Transform _throwPoint;
+    /// <summary> 高度に応じて放物線の色をどれだけ変えるか </summary>
+    [SerializeField]
+    private float _throwLineGradationLevel;
 
     /// <summary> 投擲軌道の計算関数 </summary>
     private Func<float, Vector2> _throwFunc;
@@ -48,20 +53,33 @@ public class PlayerBombThrower : MonoBehaviour
 
             var onGround = _playerStateHolder.PlayerJumpState == PlayerJumpState.OnGround || _playerStateHolder.PlayerJumpState == PlayerJumpState.Coyote;
             _lineRenderer.positionCount = 30;
-            _lineRenderer.startColor = _lineRenderer.endColor = new(1, 1, 1, onGround ? 0.5f : 0.1f);
+            var heightColorList = new List<Color>();
+            var alphaMap = new GradientAlphaKey[2];
+            alphaMap[0] = new GradientAlphaKey(onGround ? 0.8f : 0.3f, 0);
+            alphaMap[1] = new GradientAlphaKey(onGround ? 0.8f : 0.3f, 1);
+            var setColorInterval = (_lineRenderer.positionCount - (_lineRenderer.positionCount % 7)) / 7;
             
-            for(int i = 0; i < 30; i++)
+            for(int i = 0; i < _lineRenderer.positionCount; i++)
             {
                 var startPos = i == 0 ? (Vector2)_throwPoint.position : _throwFunc(i - 1);
                 var endPos = _throwFunc(i);
 
+                if(i % setColorInterval == 0)
+                {
+                    var gradationLevel = startPos.y / _throwLineGradationLevel;
+                    heightColorList.Add(new Color(1, Mathf.Max(1 - gradationLevel, 0), Mathf.Max(1 - gradationLevel, 0), 1));
+                }
+
                 var predictionCast = Physics2D.Linecast(startPos, endPos, _bombData.HitableLayer);
                 if(predictionCast)
                 {
+                    Debug.Log("do");
                     _lineRenderer.SetPosition(i, predictionCast.point);
                     _lineRenderer.positionCount = i + 1;
                     _targetPoiner.SetActive(true);
                     _targetPoiner.transform.position = predictionCast.point;
+                    var gradationLevel = predictionCast.point.y / _throwLineGradationLevel;
+                    heightColorList.Add(new Color(1, Mathf.Max(1 - gradationLevel, 0), Mathf.Max(1 - gradationLevel, 0), 1));
                     break;
                 }
                 else
@@ -69,6 +87,17 @@ public class PlayerBombThrower : MonoBehaviour
                     _lineRenderer.SetPosition(i, endPos);
                 }
             }
+
+            Gradient gradient = new();
+            var heightColorMap = new List<GradientColorKey>();
+
+            for(int i = 0; i < heightColorList.Count; i++)
+            {
+                heightColorMap.Add(new GradientColorKey(heightColorList[i], i / (heightColorList.Count - 1f)));
+            }
+            
+            gradient.SetKeys(heightColorMap.ToArray(), alphaMap);
+            _lineRenderer.colorGradient = gradient;
         }
         else
         {
