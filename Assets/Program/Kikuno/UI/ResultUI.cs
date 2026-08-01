@@ -3,20 +3,56 @@ using TMPro;
 
 public class ResultUI : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI _timeText;
-    [SerializeField] private TextMeshProUGUI _scoreText;
-    [SerializeField] private TextMeshProUGUI _rankText;
+    [SerializeField] private TextMeshProUGUI _clearTimeText;
+    [SerializeField] private TextMeshProUGUI _hpScoreText;
+    [SerializeField] private TextMeshProUGUI _timeBonusText;
+    [SerializeField] private TextMeshProUGUI _totalScoreText;
+    [SerializeField] private UnityEngine.UI.Image _rankImage;
+    [SerializeField] private Sprite _rankS;
+    [SerializeField] private Sprite _rankA;
+    [SerializeField] private Sprite _rankB;
+    [SerializeField] private Sprite _rankC;
 
 
     private void Start()
     {
-        _timeText.text =
+        _clearTimeText.text =
             "TIME : " + ResultData.Instance.ClearTime.ToString("F2");
 
-        _scoreText.text =
-            "SCORE : " + ResultData.Instance.TotalScore;
 
-        _rankText.text =
-            "RANK : " + ResultData.Instance.Rank;
+        _hpScoreText.text =
+            "HP SCORE : " + ResultData.Instance.HpScore;
+
+
+        _timeBonusText.text =
+            "TIME BONUS : " + ResultData.Instance.TimeScore;
+
+
+        _totalScoreText.text =
+            "TOTAL SCORE : " + ResultData.Instance.TotalScore;
+
+
+        SetRankImage(ResultData.Instance.Rank);
+    }
+    private void SetRankImage(string rank)
+    {
+        switch (rank)
+        {
+            case "S":
+                _rankImage.sprite = _rankS;
+                break;
+
+            case "A":
+                _rankImage.sprite = _rankA;
+                break;
+
+            case "B":
+                _rankImage.sprite = _rankB;
+                break;
+
+            case "C":
+                _rankImage.sprite = _rankC;
+                break;
+        }
     }
 }
