@@ -2,47 +2,67 @@ using UnityEngine;
 
 public class ResultScoreManager : MonoBehaviour
 {
+    [Header("HP")]
+    [SerializeField] private int _maxHpScore = 5000;
+
     [Header("タイムボーナス")]
-    [Tooltip("タイムボーナスの基準となる点数")]
-    [SerializeField] private int _basePoint = 5000;
+    [SerializeField] private int _time70 = 5000;
+    [SerializeField] private int _time80 = 4000;
+    [SerializeField] private int _time90 = 3000;
+    [SerializeField] private int _time100 = 2000;
+    [SerializeField] private int _time110 = 1000;
 
-    [Tooltip("クリア時間1秒あたりの倍率")]
-    [SerializeField] private int _timeMultiplier = 100;
+    public int HpScore { get; private set; }
+    public int TimeScore { get; private set; }
+    public int TotalScore { get; private set; }
 
-    [Header("ノーダメージボーナス")]
-    [SerializeField] private int _noDamageBonus = 1700;
 
-    [Header("被弾ペナルティ")]
-    [SerializeField] private int _damagePenalty = 300;
-
-    /// <summary>
-    /// 最終スコアを計算
-    /// </summary>
-    public int CalculateScore(float clearTime, int damageCount)
+    public int CalculateScore(float clearTime, int currentHp, int maxHp)
     {
+        // HPスコア
+        float hpRate = (float)currentHp / maxHp;
+        HpScore = Mathf.RoundToInt(hpRate * _maxHpScore);
+
+
         // タイムボーナス
-        int timeBonus = Mathf.Max(
-            (_basePoint - Mathf.FloorToInt(clearTime)) * _timeMultiplier,
-            0
-        );
+        TimeScore = 0;
 
-        // ノーダメージボーナス
-        int noDamageBonus = 0;
+        if (clearTime <= 70)
+            TimeScore = _time70;
+        else if (clearTime <= 80)
+            TimeScore = _time80;
+        else if (clearTime <= 90)
+            TimeScore = _time90;
+        else if (clearTime <= 100)
+            TimeScore = _time100;
+        else if (clearTime <= 110)
+            TimeScore = _time110;
 
-        if (damageCount == 0)
+
+        // 合計
+        TotalScore = HpScore + TimeScore;
+
+        return TotalScore;
+    }
+
+
+    public string GetRank(int score)
+    {
+        if (score >= 8000)
         {
-            noDamageBonus = _noDamageBonus;
+            return "S";
         }
-
-        // 被弾ペナルティ
-        int damagePenalty = damageCount * _damagePenalty;
-
-        // 最終スコア
-        int totalScore =
-            timeBonus +
-            noDamageBonus -
-            damagePenalty;
-
-        return Mathf.Max(totalScore, 0);
+        else if (score >= 7000)
+        {
+            return "A";
+        }
+        else if (score >= 5000)
+        {
+            return "B";
+        }
+        else
+        {
+            return "C";
+        }
     }
 }
