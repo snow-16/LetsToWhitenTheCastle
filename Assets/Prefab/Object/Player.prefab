@@ -528,16 +528,20 @@ MonoBehaviour:
               m_BoolArgument: 0
             m_CallState: 2
   - inputSettings:
-    - name: "\u72D9\u3046"
-      state: 0
-      inputFilters: []
+    - name: "\u6295\u3052\u308B"
+      state: 1
+      inputFilters:
+      - inputFilter:
+          rid: 8914003054335361271
+      - inputFilter:
+          rid: 8702124390350585929
       action:
         m_PersistentCalls:
           m_Calls:
-          - m_Target: {fileID: 1042027325966768506}
-            m_TargetAssemblyTypeName: PlayerWalker, Assembly-CSharp
-            m_MethodName: LockForword
-            m_Mode: 6
+          - m_Target: {fileID: 2828093316223380007}
+            m_TargetAssemblyTypeName: PlayerSyurikenThrower, Assembly-CSharp
+            m_MethodName: ThrowSyuriken
+            m_Mode: 1
             m_Arguments:
               m_ObjectArgument: {fileID: 0}
               m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -546,18 +550,10 @@ MonoBehaviour:
               m_StringArgument: 
               m_BoolArgument: 1
             m_CallState: 2
-    - name: "\u6295\u3052\u308B"
-      state: 1
-      inputFilters:
-      - inputFilter:
-          rid: 8914003054335361271
-      action:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 2828093316223380007}
-            m_TargetAssemblyTypeName: PlayerSyurikenThrower, Assembly-CSharp
-            m_MethodName: ThrowSyuriken
-            m_Mode: 1
+          - m_Target: {fileID: 1042027325966768506}
+            m_TargetAssemblyTypeName: PlayerWalker, Assembly-CSharp
+            m_MethodName: LockForword
+            m_Mode: 6
             m_Arguments:
               m_ObjectArgument: {fileID: 0}
               m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -585,29 +581,15 @@ MonoBehaviour:
               m_BoolArgument: 0
             m_CallState: 2
   - inputSettings:
-    - name: "\u72D9\u3046"
-      state: 0
-      inputFilters:
-      - inputFilter:
-          rid: 8914003054335361272
+    - name: "\u69CB\u3048"
+      state: 1
+      inputFilters: []
       action:
         m_PersistentCalls:
           m_Calls:
           - m_Target: {fileID: 1042027325966768506}
             m_TargetAssemblyTypeName: PlayerWalker, Assembly-CSharp
             m_MethodName: LockForword
-            m_Mode: 6
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 1
-            m_CallState: 2
-          - m_Target: {fileID: 1125391145342804999}
-            m_TargetAssemblyTypeName: PlayerBombThrower, Assembly-CSharp
-            m_MethodName: SwitchTargeting
             m_Mode: 6
             m_Arguments:
               m_ObjectArgument: {fileID: 0}
@@ -642,18 +624,6 @@ MonoBehaviour:
           - m_Target: {fileID: 1042027325966768506}
             m_TargetAssemblyTypeName: PlayerWalker, Assembly-CSharp
             m_MethodName: LockForword
-            m_Mode: 6
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-          - m_Target: {fileID: 1125391145342804999}
-            m_TargetAssemblyTypeName: PlayerBombThrower, Assembly-CSharp
-            m_MethodName: SwitchTargeting
             m_Mode: 6
             m_Arguments:
               m_ObjectArgument: {fileID: 0}
@@ -722,6 +692,10 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
+    - rid: 8702124390350585929
+      type: {class: BossAnimationFilter, ns: , asm: Assembly-CSharp}
+      data:
+        _bossAI: {fileID: 0}
     - rid: 8914003054335361271
       type: {class: TimeFilter, ns: , asm: Assembly-CSharp}
       data:
@@ -730,7 +704,7 @@ MonoBehaviour:
       type: {class: PlayerJumpStateFilter, ns: , asm: Assembly-CSharp}
       data:
         _stateHolder: {fileID: 1847830595433688677}
-        _state: 00000000
+        _state: 0000000003000000
     - rid: 8914003054335361273
       type: {class: PlayerBombCountFilter, ns: , asm: Assembly-CSharp}
       data:
@@ -819,6 +793,7 @@ MonoBehaviour:
   _bombPrefab: {fileID: 2277894573388302933, guid: d8662a85197404ea3949337f56cbab60, type: 3}
   _targetPoiner: {fileID: 9121124591300543872}
   _throwPoint: {fileID: 4414567086151612565}
+  _throwLineGradationLevel: 8
 --- !u!114 &3847191311951805826
 MonoBehaviour:
   m_ObjectHideFlags: 0
