@@ -21,8 +21,6 @@ public class PlayerBombThrower : MonoBehaviour
 
     /// <summary> 投擲軌道の計算関数 </summary>
     private Func<float, Vector2> _throwFunc;
-    /// <summary> 爆弾を構えているか </summary>
-    private bool _isTargeting = false;
 
     /// <summary> LineRendererのインスタンス </summary>
     private LineRenderer _lineRenderer;
@@ -48,8 +46,9 @@ public class PlayerBombThrower : MonoBehaviour
                 return (Vector2)basePoint + new Vector2(x - zeroPoint, -_bombData.ThrowCurve * Mathf.Pow(x, 2) + _bombData.ThrowHeight);
             };
 
+            var onGround = _playerStateHolder.PlayerJumpState == PlayerJumpState.OnGround || _playerStateHolder.PlayerJumpState == PlayerJumpState.Coyote;
             _lineRenderer.positionCount = 30;
-            _lineRenderer.startColor = _lineRenderer.endColor = new(1, 1, 1, _isTargeting ? 0.5f : 0.1f);
+            _lineRenderer.startColor = _lineRenderer.endColor = new(1, 1, 1, onGround ? 0.5f : 0.1f);
             
             for(int i = 0; i < 30; i++)
             {
@@ -83,21 +82,12 @@ public class PlayerBombThrower : MonoBehaviour
     /// </summary>
     public void ThrowBomb()
     {
-        if(_isTargeting)
+        if(_playerStateHolder.PlayerJumpState == PlayerJumpState.OnGround || _playerStateHolder.PlayerJumpState == PlayerJumpState.Coyote)
         {
             var bomb = Instantiate(_bombPrefab, _throwPoint.position, _bombPrefab.transform.rotation).GetComponent<BombMover>();
             bomb.Throw(_throwFunc, _bombData.ThrowSpeed, _bombData.HitableLayer);
             _playerStateHolder.BombCount--;
             SoundSystem.Instance.PlaySE(SEType.ThrowBomb);
         }
-    }
-
-    /// <summary>
-    /// 爆弾を構えているかを変更する
-    /// </summary>
-    /// <param name="isTargeting"></param>
-    public void SwitchTargeting(bool isTargeting)
-    {
-        _isTargeting = isTargeting;
     }
 }
