@@ -528,24 +528,6 @@ MonoBehaviour:
               m_BoolArgument: 0
             m_CallState: 2
   - inputSettings:
-    - name: "\u72D9\u3046"
-      state: 0
-      inputFilters: []
-      action:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1042027325966768506}
-            m_TargetAssemblyTypeName: PlayerWalker, Assembly-CSharp
-            m_MethodName: LockForword
-            m_Mode: 6
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 1
-            m_CallState: 2
     - name: "\u6295\u3052\u308B"
       state: 1
       inputFilters:
@@ -558,6 +540,18 @@ MonoBehaviour:
             m_TargetAssemblyTypeName: PlayerSyurikenThrower, Assembly-CSharp
             m_MethodName: ThrowSyuriken
             m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+          - m_Target: {fileID: 1042027325966768506}
+            m_TargetAssemblyTypeName: PlayerWalker, Assembly-CSharp
+            m_MethodName: LockForword
+            m_Mode: 6
             m_Arguments:
               m_ObjectArgument: {fileID: 0}
               m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -585,6 +579,24 @@ MonoBehaviour:
               m_BoolArgument: 0
             m_CallState: 2
   - inputSettings:
+    - name: "\u69CB\u3048"
+      state: 1
+      inputFilters: []
+      action:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1042027325966768506}
+            m_TargetAssemblyTypeName: PlayerWalker, Assembly-CSharp
+            m_MethodName: LockForword
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
     - name: "\u6295\u64F2"
       state: 2
       inputFilters:
