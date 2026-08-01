@@ -12,3 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd0d2750ba9c2466195aaab4a6f4614a, type: 3}
   m_Name: SoundData
   m_EditorClassIdentifier: 
+  _bgmList:
+  - {fileID: 8300000, guid: 6daf50e67245e43c59ba693f5a5d1e97, type: 3}
+  - {fileID: 8300000, guid: c793b1f4f4fb94644aac9d57dd173c91, type: 3}
+  - {fileID: 8300000, guid: 5ea5712b2ee7649388a1ededc447e5b3, type: 3}
+  - {fileID: 8300000, guid: df363f5ba955e4c1795f1b85ca877bc2, type: 3}
+  _seList:
+  - {fileID: 8300000, guid: 2ebde97ed41b54f1c8ad04d27a1a6aa7, type: 3}
+  - {fileID: 8300000, guid: 9b477e3053a0b4bcb9c4ca6ba74a35d4, type: 3}
+  - {fileID: 8300000, guid: 8a8b65567ee7f4cf7b66de8ac3649389, type: 3}
+  - {fileID: 8300000, guid: c9896991184914b7a9687bc38ddfd20c, type: 3}
+  - {fileID: 8300000, guid: a60a79f74ed894e30b6c53efb0374367, type: 3}
+  - {fileID: 8300000, guid: 5ada2c6be9f7c4c5ca79c924f7e55c48, type: 3}
+  - {fileID: 8300000, guid: 1de57f9beab0145baabf22b2c9be7ca1, type: 3}
+  - {fileID: 8300000, guid: 98ec0eafcb5cd44d4a5d6bbd266cbfae, type: 3}
