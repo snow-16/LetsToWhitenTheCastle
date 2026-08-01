@@ -9,14 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6053d012a9f8444caec6cdf741cad6e, type: 3}
-  m_Name: SyurikenData
+  m_Script: {fileID: 11500000, guid: bc2a4f00502a146acbba918156fe5f52, type: 3}
+  m_Name: BombDataD
   m_EditorClassIdentifier: 
-  _baseDamage: 2
+  _baseDamage: 5
   _distanceMultiplier: 1
   _heightMultiplier: 1
-  _obstacleLayer:
+  _hitableLayer:
     serializedVersion: 2
-    m_Bits: 64
-  _throwInterval: 0.2
-  _throwSpeed: 1
+    m_Bits: 1024
+  _throwCurve: 0.1
+  _throwHeight: 4
+  _throwLength: 1
+  _throwSpeed: 20
+  _collectLate: 10
+  _maxBombs: 3
