@@ -44,6 +44,7 @@ public class PlayerSyurikenThrower : MonoBehaviour
     {
         var syuriken = Instantiate(_syurikenPrefab, _throwPoint.position, _syurikenPrefab.transform.rotation).GetComponent<SyurikenMover>();
         syuriken.Throw(_syurikenData.ThrowSpeed, _surviveArea, _syurikenData.ObstacleLayer);
+        SoundSystem.Instance.PlaySE(SEType.ThrowSyuriken);
 
         //手裏剣の攻撃判定付与
         this.ObserveEveryValueChanged(_ => syuriken.HitEnemy).Where(hit => hit).Subscribe(_ =>
@@ -57,6 +58,7 @@ public class PlayerSyurikenThrower : MonoBehaviour
                         _playerStateHolder.HitCount = 0;
                         _playerStateHolder.BombCount++;
                         Debug.Log("爆弾生成");
+                        SoundSystem.Instance.PlaySE(SEType.CollectBomb);
                     }
                 }
 

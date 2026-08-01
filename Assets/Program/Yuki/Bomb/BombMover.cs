@@ -76,6 +76,7 @@ public class BombMover : MonoBehaviour
 
             Instantiate(_effect, transform.position, Quaternion.identity);
             Destroy(gameObject);
+            SoundSystem.Instance.PlaySE(SEType.HitBomb);
         }
     }
 }

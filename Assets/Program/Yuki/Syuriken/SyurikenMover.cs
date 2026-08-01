@@ -72,6 +72,7 @@ public class SyurikenMover : MonoBehaviour
             var heightMulti = Mathf.Abs(transform.position.y) * _syurikenData.HeightMultiplier;
             GetComponent<AttackDamager>().AttackByConstant(target, (int)(_syurikenData.BaseDamage + distanceMulti + heightMulti));
             HitEnemy = true;
+            SoundSystem.Instance.PlaySE(SEType.HitSyuriken);
         }
         else if(((1 << collision.gameObject.layer) & _obstacleLayer) > 0)
         {

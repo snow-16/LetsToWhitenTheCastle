@@ -88,6 +88,7 @@ public class PlayerBombThrower : MonoBehaviour
             var bomb = Instantiate(_bombPrefab, _throwPoint.position, _bombPrefab.transform.rotation).GetComponent<BombMover>();
             bomb.Throw(_throwFunc, _bombData.ThrowSpeed, _bombData.HitableLayer);
             _playerStateHolder.BombCount--;
+            SoundSystem.Instance.PlaySE(SEType.ThrowBomb);
         }
     }
 

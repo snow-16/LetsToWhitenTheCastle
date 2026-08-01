@@ -71,6 +71,7 @@ public class PlayerJumper : MonoBehaviour
             _isStrain = true;
             _playerStateHolder.PlayerJumpState = PlayerJumpState.Rise;
             _playerStateHolder.JumpCount++;
+            SoundSystem.Instance.PlaySE(SEType.Jump);
         }
     }
 
