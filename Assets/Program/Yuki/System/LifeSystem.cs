@@ -51,6 +51,11 @@ public class LifeSystem : MonoBehaviour
                 _whenDead?.Invoke();
             }
 
+            if(tag == "Player")
+            {
+                SoundSystem.Instance.PlaySE(SEType.PlayerDamaged);
+            }
+
             _canDamage = false;
             Observable.Timer(TimeSpan.FromSeconds(_invincibleTime)).First().Subscribe(_ => _canDamage = true);
         }

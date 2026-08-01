@@ -54,6 +54,7 @@ public class PlayerGroundChecker : MonoBehaviour
             {
                 _playerStateHolder.PlayerJumpState = PlayerJumpState.OnGround;
                 _playerStateHolder.JumpCount = 0;
+                SoundSystem.Instance.PlaySE(SEType.Landing);
             }
         }
     }
