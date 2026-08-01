@@ -86,7 +86,7 @@ public class BossAI : MonoBehaviour
         _startEvent.Invoke();
         yield return null;
         animTime = _cameraAnim.GetCurrentAnimatorStateInfo(0).length;
-        yield return new WaitForSeconds(animTime);
+        yield return new WaitForSeconds(animTime + 3f);
         _isStartAnim = false;
     }
     public IEnumerator StartRest()
