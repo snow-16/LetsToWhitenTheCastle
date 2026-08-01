@@ -1886,14 +1886,22 @@ PrefabInstance:
       objectReference: {fileID: -4857847312288323915, guid: f7a492f980ac2469e98b46de6dd51a46, type: 2}
     - target: {fileID: 9193110436314479294, guid: 36c4b8e70a3c8ef48a095d422afe02e9, type: 3}
       propertyPath: _whenDead.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9193110436314479294, guid: 36c4b8e70a3c8ef48a095d422afe02e9, type: 3}
       propertyPath: _whenDead.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9193110436314479294, guid: 36c4b8e70a3c8ef48a095d422afe02e9, type: 3}
+      propertyPath: _whenDead.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9193110436314479294, guid: 36c4b8e70a3c8ef48a095d422afe02e9, type: 3}
       propertyPath: _whenDead.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1735205212}
+    - target: {fileID: 9193110436314479294, guid: 36c4b8e70a3c8ef48a095d422afe02e9, type: 3}
+      propertyPath: _whenDead.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1735205213}
     - target: {fileID: 9193110436314479294, guid: 36c4b8e70a3c8ef48a095d422afe02e9, type: 3}
@@ -1901,15 +1909,31 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9193110436314479294, guid: 36c4b8e70a3c8ef48a095d422afe02e9, type: 3}
+      propertyPath: _whenDead.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9193110436314479294, guid: 36c4b8e70a3c8ef48a095d422afe02e9, type: 3}
       propertyPath: _whenDead.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: GameClear
+      objectReference: {fileID: 0}
+    - target: {fileID: 9193110436314479294, guid: 36c4b8e70a3c8ef48a095d422afe02e9, type: 3}
+      propertyPath: _whenDead.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
       value: LoadScene
       objectReference: {fileID: 0}
     - target: {fileID: 9193110436314479294, guid: 36c4b8e70a3c8ef48a095d422afe02e9, type: 3}
       propertyPath: _whenDead.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: GameClearManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9193110436314479294, guid: 36c4b8e70a3c8ef48a095d422afe02e9, type: 3}
+      propertyPath: _whenDead.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
       value: SceneChanger, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 9193110436314479294, guid: 36c4b8e70a3c8ef48a095d422afe02e9, type: 3}
       propertyPath: _whenDead.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 9193110436314479294, guid: 36c4b8e70a3c8ef48a095d422afe02e9, type: 3}
+      propertyPath: _whenDead.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2674,9 +2698,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e862e8785e2c6664b893d5982a75731a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameTimer: {fileID: 0}
-  _scoreManager: {fileID: 0}
-  _playerLife: {fileID: 0}
+  _gameTimer: {fileID: 1735205209}
+  _scoreManager: {fileID: 1735205211}
+  _playerLife: {fileID: 1236017629}
 --- !u!114 &1735205213
 MonoBehaviour:
   m_ObjectHideFlags: 0

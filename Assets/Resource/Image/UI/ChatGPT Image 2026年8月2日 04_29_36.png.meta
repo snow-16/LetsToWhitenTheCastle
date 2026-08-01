@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: 19b3f5b5b04767349a32d9a2d712fe93
+guid: fc9ce187e30c18d429add17604a1c3fe
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2042894697587374874
-    second: "\u30EA\u30B6\u30EB\u30C8\u753B\u9762_\u53F3\u67A0\u2461_0"
-  - first:
-      213: -7675537996029455456
-    second: "\u30EA\u30B6\u30EB\u30C8\u753B\u9762_\u53F3\u67A0\u2461_1"
-  - first:
-      213: -1876455485605627104
-    second: "\u30EA\u30B6\u30EB\u30C8\u753B\u9762_\u53F3\u67A0\u2461_2"
-  - first:
-      213: 8509483163656478261
-    second: "\u30EA\u30B6\u30EB\u30C8\u753B\u9762_\u53F3\u67A0\u2461_3"
+      213: -5174310453699274535
+    second: "ChatGPT Image 2026\u5E748\u67082\u65E5 04_29_36_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,89 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u30EA\u30B6\u30EB\u30C8\u753B\u9762_\u53F3\u67A0\u2461_0"
+      name: "ChatGPT Image 2026\u5E748\u67082\u65E5 04_29_36_0"
       rect:
         serializedVersion: 2
-        x: 3
+        x: 0
         y: 0
-        width: 350
+        width: 1536
         height: 1024
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6e486c4a81e26a3e0800000000000000
-      internalID: -2042894697587374874
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "\u30EA\u30B6\u30EB\u30C8\u753B\u9762_\u53F3\u67A0\u2461_1"
-      rect:
-        serializedVersion: 2
-        x: 82
-        y: 620
-        width: 7
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0a396aefbd20b7590800000000000000
-      internalID: -7675537996029455456
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "\u30EA\u30B6\u30EB\u30C8\u753B\u9762_\u53F3\u67A0\u2461_2"
-      rect:
-        serializedVersion: 2
-        x: 83
-        y: 480
-        width: 6
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 02bb4af7dad75f5e0800000000000000
-      internalID: -1876455485605627104
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "\u30EA\u30B6\u30EB\u30C8\u753B\u9762_\u53F3\u67A0\u2461_3"
-      rect:
-        serializedVersion: 2
-        x: 374
-        y: 0
-        width: 1152
-        height: 1024
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 53e59e72ad1c71670800000000000000
-      internalID: 8509483163656478261
+      spriteID: 9d81aa99e082138b0800000000000000
+      internalID: -5174310453699274535
       vertices: []
       indices: 
       edges: []
@@ -200,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: c201650e92eb71042b9b26c665c25265
     internalID: 0
     vertices: []
     indices: 
@@ -210,10 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "\u30EA\u30B6\u30EB\u30C8\u753B\u9762_\u53F3\u67A0\u2461_0": -2042894697587374874
-      "\u30EA\u30B6\u30EB\u30C8\u753B\u9762_\u53F3\u67A0\u2461_1": -7675537996029455456
-      "\u30EA\u30B6\u30EB\u30C8\u753B\u9762_\u53F3\u67A0\u2461_2": -1876455485605627104
-      "\u30EA\u30B6\u30EB\u30C8\u753B\u9762_\u53F3\u67A0\u2461_3": 8509483163656478261
+      "ChatGPT Image 2026\u5E748\u67082\u65E5 04_29_36_0": -5174310453699274535
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
