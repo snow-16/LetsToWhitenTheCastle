@@ -771,7 +771,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd2d5ff31e0b40c1912d124e66c8d7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _syurikenData: {fileID: 11400000, guid: f4ff0adace40142dda91a301d2d86fc7, type: 2}
+  _syurikenData: {fileID: 11400000, guid: 21380360edea60d4593567eadf6a8aab, type: 2}
   _bombData: {fileID: 11400000, guid: 8d7664000d881483cad233aeb6d8e63f, type: 2}
   _syurikenPrefab: {fileID: 5954587214335287671, guid: 7a1449770cd624792a9ca044a867af21, type: 3}
   _intervalData: {fileID: 11400000, guid: 661116f87778d4da7adce4f3c2bca000, type: 2}
