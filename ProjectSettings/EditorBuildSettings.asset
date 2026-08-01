@@ -12,20 +12,17 @@ EditorBuildSettings:
     path: Assets/Scene/Kikuno/StartScene.unity
     guid: e869c61e070a35c4fadf2604ddd3dc7e
   - enabled: 1
-    path: Assets/Scene/Kikuno/ClearScene.unity
-    guid: 0f807d891400c8e478fffd7fd4eb285e
+    path: Assets/Scene/Kikuno/TutorialScene.unity
+    guid: 86669db9df4066645acd59b1235e1bbe
   - enabled: 1
-    path: Assets/Scene/Kikuno/KikunoTest.unity
-    guid: 1c7e1aaa316a95045bbcd390ff25e955
+    path: Assets/Scene/Release/InGame.unity
+    guid: 7042259866f9841e6be2d6724c27d335
   - enabled: 1
     path: Assets/Scene/Kikuno/LoseScene.unity
     guid: e3cc9dc912901bb4293ed833c63cd7c7
   - enabled: 1
-    path: Assets/Scene/Kikuno/TutorialScene.unity
-    guid: 86669db9df4066645acd59b1235e1bbe
-  - enabled: 1
-    path: Assets/Scene/Kikuno/InGame(Test).unity
-    guid: 8d8327fb1c1e808438a67c4f536da4e2
+    path: Assets/Scene/Kikuno/ClearScene.unity
+    guid: 0f807d891400c8e478fffd7fd4eb285e
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
