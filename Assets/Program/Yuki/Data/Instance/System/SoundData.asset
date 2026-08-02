@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: SoundData
   m_EditorClassIdentifier: 
   _bgmList:
-  - {fileID: 8300000, guid: 6daf50e67245e43c59ba693f5a5d1e97, type: 3}
+  - {fileID: 8300000, guid: a02a669a39a3646dc81f626411e0f55b, type: 3}
   - {fileID: 8300000, guid: 6af72be02814b4d398ab1b5d85f9dfef, type: 3}
-  - {fileID: 8300000, guid: 5ea5712b2ee7649388a1ededc447e5b3, type: 3}
-  - {fileID: 8300000, guid: df363f5ba955e4c1795f1b85ca877bc2, type: 3}
+  - {fileID: 8300000, guid: 2efe87037461e4d96888a5b8462b03f7, type: 3}
+  - {fileID: 8300000, guid: 1f11120c60781404fae89af56f5d7151, type: 3}
   _seList:
   - {fileID: 8300000, guid: 2ebde97ed41b54f1c8ad04d27a1a6aa7, type: 3}
   - {fileID: 8300000, guid: 9b477e3053a0b4bcb9c4ca6ba74a35d4, type: 3}
