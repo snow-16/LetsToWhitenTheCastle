@@ -17,19 +17,19 @@ public class ResultUI : MonoBehaviour
     private void Start()
     {
         _clearTimeText.text =
-            "TIME : " + ResultData.Instance.ClearTime.ToString("F2");
+            " ｸﾘｱ ﾀｲﾑ  : " + ResultData.Instance.ClearTime.ToString("F2");
 
 
         _hpScoreText.text =
-            "HP SCORE : " + ResultData.Instance.HpScore;
+            " HP  ｽｺｱ  : " + ResultData.Instance.HpScore;
 
 
         _timeBonusText.text =
-            "TIME BONUS : " + ResultData.Instance.TimeScore;
+            "ﾀｲﾑ ﾎﾞｰﾅｽ : " + ResultData.Instance.TimeScore;
 
 
         _totalScoreText.text =
-            "TOTAL SCORE : " + ResultData.Instance.TotalScore;
+            " ﾄｰﾀﾙ ｽｺｱ : " + ResultData.Instance.TotalScore;
 
 
         SetRankImage(ResultData.Instance.Rank);
