@@ -3,6 +3,7 @@ using UnityEngine;
 /// <summary>
 /// サウンドの管理を行うコンポーネント
 /// </summary>
+[DefaultExecutionOrder(-100)]
 public class SoundSystem : MonoBehaviour
 {
     /// <summary> 設定データ </summary>
