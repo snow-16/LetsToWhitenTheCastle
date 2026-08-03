@@ -2502,7 +2502,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sceneName: TutorialScene
   _fadeAnimator: {fileID: 1711697595}
-  _fadeDuration: 1
+  _fadeOutStateName: FadePanel
 --- !u!1 &1756581275
 GameObject:
   m_ObjectHideFlags: 0

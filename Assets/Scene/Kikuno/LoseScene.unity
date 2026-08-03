@@ -196,7 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sceneName: StartScene
   _fadeAnimator: {fileID: 1266131727}
-  _fadeDuration: 1
+  _fadeOutStateName: FadePanel
 --- !u!114 &206723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -539,7 +539,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sceneName: Ingame
   _fadeAnimator: {fileID: 1266131727}
-  _fadeDuration: 1
+  _fadeOutStateName: FadePanel
 --- !u!114 &229317975
 MonoBehaviour:
   m_ObjectHideFlags: 0
