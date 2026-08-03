@@ -316,7 +316,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sceneName: Ingame
   _fadeAnimator: {fileID: 1142207259}
-  _fadeDuration: 1
+  _fadeOutStateName: FadePanel
 --- !u!114 &275223021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -670,7 +670,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sceneName: StartScene
   _fadeAnimator: {fileID: 1142207259}
-  _fadeDuration: 1
+  _fadeOutStateName: FadePanel
 --- !u!114 &454128168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1589,10 +1589,10 @@ MonoBehaviour:
   _timeBonusText: {fileID: 1457854941}
   _totalScoreText: {fileID: 348974271}
   _rankImage: {fileID: 1359776149}
-  _rankS: {fileID: 21300000, guid: c8d7351bddeaa5b4d9e23cad4f555b9f, type: 3}
-  _rankA: {fileID: 21300000, guid: 66d6a6aeced71a4498b5cb8ad540e3a3, type: 3}
-  _rankB: {fileID: 21300000, guid: 687e6f6e8cfe74f4d97876f3152023fd, type: 3}
-  _rankC: {fileID: 21300000, guid: dd9fe1582ca086f419f81fe25ea3b2cc, type: 3}
+  _rankS: {fileID: 21300000, guid: f1de6474e0e512244b06b91fd7df42f3, type: 3}
+  _rankA: {fileID: 21300000, guid: 483252961a1b2314593f14c69d02a3e5, type: 3}
+  _rankB: {fileID: 21300000, guid: 06693dec257895e49b5cb375f818ffeb, type: 3}
+  _rankC: {fileID: 21300000, guid: 4731b05e6a910fa4e878fff86876371d, type: 3}
 --- !u!4 &1438699499
 Transform:
   m_ObjectHideFlags: 0

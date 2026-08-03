@@ -1270,7 +1270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sceneName: InGame
   _fadeAnimator: {fileID: 484460239}
-  _fadeDuration: 1
+  _fadeOutStateName: FadePanel
 --- !u!114 &902083335
 MonoBehaviour:
   m_ObjectHideFlags: 0

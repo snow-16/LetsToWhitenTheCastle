@@ -1984,7 +1984,7 @@ PrefabInstance:
       objectReference: {fileID: -4857847312288323915, guid: f7a492f980ac2469e98b46de6dd51a46, type: 2}
     - target: {fileID: 9193110436314479294, guid: 36c4b8e70a3c8ef48a095d422afe02e9, type: 3}
       propertyPath: _maxHP
-      value: 500
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 9193110436314479294, guid: 36c4b8e70a3c8ef48a095d422afe02e9, type: 3}
       propertyPath: _whenDead.m_PersistentCalls.m_Calls.Array.size
@@ -2862,7 +2862,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sceneName: ClearScene
   _fadeAnimator: {fileID: 626629071}
-  _fadeDuration: 1
+  _fadeOutStateName: FadePanel
 --- !u!114 &1735205214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2877,7 +2877,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sceneName: LoseScene
   _fadeAnimator: {fileID: 626629071}
-  _fadeDuration: 1
+  _fadeOutStateName: FadePanel
 --- !u!1001 &2019954428
 PrefabInstance:
   m_ObjectHideFlags: 0
